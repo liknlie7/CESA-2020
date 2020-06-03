@@ -20,12 +20,16 @@
 // IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 // CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
+// SonarFx改造
+// 2020/06/03
+// 山口寛雅
 using UnityEngine;
 using UnityEditor;
 
 [CustomEditor(typeof(SonarFx)), CanEditMultipleObjects]
 public class SonarFxEditor : Editor
 {
+    SerializedProperty propShader;
     SerializedProperty propMode;
     //SerializedProperty propOrigin;
     //SerializedProperty propDirection;
@@ -41,6 +45,7 @@ public class SonarFxEditor : Editor
 
     void OnEnable()
     {
+        propShader        = serializedObject.FindProperty("shader");
         propMode          = serializedObject.FindProperty("_mode");
         //propOrigin        = serializedObject.FindProperty("_origin");
         //propDirection     = serializedObject.FindProperty("_direction");
@@ -59,6 +64,7 @@ public class SonarFxEditor : Editor
     {
         serializedObject.Update();
 
+        EditorGUILayout.PropertyField(propShader);
         EditorGUILayout.PropertyField(propMode);
 
         EditorGUI.indentLevel++;
