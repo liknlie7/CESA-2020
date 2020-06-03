@@ -37,12 +37,12 @@ public class SonarFxSwitcher : MonoBehaviour
         if (parameter < target)
         {
             parameter = Mathf.Min(1.0f, parameter + switchSpeed * Time.deltaTime);
-            fx.enabled = true;
+            //fx.enabled = true;
         }
         else if (parameter > target)
         {
             parameter = Mathf.Max(0.0f, parameter - switchSpeed * Time.deltaTime);
-            if (parameter == 0.0f) fx.enabled = false;
+            //if (parameter == 0.0f) fx.enabled = false;
         }
 
         if (parameter > 0.0f)

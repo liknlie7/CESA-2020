@@ -6,6 +6,7 @@
 // SonarFx‰ü‘¢
 // 2020/05/17
 // ²’|°“o
+// ŽRŒûŠ°‰ë
 Shader "Hidden/SonarFX"
 {
 	Properties
@@ -16,8 +17,9 @@ Shader "Hidden/SonarFX"
 		_SonarWaveVector("Wave Vector", Vector) = (0, 0, 1, 0)
 		_SonarAddColor("Add Color",   Color) = (0, 0, 0, 0)
 		_SonarRadius("Wave Radius", Float) = 5
-		_SonarTimer("Sonar Timer",Float) = 0
-        _SonarWaves("Waves", Vector) = (0, -1, -1, -1)
+		_SonarTimer("Sonar Timer", Float) = 0
+        //_SonarWaves("Waves", Float[]) = (0, -1, -1, -1)
+        //_SonarWaves("Wave Vectors", Vector[])
     }
     SubShader
     {
@@ -39,41 +41,48 @@ Shader "Hidden/SonarFX"
         float3 _SonarWaveVector;
         float3 _SonarAddColor;
         float  _SonarRadius;
-		float _SonarTimer;
+        float _SonarTimer;
+        float _SonarWaves[16];
+        float3 _SonarWaveVectors[16];
 
         void surf(Input IN, inout SurfaceOutput o)
         {
-#ifdef SONAR_DIRECTIONAL
-            float w = dot(IN.worldPos, _SonarWaveVector);
-#else
-            float w = length(IN.worldPos - _SonarWaveVector);
-#endif
-            
-            float3 waveColor = float3(0, 0, 0);
+            float3 waveColor = _SonarAddColor;
 
             // Circle Mask
-            float dist = distance(_SonarWaveVector, IN.worldPos);
-            float radius = _SonarRadius;
-            if (radius > dist)
+            for (int i = 0; i < 4; i++)
             {
-                // Moving wave.
-                w -= _SonarTimer * _SonarWaveParams.w;
+#ifdef SONAR_DIRECTIONAL
+                float w = dot(IN.worldPos, _SonarWaveVectors[i]);
+#else
+                float w = length(IN.worldPos - _SonarWaveVectors[i]);
+#endif
+            
+                if (_SonarRadius > w)
+                {
+                    // Moving wave. _waveSpeed
+                    w -= (_SonarTimer - _SonarWaves[i]) * _SonarWaveParams.w; // w < 0
 
-                if (w > 0)
-                    w = 1;
+                    // Get modulo (w % params.z / params.z)
+                    w /= _SonarWaveParams.z; // _waveInterval
 
-                // Get modulo (w % params.z / params.z)
-                w /= _SonarWaveParams.z;
-                w = w - floor(w);
+                    if (w > 0)
+                        w = 1;
 
-                // Make the gradient steeper.
-                float p = _SonarWaveParams.y;
-                w = (pow(w, p) + pow(1 - w, p * 4)) * 0.5;
+                    w = clamp(w, -.5, .5);
+                    w = w - floor(w);
 
-                // Amplify.
-                w *= _SonarWaveParams.x;
+                    // 0 < w < 1  0‚Æ1‚Å‹ÉŒÀ=Ô
 
-                waveColor = _SonarWaveColor * w + _SonarAddColor;
+                    // Make the gradient steeper.
+                    float p = _SonarWaveParams.y; // _waveExponent
+                    w = (pow(w, p) + pow(1 - w, p * 4)) * 0.5;
+
+                    // Amplify.
+                    w *= _SonarWaveParams.x; // _waveAmplitude
+
+                    waveColor += _SonarWaveColor * w;
+                }
             }
 
             o.Albedo = _SonarBaseColor;

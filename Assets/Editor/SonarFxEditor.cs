@@ -37,6 +37,7 @@ public class SonarFxEditor : Editor
     SerializedProperty propWaveSpeed;
     SerializedProperty propAddColor;
     SerializedProperty propWaveRadius;
+    SerializedProperty propWaves;
 
     void OnEnable()
     {
@@ -51,6 +52,7 @@ public class SonarFxEditor : Editor
         propWaveSpeed     = serializedObject.FindProperty("_waveSpeed");
         propAddColor      = serializedObject.FindProperty("_addColor");
         propWaveRadius    = serializedObject.FindProperty("_waveRadius");
+        propWaves         = serializedObject.FindProperty("_sonarWaves");
     }
 
     public override void OnInspectorGUI()
@@ -85,6 +87,15 @@ public class SonarFxEditor : Editor
         EditorGUILayout.PropertyField(propWaveInterval, new GUIContent("Interval"));
         EditorGUILayout.PropertyField(propWaveSpeed, new GUIContent("Speed"));
         EditorGUILayout.PropertyField(propWaveRadius, new GUIContent("Radius"));
+        EditorGUI.indentLevel--;
+
+        EditorGUILayout.LabelField("Timings");
+        EditorGUI.indentLevel++;
+        if (GUILayout.Button("Reset Timing"))
+        {
+            ((SonarFx)target).Pulse(Vector3.zero);
+        }
+        EditorGUILayout.PropertyField(propWaves, new GUIContent("Wave Offsets"), true);
         EditorGUI.indentLevel--;
         
         serializedObject.ApplyModifiedProperties();

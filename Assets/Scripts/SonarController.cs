@@ -1,6 +1,7 @@
 ﻿// 波紋を好きな時に出すオブジェクト
 // 2020/05/17
 // 佐竹晴登
+// 山口寛雅
 
 using System.Collections;
 using System.Collections.Generic;
@@ -40,13 +41,12 @@ public class SonarController : MonoBehaviour
             {
                 flg = true;
                 count = 0.0f;
-                // 2020/06/02追加分------------------------------------------
-                CameraManager.Get().sonarFx._sonarTimer = 0.0f;
+                // 2020/06/02追加分-2020/06/03編集---------------------------
+                CameraManager.Get().sonarFx.Pulse(this.transform.position);
                 // ----------------------------------------------------------
-                CameraManager.Get().sonarFx.SetOrigin(this.transform.position);
 
             }
         }
-        CameraManager.Get().sonarFxSwitcher.SetFlag(flg);
+        //CameraManager.Get().sonarFxSwitcher.SetFlag(flg);
     }
 }

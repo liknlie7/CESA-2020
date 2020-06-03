@@ -6,7 +6,9 @@
 // SonarFx改造
 // 2020/05/17
 // 佐竹晴登
+// 山口寛雅
 
+using System.Linq;
 using UnityEngine;
 
 [RequireComponent(typeof(Camera))]
@@ -59,11 +61,11 @@ public class SonarFx : MonoBehaviour
     
     public Color addColor { get { return _addColor; } set { _addColor = value; } }
 
-    // SonarTimer
+    // Sonar Timings
     public float _sonarTimer = 0.0f;
-
-    // SonarTimer
-    public float[] _sonarWaves = new [] { 0f, -1f, -1f, -1f };
+    private int _sonarCounter = 0;
+    public float[] _sonarWaves = Enumerable.Repeat(-float.MaxValue, 16).ToArray();
+    public Vector4[] _sonarWaveVectors = Enumerable.Repeat(Vector4.zero, 16).ToArray();
 
     // Reference to the shader.
     [SerializeField] Shader shader;
@@ -75,8 +77,9 @@ public class SonarFx : MonoBehaviour
     int waveVectorID;
     int addColorID;
     int waveRadiusID;
-    int SonarTimerID;
+    int sonarTimerID;
     int wavesID;
+    int waveVectorsID;
     
     void Awake()
     {
@@ -86,8 +89,9 @@ public class SonarFx : MonoBehaviour
         waveVectorID = Shader.PropertyToID("_SonarWaveVector");
         addColorID = Shader.PropertyToID("_SonarAddColor");
         waveRadiusID = Shader.PropertyToID("_SonarRadius");
-        SonarTimerID = Shader.PropertyToID("_SonarTimer");
+        sonarTimerID = Shader.PropertyToID("_SonarTimer");
         wavesID = Shader.PropertyToID("_SonarWaves");
+        waveVectorsID = Shader.PropertyToID("_SonarWaveVectors");
     }
 
     void OnEnable()
@@ -101,6 +105,13 @@ public class SonarFx : MonoBehaviour
         GetComponent<Camera>().ResetReplacementShader();
     }
 
+    public void Pulse(Vector3 pos)
+    {
+        _sonarWaves[_sonarCounter] = _sonarTimer;
+        _sonarWaveVectors[_sonarCounter] = pos;
+        _sonarCounter = (_sonarCounter + 1) % _sonarWaves.Length;
+    }
+
     void Update()
     {
         _sonarTimer += Time.deltaTime;
@@ -110,11 +121,11 @@ public class SonarFx : MonoBehaviour
         Shader.SetGlobalColor(waveColorID, _waveColor);
         Shader.SetGlobalColor(addColorID, _addColor);
         Shader.SetGlobalFloat(waveRadiusID, _waveRadius);
-        Shader.SetGlobalFloat(SonarTimerID, _sonarTimer);
+        Shader.SetGlobalFloat(sonarTimerID, _sonarTimer);
         var param = new Vector4(_waveAmplitude, _waveExponent, _waveInterval, _waveSpeed);
         Shader.SetGlobalVector(waveParamsID, param);
-        var waves = new Vector4(_sonarWaves[0], _sonarWaves[1], _sonarWaves[2], _sonarWaves[3]);
-        Shader.SetGlobalVector(wavesID, waves);
+        Shader.SetGlobalVectorArray(waveVectorsID, _sonarWaveVectors);
+        Shader.SetGlobalFloatArray(wavesID, _sonarWaves);
 
         if (_mode == SonarMode.Directional)
         {
@@ -127,10 +138,4 @@ public class SonarFx : MonoBehaviour
             Shader.SetGlobalVector(waveVectorID, _origin);
         }
     }
-
-    public void SetOrigin(Vector3 pos)
-    {
-        _origin = pos; 
-    }
-   
 }
