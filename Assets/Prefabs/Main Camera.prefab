@@ -104,7 +104,7 @@ MonoBehaviour:
   _waveExponent: 22
   _waveInterval: 30
   _waveSpeed: 5
-  _waveRadius: 10
+  _waveRadius: 1.5
   _addColor: {r: 0, g: 0, b: 0, a: 1}
   shader: {fileID: 4800000, guid: e262198c2874401e81d807ae6af58f2d, type: 3}
 --- !u!114 &6988395732836992812
