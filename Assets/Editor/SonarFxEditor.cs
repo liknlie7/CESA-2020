@@ -27,8 +27,8 @@ using UnityEditor;
 public class SonarFxEditor : Editor
 {
     SerializedProperty propMode;
-    SerializedProperty propOrigin;
-    SerializedProperty propDirection;
+    //SerializedProperty propOrigin;
+    //SerializedProperty propDirection;
     SerializedProperty propBaseColor;
     SerializedProperty propWaveColor;
     SerializedProperty propWaveAmplitude;
@@ -37,13 +37,13 @@ public class SonarFxEditor : Editor
     SerializedProperty propWaveSpeed;
     SerializedProperty propAddColor;
     SerializedProperty propWaveRadius;
-    SerializedProperty propWaves;
+    //SerializedProperty propWaves;
 
     void OnEnable()
     {
         propMode          = serializedObject.FindProperty("_mode");
-        propOrigin        = serializedObject.FindProperty("_origin");
-        propDirection     = serializedObject.FindProperty("_direction");
+        //propOrigin        = serializedObject.FindProperty("_origin");
+        //propDirection     = serializedObject.FindProperty("_direction");
         propBaseColor     = serializedObject.FindProperty("_baseColor");
         propWaveColor     = serializedObject.FindProperty("_waveColor");
         propWaveAmplitude = serializedObject.FindProperty("_waveAmplitude");
@@ -52,7 +52,7 @@ public class SonarFxEditor : Editor
         propWaveSpeed     = serializedObject.FindProperty("_waveSpeed");
         propAddColor      = serializedObject.FindProperty("_addColor");
         propWaveRadius    = serializedObject.FindProperty("_waveRadius");
-        propWaves         = serializedObject.FindProperty("_sonarWaves");
+        //propWaves         = serializedObject.FindProperty("_sonarWaves");
     }
 
     public override void OnInspectorGUI()
@@ -63,13 +63,13 @@ public class SonarFxEditor : Editor
 
         EditorGUI.indentLevel++;
 
-        if (propMode.hasMultipleDifferentValues ||
-            propMode.enumValueIndex == (int)SonarFx.SonarMode.Directional)
-            EditorGUILayout.PropertyField(propDirection);
+        //if (propMode.hasMultipleDifferentValues ||
+        //    propMode.enumValueIndex == (int)SonarFx.SonarMode.Directional)
+        //    EditorGUILayout.PropertyField(propDirection);
 
-        if (propMode.hasMultipleDifferentValues ||
-            propMode.enumValueIndex == (int)SonarFx.SonarMode.Spherical)
-            EditorGUILayout.PropertyField(propOrigin);
+        //if (propMode.hasMultipleDifferentValues ||
+        //    propMode.enumValueIndex == (int)SonarFx.SonarMode.Spherical)
+        //    EditorGUILayout.PropertyField(propOrigin);
 
         EditorGUI.indentLevel--;
 
@@ -89,14 +89,14 @@ public class SonarFxEditor : Editor
         EditorGUILayout.PropertyField(propWaveRadius, new GUIContent("Radius"));
         EditorGUI.indentLevel--;
 
-        EditorGUILayout.LabelField("Timings");
-        EditorGUI.indentLevel++;
-        if (GUILayout.Button("Reset Timing"))
-        {
-            ((SonarFx)target).Pulse(Vector3.zero);
-        }
-        EditorGUILayout.PropertyField(propWaves, new GUIContent("Wave Offsets"), true);
-        EditorGUI.indentLevel--;
+        //EditorGUILayout.LabelField("Timings");
+        //EditorGUI.indentLevel++;
+        //if (GUILayout.Button("Reset Timing"))
+        //{
+        //    ((SonarFx)target).Pulse(Vector3.zero);
+        //}
+        //EditorGUILayout.PropertyField(propWaves, new GUIContent("Wave Offsets"), true);
+        //EditorGUI.indentLevel--;
         
         serializedObject.ApplyModifiedProperties();
     }

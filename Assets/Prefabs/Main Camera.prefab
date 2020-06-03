@@ -98,17 +98,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _mode: 1
-  _direction: {x: 0, y: 0, z: 1}
-  _origin: {x: 0, y: 0, z: 0}
   _baseColor: {r: 0.2, g: 0.2, b: 0.2, a: 0}
   _waveColor: {r: 1, g: 0.2, b: 0.2, a: 0}
   _waveAmplitude: 2
   _waveExponent: 22
-  _waveInterval: 5
+  _waveInterval: 30
   _waveSpeed: 5
   _waveRadius: 10
   _addColor: {r: 0, g: 0, b: 0, a: 1}
-  _sonarTimer: 0
   shader: {fileID: 4800000, guid: e262198c2874401e81d807ae6af58f2d, type: 3}
 --- !u!114 &6988395732836992812
 MonoBehaviour:

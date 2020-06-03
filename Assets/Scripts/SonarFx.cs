@@ -19,13 +19,13 @@ public class SonarFx : MonoBehaviour
     [SerializeField] SonarMode _mode = SonarMode.Directional;
     public SonarMode mode { get { return _mode; } set { _mode = value; } }
 
-    // Wave direction (used only in the directional mode)
-    [SerializeField] Vector3 _direction = Vector3.forward;
-    public Vector3 direction { get { return _direction; } set { _direction = value; } }
+    //// Wave direction (used only in the directional mode)
+    //[SerializeField] Vector3 _direction = Vector3.forward;
+    //public Vector3 direction { get { return _direction; } set { _direction = value; } }
 
-    // Wave origin (used only in the spherical mode)
-    [SerializeField] Vector3 _origin = Vector3.zero;
-    public Vector3 origin { get { return _origin; } set { _origin = value; } }
+    //// Wave origin (used only in the spherical mode)
+    //[SerializeField] Vector3 _origin = Vector3.zero;
+    //public Vector3 origin { get { return _origin; } set { _origin = value; } }
 
     // Base color (albedo)
     [SerializeField] Color _baseColor = new Color(0.2f, 0.2f, 0.2f, 0);
@@ -62,10 +62,10 @@ public class SonarFx : MonoBehaviour
     public Color addColor { get { return _addColor; } set { _addColor = value; } }
 
     // Sonar Timings
-    public float _sonarTimer = 0.0f;
+    private float _sonarTimer = 0.0f;
     private int _sonarCounter = 0;
-    public float[] _sonarWaves = Enumerable.Repeat(-float.MaxValue, 16).ToArray();
-    public Vector4[] _sonarWaveVectors = Enumerable.Repeat(Vector4.zero, 16).ToArray();
+    private float[] _sonarWaves = Enumerable.Repeat(-float.MaxValue, 16).ToArray();
+    private Vector4[] _sonarWaveVectors = Enumerable.Repeat(Vector4.zero, 16).ToArray();
 
     // Reference to the shader.
     [SerializeField] Shader shader;
@@ -74,7 +74,6 @@ public class SonarFx : MonoBehaviour
     int baseColorID;
     int waveColorID;
     int waveParamsID;
-    int waveVectorID;
     int addColorID;
     int waveRadiusID;
     int sonarTimerID;
@@ -86,7 +85,6 @@ public class SonarFx : MonoBehaviour
         baseColorID = Shader.PropertyToID("_SonarBaseColor");
         waveColorID = Shader.PropertyToID("_SonarWaveColor");
         waveParamsID = Shader.PropertyToID("_SonarWaveParams");
-        waveVectorID = Shader.PropertyToID("_SonarWaveVector");
         addColorID = Shader.PropertyToID("_SonarAddColor");
         waveRadiusID = Shader.PropertyToID("_SonarRadius");
         sonarTimerID = Shader.PropertyToID("_SonarTimer");
@@ -130,12 +128,12 @@ public class SonarFx : MonoBehaviour
         if (_mode == SonarMode.Directional)
         {
             Shader.DisableKeyword("SONAR_SPHERICAL");
-            Shader.SetGlobalVector(waveVectorID, _direction.normalized);
+            //Shader.SetGlobalVector(waveVectorID, _direction.normalized);
         }
         else
         {
             Shader.EnableKeyword("SONAR_SPHERICAL");
-            Shader.SetGlobalVector(waveVectorID, _origin);
+            //Shader.SetGlobalVector(waveVectorID, _origin);
         }
     }
 }
