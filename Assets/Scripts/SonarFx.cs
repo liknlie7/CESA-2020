@@ -8,6 +8,7 @@
 // 佐竹晴登
 // 山口寛雅
 
+using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
@@ -108,6 +109,27 @@ public class SonarFx : MonoBehaviour
         _sonarWaves[_sonarCounter] = _sonarTimer;
         _sonarWaveVectors[_sonarCounter] = new Vector4(pos.x, pos.y, pos.z, range);
         _sonarCounter = (_sonarCounter + 1) % _sonarWaves.Length;
+    }
+
+    public struct SonarBounds
+    {
+        public Vector3 center;
+        public float radius;
+    }
+
+    public IEnumerator<SonarBounds> GetSonarBounds()
+    {
+        for (int i = 0; i < _sonarWaves.Length; i++)
+        {
+            var vec = _sonarWaveVectors[i];
+            var radius = (_sonarTimer - _sonarWaves[i]) * _waveSpeed;
+            if (0 < radius && radius < vec.w)
+                yield return new SonarBounds()
+                {
+                    center = (Vector3)vec,
+                    radius = radius,
+                };
+        }
     }
 
     void Update()
