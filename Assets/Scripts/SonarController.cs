@@ -1,4 +1,8 @@
-﻿using System.Collections;
+﻿// 波紋を好きな時に出すオブジェクト
+// 2020/05/17
+// 佐竹晴登
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,8 +10,8 @@ public class SonarController : MonoBehaviour
 {
     // Start is called before the first frame update
 
-    [SerializeField] const float activetime = 10.0f;
-    [SerializeField] GameObject Camera;
+    [SerializeField] const float activetime = 3.0f;
+    [SerializeField] GameObject rippleSphere;
     float count = 0;
     bool flg;
 
@@ -19,6 +23,7 @@ public class SonarController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // 波紋を出すインターバル
         if (flg)
         {
             if (count >= activetime)
@@ -26,7 +31,6 @@ public class SonarController : MonoBehaviour
                 flg = false;
             }
                 
-            
             count += Time.deltaTime;
         }
         else
@@ -36,7 +40,11 @@ public class SonarController : MonoBehaviour
             {
                 flg = true;
                 count = 0.0f;
+                // 2020/06/02追加分------------------------------------------
+                Camera.GetComponent<SonarFx>()._sonarTimer = 0.0f;
+                // ----------------------------------------------------------
                 Camera.GetComponent<SonarFx>().SetOrigin(this.transform.position);
+
             }
         }
         Camera.GetComponent<SonarFxSwitcher>().SetFlag(flg);

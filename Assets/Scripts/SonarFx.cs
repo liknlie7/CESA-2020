@@ -3,23 +3,10 @@
 //
 // Copyright (C) 2013, 2014 Keijiro Takahashi
 //
-// Permission is hereby granted, free of charge, to any person obtaining a copy of
-// this software and associated documentation files (the "Software"), to deal in
-// the Software without restriction, including without limitation the rights to
-// use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of
-// the Software, and to permit persons to whom the Software is furnished to do so,
-// subject to the following conditions:
-//
-// The above copyright notice and this permission notice shall be included in all
-// copies or substantial portions of the Software.
-//
-// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS
-// FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
-// COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
-// IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
-// CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-//
+// SonarFx改造
+// 2020/05/17
+// 佐竹晴登
+
 using UnityEngine;
 
 [RequireComponent(typeof(Camera))]
@@ -62,9 +49,18 @@ public class SonarFx : MonoBehaviour
     [SerializeField] float _waveSpeed = 10.0f;
     public float waveSpeed { get { return _waveSpeed; } set { _waveSpeed = value; } }
 
+    // Wave Radius
+    [SerializeField] float _waveRadius = 10.0f;
+
+    public float WaveRadius { get { return _waveRadius; } set { _waveRadius = value; } }
+    
     // Additional color (emission)
     [SerializeField] Color _addColor = Color.black;
+    
     public Color addColor { get { return _addColor; } set { _addColor = value; } }
+
+    // SonarTimer
+    public float _sonarTimer = 0.0f;
 
     // Reference to the shader.
     [SerializeField] Shader shader;
@@ -75,7 +71,8 @@ public class SonarFx : MonoBehaviour
     int waveParamsID;
     int waveVectorID;
     int addColorID;
-
+    int waveRadiusID;
+    int SonarTimerID;
     
     void Awake()
     {
@@ -84,8 +81,8 @@ public class SonarFx : MonoBehaviour
         waveParamsID = Shader.PropertyToID("_SonarWaveParams");
         waveVectorID = Shader.PropertyToID("_SonarWaveVector");
         addColorID = Shader.PropertyToID("_SonarAddColor");
-
-        
+        waveRadiusID = Shader.PropertyToID("_SonarRadius");
+        SonarTimerID = Shader.PropertyToID("_SonarTimer");
     }
 
     void OnEnable()
@@ -97,15 +94,18 @@ public class SonarFx : MonoBehaviour
     void OnDisable()
     {
         GetComponent<Camera>().ResetReplacementShader();
-        
     }
 
     void Update()
     {
+        _sonarTimer += Time.deltaTime;
+
+        //Debug.Log(_sonarTimer);
         Shader.SetGlobalColor(baseColorID, _baseColor);
         Shader.SetGlobalColor(waveColorID, _waveColor);
         Shader.SetGlobalColor(addColorID, _addColor);
-
+        Shader.SetGlobalFloat(waveRadiusID, _waveRadius);
+        Shader.SetGlobalFloat(SonarTimerID, _sonarTimer);
         var param = new Vector4(_waveAmplitude, _waveExponent, _waveInterval, _waveSpeed);
         Shader.SetGlobalVector(waveParamsID, param);
 
@@ -119,13 +119,11 @@ public class SonarFx : MonoBehaviour
             Shader.EnableKeyword("SONAR_SPHERICAL");
             Shader.SetGlobalVector(waveVectorID, _origin);
         }
-
     }
 
     public void SetOrigin(Vector3 pos)
     {
         _origin = pos; 
     }
-
    
 }
