@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 2116896123211908893}
   - component: {fileID: 21312864408208651}
   - component: {fileID: 6988395732836992812}
+  - component: {fileID: 2046650631}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -105,8 +106,10 @@ MonoBehaviour:
   _waveExponent: 22
   _waveInterval: 5
   _waveSpeed: 5
+  _waveRadius: 10
   _addColor: {r: 0, g: 0, b: 0, a: 1}
-  shader: {fileID: 4800000, guid: 6d12e7ab487bf49d18b89038af741a18, type: 3}
+  _sonarTimer: 0
+  shader: {fileID: 4800000, guid: e262198c2874401e81d807ae6af58f2d, type: 3}
 --- !u!114 &6988395732836992812
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -207,3 +210,19 @@ MonoBehaviour:
     m_NumColorKeys: 2
     m_NumAlphaKeys: 2
   switchSpeed: 5
+--- !u!114 &2046650631
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2116896123211908892}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b613902941de9704fbe83e236ddf0f1e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mainCamera: {fileID: 2116896123211908866}
+  sonarCamera: {fileID: 2116896123211908866}
+  sonarFx: {fileID: 0}
+  sonarFxSwitcher: {fileID: 0}

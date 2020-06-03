@@ -41,12 +41,12 @@ public class SonarController : MonoBehaviour
                 flg = true;
                 count = 0.0f;
                 // 2020/06/02追加分------------------------------------------
-                Camera.GetComponent<SonarFx>()._sonarTimer = 0.0f;
+                CameraManager.Get().sonarFx._sonarTimer = 0.0f;
                 // ----------------------------------------------------------
-                Camera.GetComponent<SonarFx>().SetOrigin(this.transform.position);
+                CameraManager.Get().sonarFx.SetOrigin(this.transform.position);
 
             }
         }
-        Camera.GetComponent<SonarFxSwitcher>().SetFlag(flg);
+        CameraManager.Get().sonarFxSwitcher.SetFlag(flg);
     }
 }

@@ -48,14 +48,12 @@ Shader "Hidden/SonarFX"
             float w = length(IN.worldPos - _SonarWaveVector);
 #endif
             
+            float3 waveColor = float3(0, 0, 0);
+
             // Circle Mask
             float dist = distance(_SonarWaveVector, IN.worldPos);
             float radius = _SonarRadius;
-            if (radius < dist)
-            {
-                //o.Albedo = fixed4(0, 0, 0, 1);
-            }
-            else
+            if (radius > dist)
             {
                 // Moving wave.
                 w -= _SonarTimer * _SonarWaveParams.w;
@@ -74,9 +72,11 @@ Shader "Hidden/SonarFX"
                 // Amplify.
                 w *= _SonarWaveParams.x;
 
-                o.Albedo = _SonarBaseColor;
-                o.Emission = _SonarWaveColor * w + _SonarAddColor;
+                waveColor = _SonarWaveColor * w + _SonarAddColor;
             }
+
+            o.Albedo = _SonarBaseColor;
+            o.Emission = waveColor;
             
         }
 
