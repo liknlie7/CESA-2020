@@ -17,6 +17,7 @@ Shader "Hidden/SonarFX"
 		_SonarAddColor("Add Color",   Color) = (0, 0, 0, 0)
 		_SonarRadius("Wave Radius", Float) = 5
 		_SonarTimer("Sonar Timer",Float) = 0
+        _SonarWaves("Waves", Vector) = (0, -1, -1, -1)
     }
     SubShader
     {

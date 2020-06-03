@@ -62,6 +62,9 @@ public class SonarFx : MonoBehaviour
     // SonarTimer
     public float _sonarTimer = 0.0f;
 
+    // SonarTimer
+    public float[] _sonarWaves = new [] { 0f, -1f, -1f, -1f };
+
     // Reference to the shader.
     [SerializeField] Shader shader;
 
@@ -73,6 +76,7 @@ public class SonarFx : MonoBehaviour
     int addColorID;
     int waveRadiusID;
     int SonarTimerID;
+    int wavesID;
     
     void Awake()
     {
@@ -83,6 +87,7 @@ public class SonarFx : MonoBehaviour
         addColorID = Shader.PropertyToID("_SonarAddColor");
         waveRadiusID = Shader.PropertyToID("_SonarRadius");
         SonarTimerID = Shader.PropertyToID("_SonarTimer");
+        wavesID = Shader.PropertyToID("_SonarWaves");
     }
 
     void OnEnable()
@@ -108,6 +113,8 @@ public class SonarFx : MonoBehaviour
         Shader.SetGlobalFloat(SonarTimerID, _sonarTimer);
         var param = new Vector4(_waveAmplitude, _waveExponent, _waveInterval, _waveSpeed);
         Shader.SetGlobalVector(waveParamsID, param);
+        var waves = new Vector4(_sonarWaves[0], _sonarWaves[1], _sonarWaves[2], _sonarWaves[3]);
+        Shader.SetGlobalVector(wavesID, waves);
 
         if (_mode == SonarMode.Directional)
         {
