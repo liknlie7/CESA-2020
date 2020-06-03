@@ -41,14 +41,14 @@ Shader "Hidden/SonarFX"
         float  _SonarRadius;
         float _SonarTimer;
         float _SonarWaves[16];
-        float3 _SonarWaveVectors[16];
+        float4 _SonarWaveVectors[16];
 
         void surf(Input IN, inout SurfaceOutput o)
         {
             float3 waveColor = _SonarAddColor;
 
             // Circle Mask
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < 16; i++)
             {
 #ifdef SONAR_DIRECTIONAL
                 float w = dot(IN.worldPos, _SonarWaveVectors[i]);
@@ -56,31 +56,33 @@ Shader "Hidden/SonarFX"
                 float w = length(IN.worldPos - _SonarWaveVectors[i]);
 #endif
             
-                if (_SonarRadius > w)
-                {
-                    // Moving wave. _waveSpeed
-                    w -= (_SonarTimer - _SonarWaves[i]) * _SonarWaveParams.w; // w < 0
+                float radius = _SonarWaveVectors[i].w;
+                float radiusMultiplier = 1 - smoothstep(radius - _SonarRadius, radius + _SonarRadius, w);
 
-                    // Get modulo (w % params.z / params.z)
-                    w /= _SonarWaveParams.z; // _waveInterval
+                // Moving wave. _waveSpeed
+                w -= (_SonarTimer - _SonarWaves[i]) * _SonarWaveParams.w; // w < 0
 
-                    if (w > 0)
-                        w = 1;
+                // Get modulo (w % params.z / params.z)
+                w /= _SonarWaveParams.z; // _waveInterval
 
-                    w = clamp(w, -.5, .5);
-                    w = w - floor(w);
+                if (w > 0)
+                    w = 1;
 
-                    // 0 < w < 1  0‚Æ1‚Å‹ÉŒÀ=Ô
+                w = clamp(w, -.5, .5);
+                w = w - floor(w);
 
-                    // Make the gradient steeper.
-                    float p = _SonarWaveParams.y; // _waveExponent
-                    w = (pow(w, p) + pow(1 - w, p * 4)) * 0.5;
+                // 0 < w < 1  0‚Æ1‚Å‹ÉŒÀ=Ô
 
-                    // Amplify.
-                    w *= _SonarWaveParams.x; // _waveAmplitude
+                // Make the gradient steeper.
+                float p = _SonarWaveParams.y; // _waveExponent
+                w = (pow(w, p) + pow(1 - w, p * 4)) * 0.5;
 
-                    waveColor += _SonarWaveColor * w;
-                }
+                // Amplify.
+                w *= _SonarWaveParams.x; // _waveAmplitude
+
+                w *= radiusMultiplier;
+
+                waveColor += _SonarWaveColor * w;
             }
 
             o.Albedo = _SonarBaseColor;

@@ -82,11 +82,11 @@ public class SonarFxEditor : Editor
         EditorGUILayout.LabelField("Wave Parameters");
         EditorGUI.indentLevel++;
         EditorGUILayout.PropertyField(propWaveColor, new GUIContent("Color"));
-        EditorGUILayout.PropertyField(propWaveAmplitude, new GUIContent("Amplitude"));
-        EditorGUILayout.PropertyField(propWaveExponent, new GUIContent("Exponent"));
-        EditorGUILayout.PropertyField(propWaveInterval, new GUIContent("Interval"));
+        EditorGUILayout.PropertyField(propWaveAmplitude, new GUIContent("まぶしさ"));
+        EditorGUILayout.PropertyField(propWaveExponent, new GUIContent("内側の塗り"));
+        EditorGUILayout.PropertyField(propWaveInterval, new GUIContent("ソナーのぼかし"));
         EditorGUILayout.PropertyField(propWaveSpeed, new GUIContent("Speed"));
-        EditorGUILayout.PropertyField(propWaveRadius, new GUIContent("Radius"));
+        EditorGUILayout.PropertyField(propWaveRadius, new GUIContent("範囲のぼかし"));
         EditorGUI.indentLevel--;
 
         //EditorGUILayout.LabelField("Timings");

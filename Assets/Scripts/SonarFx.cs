@@ -103,10 +103,10 @@ public class SonarFx : MonoBehaviour
         GetComponent<Camera>().ResetReplacementShader();
     }
 
-    public void Pulse(Vector3 pos)
+    public void Pulse(Vector3 pos, float range = 10)
     {
         _sonarWaves[_sonarCounter] = _sonarTimer;
-        _sonarWaveVectors[_sonarCounter] = pos;
+        _sonarWaveVectors[_sonarCounter] = new Vector4(pos.x, pos.y, pos.z, range);
         _sonarCounter = (_sonarCounter + 1) % _sonarWaves.Length;
     }
 
