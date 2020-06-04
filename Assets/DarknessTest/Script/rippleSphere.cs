@@ -27,7 +27,7 @@ public class rippleSphere : MonoBehaviour
     // 更新
     void Update()
     {
-        Debug.Log((fx._sonarTimer - fx._sonarWaves[myNum]) * fx.waveSpeed);
+       
         // 波紋大きさを設定
         // this.transform.localScale = 
 
