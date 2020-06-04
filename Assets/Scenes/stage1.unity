@@ -645,8 +645,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ThrowingObject: {fileID: 7003664422167830602, guid: 5bb065e6de6bb3d43aa271060b24ca2c,
     type: 3}
-  TargetObject: {fileID: 1624155458}
-  ThrowingAngle: 0
+  ThrowingAngle: 45
 --- !u!114 &867616129
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1568,7 +1567,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ThrowingObject: {fileID: 7003664422167830602, guid: 5bb065e6de6bb3d43aa271060b24ca2c,
     type: 3}
-  TargetObject: {fileID: 1624155458}
   ThrowingAngle: 6.3
 --- !u!54 &8597260346526604761
 Rigidbody:
