@@ -34,13 +34,13 @@ public class SonarFxEditor : Editor
     //SerializedProperty propOrigin;
     //SerializedProperty propDirection;
     SerializedProperty propBaseColor;
-    SerializedProperty propWaveColor;
     SerializedProperty propWaveAmplitude;
     SerializedProperty propWaveExponent;
     SerializedProperty propWaveInterval;
     SerializedProperty propWaveSpeed;
     SerializedProperty propAddColor;
     SerializedProperty propWaveRadius;
+    SerializedProperty propPulse;
     //SerializedProperty propWaves;
 
     void OnEnable()
@@ -50,13 +50,13 @@ public class SonarFxEditor : Editor
         //propOrigin        = serializedObject.FindProperty("_origin");
         //propDirection     = serializedObject.FindProperty("_direction");
         propBaseColor     = serializedObject.FindProperty("_baseColor");
-        propWaveColor     = serializedObject.FindProperty("_waveColor");
         propWaveAmplitude = serializedObject.FindProperty("_waveAmplitude");
         propWaveExponent  = serializedObject.FindProperty("_waveExponent");
         propWaveInterval  = serializedObject.FindProperty("_waveInterval");
         propWaveSpeed     = serializedObject.FindProperty("_waveSpeed");
         propAddColor      = serializedObject.FindProperty("_addColor");
         propWaveRadius    = serializedObject.FindProperty("_waveRadius");
+        propPulse         = serializedObject.FindProperty("_defaultPulse");
         //propWaves         = serializedObject.FindProperty("_sonarWaves");
     }
 
@@ -66,6 +66,7 @@ public class SonarFxEditor : Editor
 
         EditorGUILayout.PropertyField(propShader);
         EditorGUILayout.PropertyField(propMode);
+        EditorGUILayout.PropertyField(propPulse);
 
         EditorGUI.indentLevel++;
 
@@ -87,7 +88,6 @@ public class SonarFxEditor : Editor
 
         EditorGUILayout.LabelField("Wave Parameters");
         EditorGUI.indentLevel++;
-        EditorGUILayout.PropertyField(propWaveColor, new GUIContent("Color"));
         EditorGUILayout.PropertyField(propWaveAmplitude, new GUIContent("まぶしさ(x:Amplitude)"));
         EditorGUILayout.PropertyField(propWaveExponent, new GUIContent("内側の塗り(y:Exponent)"));
         EditorGUILayout.PropertyField(propWaveInterval, new GUIContent("ソナーのぼかし(z:Interval)"));
