@@ -20,15 +20,19 @@
 // IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 // CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
+// SonarFx改造
+// 2020/06/03
+// 山口寛雅
 using UnityEngine;
 using UnityEditor;
 
 [CustomEditor(typeof(SonarFx)), CanEditMultipleObjects]
 public class SonarFxEditor : Editor
 {
+    SerializedProperty propShader;
     SerializedProperty propMode;
-    SerializedProperty propOrigin;
-    SerializedProperty propDirection;
+    //SerializedProperty propOrigin;
+    //SerializedProperty propDirection;
     SerializedProperty propBaseColor;
     SerializedProperty propWaveColor;
     SerializedProperty propWaveAmplitude;
@@ -36,12 +40,15 @@ public class SonarFxEditor : Editor
     SerializedProperty propWaveInterval;
     SerializedProperty propWaveSpeed;
     SerializedProperty propAddColor;
+    SerializedProperty propWaveRadius;
+    //SerializedProperty propWaves;
 
     void OnEnable()
     {
+        propShader        = serializedObject.FindProperty("shader");
         propMode          = serializedObject.FindProperty("_mode");
-        propOrigin        = serializedObject.FindProperty("_origin");
-        propDirection     = serializedObject.FindProperty("_direction");
+        //propOrigin        = serializedObject.FindProperty("_origin");
+        //propDirection     = serializedObject.FindProperty("_direction");
         propBaseColor     = serializedObject.FindProperty("_baseColor");
         propWaveColor     = serializedObject.FindProperty("_waveColor");
         propWaveAmplitude = serializedObject.FindProperty("_waveAmplitude");
@@ -49,23 +56,26 @@ public class SonarFxEditor : Editor
         propWaveInterval  = serializedObject.FindProperty("_waveInterval");
         propWaveSpeed     = serializedObject.FindProperty("_waveSpeed");
         propAddColor      = serializedObject.FindProperty("_addColor");
+        propWaveRadius    = serializedObject.FindProperty("_waveRadius");
+        //propWaves         = serializedObject.FindProperty("_sonarWaves");
     }
 
     public override void OnInspectorGUI()
     {
         serializedObject.Update();
 
+        EditorGUILayout.PropertyField(propShader);
         EditorGUILayout.PropertyField(propMode);
 
         EditorGUI.indentLevel++;
 
-        if (propMode.hasMultipleDifferentValues ||
-            propMode.enumValueIndex == (int)SonarFx.SonarMode.Directional)
-            EditorGUILayout.PropertyField(propDirection);
+        //if (propMode.hasMultipleDifferentValues ||
+        //    propMode.enumValueIndex == (int)SonarFx.SonarMode.Directional)
+        //    EditorGUILayout.PropertyField(propDirection);
 
-        if (propMode.hasMultipleDifferentValues ||
-            propMode.enumValueIndex == (int)SonarFx.SonarMode.Spherical)
-            EditorGUILayout.PropertyField(propOrigin);
+        //if (propMode.hasMultipleDifferentValues ||
+        //    propMode.enumValueIndex == (int)SonarFx.SonarMode.Spherical)
+        //    EditorGUILayout.PropertyField(propOrigin);
 
         EditorGUI.indentLevel--;
 
@@ -78,11 +88,21 @@ public class SonarFxEditor : Editor
         EditorGUILayout.LabelField("Wave Parameters");
         EditorGUI.indentLevel++;
         EditorGUILayout.PropertyField(propWaveColor, new GUIContent("Color"));
-        EditorGUILayout.PropertyField(propWaveAmplitude, new GUIContent("Amplitude"));
-        EditorGUILayout.PropertyField(propWaveExponent, new GUIContent("Exponent"));
-        EditorGUILayout.PropertyField(propWaveInterval, new GUIContent("Interval"));
-        EditorGUILayout.PropertyField(propWaveSpeed, new GUIContent("Speed"));
+        EditorGUILayout.PropertyField(propWaveAmplitude, new GUIContent("まぶしさ(x:Amplitude)"));
+        EditorGUILayout.PropertyField(propWaveExponent, new GUIContent("内側の塗り(y:Exponent)"));
+        EditorGUILayout.PropertyField(propWaveInterval, new GUIContent("ソナーのぼかし(z:Interval)"));
+        EditorGUILayout.PropertyField(propWaveSpeed, new GUIContent("Speed(w)"));
+        EditorGUILayout.PropertyField(propWaveRadius, new GUIContent("範囲のぼかし(Radius)"));
         EditorGUI.indentLevel--;
+
+        //EditorGUILayout.LabelField("Timings");
+        //EditorGUI.indentLevel++;
+        //if (GUILayout.Button("Reset Timing"))
+        //{
+        //    ((SonarFx)target).Pulse(Vector3.zero);
+        //}
+        //EditorGUILayout.PropertyField(propWaves, new GUIContent("Wave Offsets"), true);
+        //EditorGUI.indentLevel--;
         
         serializedObject.ApplyModifiedProperties();
     }
