@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2116896123211908867}
   - component: {fileID: 2116896123211908866}
   - component: {fileID: 2116896123211908893}
-  - component: {fileID: 21312864408208651}
+  - component: {fileID: 941118707888022132}
   - component: {fileID: 2046650631}
   m_Layer: 0
   m_Name: Main Camera
@@ -84,7 +84,7 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2116896123211908892}
   m_Enabled: 1
---- !u!114 &21312864408208651
+--- !u!114 &941118707888022132
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -93,7 +93,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2116896123211908892}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4c725fe963b534280bc779c2e7f23fb5, type: 3}
+  m_Script: {fileID: 11500000, guid: 628c1a2a9f916b745bbe69ae18b7a940, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _mode: 1
@@ -101,11 +101,11 @@ MonoBehaviour:
   _waveColor: {r: 1, g: 0.2, b: 0.2, a: 0}
   _waveAmplitude: 2
   _waveExponent: 22
-  _waveInterval: 30
-  _waveSpeed: 5
-  _waveRadius: 1.5
+  _waveInterval: 20
+  _waveSpeed: 10
+  _waveRadius: 10
   _addColor: {r: 0, g: 0, b: 0, a: 1}
-  shader: {fileID: 4800000, guid: 16ba52a016f84e72b4a472708d15aafd, type: 3}
+  shader: {fileID: 4800000, guid: 57dc4d3851714f5897bc939d8f9ed021, type: 3}
 --- !u!114 &2046650631
 MonoBehaviour:
   m_ObjectHideFlags: 0
