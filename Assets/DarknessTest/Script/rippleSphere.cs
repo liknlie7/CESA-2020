@@ -21,7 +21,7 @@ public class rippleSphere : MonoBehaviour
         // カメラから波紋情報を取得
         GameObject camera = GameObject.Find("Main Camera");
 
-        fx = camera.GetComponent<SonarFx>();
+        fx = camera.GetComponent<CameraManager>().sonarFx;
     }
 
     // 更新
