@@ -1,6 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Numerics;
 using UnityEngine;
+using Plane = UnityEngine.Plane;
+using Quaternion = UnityEngine.Quaternion;
+using Vector2 = UnityEngine.Vector2;
+using Vector3 = UnityEngine.Vector3;
 
 public class ThrowingScript : MonoBehaviour
 {
@@ -8,9 +13,9 @@ public class ThrowingScript : MonoBehaviour
     [SerializeField, Tooltip("射出するオブジェクトをここに割り当てる")]
     private GameObject ThrowingObject;
 
-    // 標的のオブジェクト
-    [SerializeField, Tooltip("標的のオブジェクトをここに割り当てる")]
-    private GameObject TargetObject;
+    //// 標的のオブジェクト
+    //[SerializeField, Tooltip("標的のオブジェクトをここに割り当てる")]
+    //private GameObject TargetObject;
 
     // 射出角度
     [SerializeField, Range(0F, 90F), Tooltip("射出する角度")]
@@ -30,22 +35,28 @@ public class ThrowingScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetButtonDown("Fire"))
         {
-            // スペースキーでボールを射出する
-            ThrowingBall();
+            var plane = new Plane(Vector3.up, Vector3.zero);
+            var ray = CameraManager.Get().sonarCamera.ScreenPointToRay(Input.mousePosition);
+            if (plane.Raycast(ray, out float enter))
+            {
+                var target = ray.GetPoint(enter);
+                // Fireボタンでボールを射出する
+                ThrowingBall(target);
+            }
         }
     }
     // ボールを射出する
-    private void ThrowingBall()
+    private void ThrowingBall(Vector3 Target)
     {
-        if (ThrowingObject != null && TargetObject != null)
+        if (ThrowingObject)
         {
             // Ballオブジェクトの生成
             GameObject ball = Instantiate(ThrowingObject, this.transform.position, Quaternion.identity);
 
             // 標的の座標
-            Vector3 targetPosition = TargetObject.transform.position;
+            Vector3 targetPosition = Target;
 
             // 射出角度
             float angle = ThrowingAngle;
@@ -59,7 +70,7 @@ public class ThrowingScript : MonoBehaviour
         }
         else
         {
-            throw new System.Exception("射出するオブジェクトまたは標的のオブジェクトが未設定です。");
+            throw new System.Exception("射出するオブジェクトが未設定です。");
         }
     }
 
