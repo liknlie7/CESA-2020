@@ -12,7 +12,7 @@ public class WaterSonar : MonoBehaviour
     void Start()
     {
         // ソナーを発信
-        CameraManager.Get().sonarFx.Pulse(this.transform.position);
+        CameraManager.Get().sonarFx.Pulse(this.transform.position);
         Destroy(this.gameObject);
     }
 
