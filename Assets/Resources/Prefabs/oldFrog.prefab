@@ -358,6 +358,8 @@ GameObject:
   - component: {fileID: 2015405761793153426}
   - component: {fileID: 1309440721485061796}
   - component: {fileID: 5558873508696232283}
+  - component: {fileID: 7008587986492894388}
+  - component: {fileID: 3517225543626090622}
   m_Layer: 0
   m_Name: oldFrog
   m_TagString: Untagged
@@ -427,7 +429,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ThrowingObject: {fileID: 7003664422167830602, guid: 5bb065e6de6bb3d43aa271060b24ca2c,
     type: 3}
-  TargetObject: {fileID: 0}
   ThrowingAngle: 0.5
 --- !u!114 &5558873508696232283
 MonoBehaviour:
@@ -442,6 +443,32 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rippleSphere: {fileID: 0}
+--- !u!65 &7008587986492894388
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5697026945664178194}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.2908775, y: 0.16991687, z: 0.32590714}
+  m_Center: {x: 0.0023670436, y: 0.076015905, z: 0.10137882}
+--- !u!114 &3517225543626090622
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5697026945664178194}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a06fbc0d15b0474c9f8b1cedefae030, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 3
 --- !u!1 &5697026945664178196
 GameObject:
   m_ObjectHideFlags: 0

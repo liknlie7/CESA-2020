@@ -26,7 +26,7 @@ public class EnemyTrackingState : EnemyState
         Move();
 
         if (!IsPlayerSee())
-            StateController.SetState("EnemyAlertState");
+            StateController.SetState(_nextStateName);
 
     }
 

@@ -3,15 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class EnemyCrawlState : EnemyState
+public class EnemyStopState : EnemyState
 {
-    public override string GetStateName() { return "EnemyCrawlState"; }
-    
+
+    public override string GetStateName() { return "EnemyStopState"; }
+
     private bool _isPlayerDiscovery;
 
-
-    [SerializeField]
-    private List<Transform> _searchRoutes = new List<Transform>(); // 巡回ルート
+    private Vector3 _initPos;
 
     private int _routeNum = 0;                 // 現在巡回している番号
     [SerializeField]
@@ -19,13 +18,17 @@ public class EnemyCrawlState : EnemyState
 
     private const string SONAR_TAG_NAME = "PlayerSonar";
 
-
+    void Start()
+    {
+        // 初期位置を設定
+        _initPos = this.transform.position;
+    }
     // ステートが遷移してきたとき
     public override void EnterEvent()
     {
-        _prop.Agent.SetDestination(_searchRoutes[_routeNum].position);
+        _prop.Agent.SetDestination(_initPos);
 
-        Debug.Log("EnemyCrawlState : に移行");
+        Debug.Log("EnemyStopState : に移行");
     }
 
     public override void Execute()
@@ -37,9 +40,7 @@ public class EnemyCrawlState : EnemyState
             _isPlayerDiscovery = IsSearch();
         else
             _isPlayerDiscovery = false;
-
-        // 巡回移動
-        Move();
+        
 
         // プレイヤーを見つけたら警戒ステートに変更
         if (_isPlayerDiscovery)
@@ -77,17 +78,6 @@ public class EnemyCrawlState : EnemyState
                 return true;
         }
         return false;
-    }
-
-    void Move()
-    {         
-        // 目的地周辺に就いたら目的地を次の場所に変更
-        if (_prop.Agent.remainingDistance < 0.1f)
-        {
-            _routeNum++;
-            _routeNum = _routeNum % _searchRoutes.Count;
-            _prop.Agent.SetDestination(_searchRoutes[_routeNum].position);
-        }
     }
 
 

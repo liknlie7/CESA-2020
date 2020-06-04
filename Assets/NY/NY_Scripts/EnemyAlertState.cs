@@ -15,6 +15,7 @@ public class EnemyAlertState : EnemyState
 
     const float ALERT_GAUGE_MAX = 4.0f;
 
+
     public override string GetStateName() { return "EnemyAlertState"; }
 
     // ステートが遷移してきたとき
@@ -54,7 +55,7 @@ public class EnemyAlertState : EnemyState
 
         // 警戒時間が経過すると巡回ステートへ
         if (_attentionTime <= 0.0f)
-            StateController.SetState("EnemyCrawlState");
+            StateController.SetState(_nextStateName);
         
 
         // 一艇時間プレイヤーを見続けると追跡ステートへ

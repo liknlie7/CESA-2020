@@ -6,7 +6,8 @@ using UnityEngine;
 public class EnemyState : MonoBehaviour
 {
     //public int _stateNum;
-    private string _nextStateName;
+    [SerializeField]
+    protected string _nextStateName;
     private EnemyController _stateController;
     public EnemyController StateController { set { _stateController = value; } get { return _stateController; } }
     protected EnemyPropaty _prop; // 自身のプロパティ

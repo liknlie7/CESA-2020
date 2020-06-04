@@ -16,7 +16,7 @@ public class EnemyRunawayState : EnemyState
     private Renderer _render;
 
     // ステートの名前を取得
-    public override string GetStateName() { return "RunawayState"; }
+    public override string GetStateName() { return "EnemyRunawayState"; }
 
     // ステートが遷移してきたとき
     public override void EnterEvent()

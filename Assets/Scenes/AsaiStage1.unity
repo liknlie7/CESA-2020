@@ -111,7 +111,7 @@ NavMeshSettings:
     accuratePlacement: 0
     debug:
       m_Flags: 0
-  m_NavMeshData: {fileID: 23800000, guid: a1ba0deeff2dced45a8f3ec83565abce, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: 9232e8c6bd7c57a45a502ace0f0874fc, type: 2}
 --- !u!1001 &71511734
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -119,6 +119,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 6005841391254084829, guid: c2d36b521de4e9d4eafff00d12962854,
+        type: 3}
+      propertyPath: m_Name
+      value: Capsule
+      objectReference: {fileID: 0}
     - target: {fileID: 6005841391254084825, guid: c2d36b521de4e9d4eafff00d12962854,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -173,11 +178,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6005841391254084829, guid: c2d36b521de4e9d4eafff00d12962854,
-        type: 3}
-      propertyPath: m_Name
-      value: Capsule
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c2d36b521de4e9d4eafff00d12962854, type: 3}
@@ -1276,6 +1276,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2116896123211908892, guid: a831214aeecedfb4babebc4ad0dbf6e3,
+        type: 3}
+      propertyPath: m_Name
+      value: Main Camera (1)
+      objectReference: {fileID: 0}
     - target: {fileID: 2116896123211908867, guid: a831214aeecedfb4babebc4ad0dbf6e3,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1330,11 +1335,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2116896123211908892, guid: a831214aeecedfb4babebc4ad0dbf6e3,
-        type: 3}
-      propertyPath: m_Name
-      value: Main Camera (1)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a831214aeecedfb4babebc4ad0dbf6e3, type: 3}

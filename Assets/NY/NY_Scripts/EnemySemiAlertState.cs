@@ -10,8 +10,12 @@ public class EnemySemiAlertState : EnemyState
     [SerializeField]
     private GameObject _questionObj;
 
+    [SerializeField]
+    private string _backStateName = "EnemyCrawlState";
+
     private float _attentionTime = 0.0f;
     private float _crawlAttentionTime = 8.0f;
+    private const string SONAR_TAG_NAME = "PlayerSonar";
 
     // ステートが遷移してきたとき
     public override void EnterEvent()
@@ -28,7 +32,7 @@ public class EnemySemiAlertState : EnemyState
     {  
         // プレイヤーを見つけていたら警戒状態に移行
         if (IsSearch())
-            StateController.SetState("EnemyAlertState");
+            StateController.SetState(_nextStateName);
 
         // 目的地付近に着いたら、周りを見渡す
         if (_prop.Agent.remainingDistance <= 0.1f)
@@ -39,7 +43,7 @@ public class EnemySemiAlertState : EnemyState
 
             // 警戒時間が経過すると巡回ステートへ
             if (_attentionTime <= 0.0f)
-                StateController.SetState("EnemyCrawlState");
+                StateController.SetState(_backStateName);
         }
     }
 
@@ -76,5 +80,16 @@ public class EnemySemiAlertState : EnemyState
                 return true;
         }
         return false;
+    }
+
+
+    void OnTriggerEnter(Collider other)
+    {
+        // 巡回状態で波紋が自身に触れたら準警戒状態に移行
+        if (other.gameObject.tag == SONAR_TAG_NAME && StateController.GetStateName() == GetStateName())
+        {
+            _prop.TargetTrs = other.transform;
+            EnterEvent();
+        }
     }
 }
