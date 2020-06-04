@@ -12,13 +12,13 @@ Shader "Hidden/SonarFX"
 	Properties
 	{
 		_SonarBaseColor("Base Color",  Color) = (0.1, 0.1, 0.1, 0)
-		_SonarWaveColor("Wave Color",  Color) = (1.0, 0.1, 0.1, 0)
 		_SonarWaveParams("Wave Params", Vector) = (1, 20, 20, 10)
 		_SonarAddColor("Add Color",   Color) = (0, 0, 0, 0)
 		_SonarRadius("Wave Radius", Float) = 5
 		_SonarTimer("Sonar Timer", Float) = 0
         //_SonarWaves("Waves", Float[]) = (0, -1, -1, -1)
         //_SonarWaves("Wave Vectors", Vector[])
+        //_SonarWaves("Wave Colors", Vector[])
     }
     SubShader
     {
@@ -35,13 +35,13 @@ Shader "Hidden/SonarFX"
         };
 
         float3 _SonarBaseColor;
-        float3 _SonarWaveColor;
         float4 _SonarWaveParams; // Amp, Exp, Interval, Speed
         float3 _SonarAddColor;
         float  _SonarRadius;
         float _SonarTimer;
         float _SonarWaves[16];
         float4 _SonarWaveVectors[16];
+        float4 _SonarWaveColors[16];
 
         void surf(Input IN, inout SurfaceOutput o)
         {
@@ -82,7 +82,7 @@ Shader "Hidden/SonarFX"
 
                 w *= radiusMultiplier;
 
-                waveColor += _SonarWaveColor * w;
+                waveColor += _SonarWaveColors[i] * w;
             }
 
             o.Albedo = _SonarBaseColor;

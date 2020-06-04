@@ -32,10 +32,6 @@ public class SonarFx : MonoBehaviour
     [SerializeField] Color _baseColor = new Color(0.2f, 0.2f, 0.2f, 0);
     public Color baseColor { get { return _baseColor; } set { _baseColor = value; } }
 
-    // Wave color
-    [SerializeField] Color _waveColor = new Color(1.0f, 0.2f, 0.2f, 0);
-    public Color waveColor { get { return _waveColor; } set { _waveColor = value; } }
-
     // Wave color amplitude
     [SerializeField] float _waveAmplitude = 2.0f;
     public float waveAmplitude { get { return _waveAmplitude; } set { _waveAmplitude = value; } }
@@ -62,35 +58,41 @@ public class SonarFx : MonoBehaviour
     
     public Color addColor { get { return _addColor; } set { _addColor = value; } }
 
+    [SerializeField] SonarPulse _defaultPulse;
+    
+    public SonarPulse defaultPulse { get { return _defaultPulse; } set { _defaultPulse = value; } }
+
     // Sonar Timings
     private float _sonarTimer = 0.0f;
     private int _sonarCounter = 0;
     private float[] _sonarWaves = Enumerable.Repeat(-float.MaxValue, 16).ToArray();
     private Vector4[] _sonarWaveVectors = Enumerable.Repeat(Vector4.zero, 16).ToArray();
+    private Vector4[] _sonarWaveColors = Enumerable.Repeat(Vector4.zero, 16).ToArray();
+
 
     // Reference to the shader.
     [SerializeField] Shader shader;
 
     // Private shader variables
     int baseColorID;
-    int waveColorID;
     int waveParamsID;
     int addColorID;
     int waveRadiusID;
     int sonarTimerID;
     int wavesID;
     int waveVectorsID;
+    int waveColorsID;
     
     void Awake()
     {
         baseColorID = Shader.PropertyToID("_SonarBaseColor");
-        waveColorID = Shader.PropertyToID("_SonarWaveColor");
         waveParamsID = Shader.PropertyToID("_SonarWaveParams");
         addColorID = Shader.PropertyToID("_SonarAddColor");
         waveRadiusID = Shader.PropertyToID("_SonarRadius");
         sonarTimerID = Shader.PropertyToID("_SonarTimer");
         wavesID = Shader.PropertyToID("_SonarWaves");
         waveVectorsID = Shader.PropertyToID("_SonarWaveVectors");
+        waveColorsID = Shader.PropertyToID("_SonarWaveColors");
     }
 
     void OnEnable()
@@ -104,10 +106,13 @@ public class SonarFx : MonoBehaviour
         GetComponent<Camera>().ResetReplacementShader();
     }
 
-    public void Pulse(Vector3 pos, float range = 10)
+    public void Pulse(Vector3 pos, SonarPulse pulse = null)
     {
+        if (!pulse)
+            pulse = defaultPulse;
         _sonarWaves[_sonarCounter] = _sonarTimer;
-        _sonarWaveVectors[_sonarCounter] = new Vector4(pos.x, pos.y, pos.z, range);
+        _sonarWaveVectors[_sonarCounter] = new Vector4(pos.x, pos.y, pos.z, pulse.range);
+        _sonarWaveColors[_sonarCounter] = pulse.color;
         _sonarCounter = (_sonarCounter + 1) % _sonarWaves.Length;
     }
 
@@ -138,7 +143,6 @@ public class SonarFx : MonoBehaviour
 
         //Debug.Log(_sonarTimer);
         Shader.SetGlobalColor(baseColorID, _baseColor);
-        Shader.SetGlobalColor(waveColorID, _waveColor);
         Shader.SetGlobalColor(addColorID, _addColor);
         Shader.SetGlobalFloat(waveRadiusID, _waveRadius);
         Shader.SetGlobalFloat(sonarTimerID, _sonarTimer);
@@ -146,6 +150,7 @@ public class SonarFx : MonoBehaviour
         Shader.SetGlobalVector(waveParamsID, param);
         Shader.SetGlobalVectorArray(waveVectorsID, _sonarWaveVectors);
         Shader.SetGlobalFloatArray(wavesID, _sonarWaves);
+        Shader.SetGlobalVectorArray(waveColorsID, _sonarWaveColors);
 
         if (_mode == SonarMode.Directional)
         {

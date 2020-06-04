@@ -4,6 +4,7 @@ MonoImporter:
   externalObjects: {}
   serializedVersion: 2
   defaultReferences:
+  - _defaultPulse: {fileID: 11400000, guid: d832fe9ec442a25479e307615b64011d, type: 2}
   - shader: {fileID: 4800000, guid: 57dc4d3851714f5897bc939d8f9ed021, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
