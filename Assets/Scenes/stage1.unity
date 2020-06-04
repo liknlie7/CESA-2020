@@ -1000,36 +1000,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 21312864408208651, guid: a831214aeecedfb4babebc4ad0dbf6e3,
-        type: 3}
-      propertyPath: _mode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 21312864408208651, guid: a831214aeecedfb4babebc4ad0dbf6e3,
-        type: 3}
-      propertyPath: _baseColor.r
-      value: 0.20754719
-      objectReference: {fileID: 0}
-    - target: {fileID: 21312864408208651, guid: a831214aeecedfb4babebc4ad0dbf6e3,
-        type: 3}
-      propertyPath: _baseColor.g
-      value: 0.20069422
-      objectReference: {fileID: 0}
-    - target: {fileID: 21312864408208651, guid: a831214aeecedfb4babebc4ad0dbf6e3,
-        type: 3}
-      propertyPath: _baseColor.b
-      value: 0.20069422
-      objectReference: {fileID: 0}
-    - target: {fileID: 21312864408208651, guid: a831214aeecedfb4babebc4ad0dbf6e3,
-        type: 3}
-      propertyPath: _waveInterval
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 21312864408208651, guid: a831214aeecedfb4babebc4ad0dbf6e3,
-        type: 3}
-      propertyPath: _waveSpeed
-      value: 5
-      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 8679258596451073911, guid: a831214aeecedfb4babebc4ad0dbf6e3, type: 3}
     - {fileID: 7884685621509924039, guid: a831214aeecedfb4babebc4ad0dbf6e3, type: 3}
