@@ -1,5 +1,5 @@
-﻿// 波紋の疑似当たり判定
-// 2020/5/17
+﻿// 波紋の当たり判定
+// 2020/6/04
 // 佐竹晴登
 
 using System.Collections;
@@ -8,17 +8,28 @@ using UnityEngine;
 
 public class rippleSphere : MonoBehaviour
 {
-    // Start is called before the first frame update
+    // SonarFXスクリプト(波紋情報)
+    SonarFx fx = null;
+
+    // 自分の波紋ナンバー(配列から)
+    [System.NonSerialized]
+    public int myNum = 0;
+
+    // 初期化
     void Start()
     {
-        
+        // カメラから波紋情報を取得
+        GameObject camera = GameObject.Find("Main Camera");
+
+        fx = camera.GetComponent<SonarFx>();
     }
 
-    // Update is called once per frame
+    // 更新
     void Update()
     {
-        // 波紋スクリプトから情報を取ってそれ通りに球を拡大させる
-
+        Debug.Log((fx._sonarTimer - fx._sonarWaves[myNum]) * fx.waveSpeed);
+        // 波紋大きさを設定
+        // this.transform.localScale = 
 
     }
 }

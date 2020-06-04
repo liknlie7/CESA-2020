@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1427673590223164533}
   - component: {fileID: 7212293192561660025}
   - component: {fileID: 3195654104833459888}
+  - component: {fileID: 2121362754558576260}
   m_Layer: 0
   m_Name: ripple
   m_TagString: Untagged
@@ -82,3 +83,16 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &2121362754558576260
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1893386144936946336}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed367d2255d1101409f2df8804522872, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maincamera: {fileID: 0}
