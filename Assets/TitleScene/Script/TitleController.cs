@@ -19,20 +19,14 @@ public class TitleController : MonoBehaviour
     [SerializeField] string playSceneName = "";
     // オプションシーンの名前
     [SerializeField] string optionSceneName = "";
-    
+    // オプションシーンの名前
     // ボタンが操作可能になるフラグ
     bool buttonActiveFlg;
-
-    public AudioClip sound;
-    AudioSource audioSource;
-
     // 初期化
     void Start()
     {
         // 最初はボタンを表示しない
         buttonGroup.SetActive(false);
-        // AudioComponentの取得
-        audioSource = GetComponent<AudioSource>();
     }
 
     // 更新
@@ -62,9 +56,6 @@ public class TitleController : MonoBehaviour
     {
         // アニメーションが終了したら(未実装)
 
-        // 音を鳴らす
-        audioSource.PlayOneShot(sound);
-
         // プレイシーンに遷移
         SceneManager.LoadScene(playSceneName);
     }
@@ -74,9 +65,6 @@ public class TitleController : MonoBehaviour
     {
         // アニメーションが終了したら(未実装)
 
-        // 音を鳴らす
-        audioSource.PlayOneShot(sound);
-
         // オプションシーンに遷移
         // SceneManager.LoadScene(optionSceneName);
     }
@@ -85,9 +73,6 @@ public class TitleController : MonoBehaviour
     public void PushExitButton()
     {
         // アニメーションが終了したら(未実装)
-
-        // 音を鳴らす
-        audioSource.PlayOneShot(sound);
 
         // ゲームを終了する
     }
