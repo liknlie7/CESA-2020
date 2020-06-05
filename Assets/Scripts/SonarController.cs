@@ -11,25 +11,29 @@ public class SonarController : MonoBehaviour
 {
     // Start is called before the first frame update
 
+    // 波紋の生成のインターバル
     [SerializeField] const float activetime = 3.0f;
+    // 波紋の疑似当たり判定
     [SerializeField] GameObject rippleSphere;
+    // インターバル用カウント変数
     float count = 0;
-    bool flg;
+    // インターバルフラグ
+    bool intervalFlg;
 
     void Start()
     {
-        flg = false;
+        intervalFlg = false;
     }
 
     // Update is called once per frame
     void Update()
     {
         // 波紋を出すインターバル
-        if (flg)
+        if (intervalFlg)
         {
             if (count >= activetime)
             {
-                flg = false;
+                intervalFlg = false;
             }
                 
             count += Time.deltaTime;
@@ -39,7 +43,7 @@ public class SonarController : MonoBehaviour
             // スペースキーで自分からソナーが出る。
             if(Input.GetKeyDown(KeyCode.Space))
             {
-                flg = true;
+                intervalFlg = true;
                 count = 0.0f;
                 // 2020/06/02追加分-2020/06/03編集---------------------------
                 CameraManager.Get().sonarFx.Pulse(this.transform.position);
