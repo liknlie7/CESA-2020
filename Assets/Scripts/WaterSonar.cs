@@ -4,15 +4,11 @@ using UnityEngine;
 
 public class WaterSonar : MonoBehaviour
 {
-    // ソナーが消えるまでのカウント
-    [SerializeField]
-    private float MAX_COUNT = 1.7f;
-    private float _count = 0.0f;
-
     void Start()
     {
         // ソナーを発信
-        CameraManager.Get().sonarFx.Pulse(this.transform.position);
+        CameraManager.Get().sonarFx.Pulse(this.transform.position);
+
         Destroy(this.gameObject);
     }
 

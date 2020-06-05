@@ -21,6 +21,10 @@ public class ThrowingScript : MonoBehaviour
     [SerializeField, Range(0F, 90F), Tooltip("射出する角度")]
     private float ThrowingAngle;
 
+    // 射出位置オフセット
+    [SerializeField, Tooltip("射出位置")]
+    private GameObject ThrowingOffset;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -53,7 +57,7 @@ public class ThrowingScript : MonoBehaviour
         if (ThrowingObject)
         {
             // Ballオブジェクトの生成
-            GameObject ball = Instantiate(ThrowingObject, this.transform.position, Quaternion.identity);
+            GameObject ball = Instantiate(ThrowingObject, ThrowingOffset.transform.position, Quaternion.identity);
 
             // 標的の座標
             Vector3 targetPosition = Target;

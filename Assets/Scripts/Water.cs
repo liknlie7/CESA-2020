@@ -9,7 +9,9 @@ public class Water : MonoBehaviour
     private GameObject _collider;
     void OnCollisionEnter(Collision other)
     {
-        Instantiate(_collider, this.transform.position, Quaternion.identity);
+        // ソナーを発信
+        CameraManager.Get().sonarFx.Pulse(this.transform.position);
+
         Destroy(this.gameObject);
     }
 }
