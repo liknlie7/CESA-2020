@@ -54,6 +54,7 @@ public class TitleController : MonoBehaviour
     // スタートボタンが押された時
     public void PushStartButton()
     {
+
         // アニメーションが終了したら(未実装)
 
         // プレイシーンに遷移
