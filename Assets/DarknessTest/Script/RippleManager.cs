@@ -63,8 +63,10 @@ public class RippleManager : MonoBehaviour
             
             i++;
         }
+
         foreach(var v in cubes)
         {
+            // 波紋自身の設定されたrangeを超えたら削除する
             if (v.GetComponent<SphereCollider>().radius > 8.0f)
             {
                 Destroy(v);
