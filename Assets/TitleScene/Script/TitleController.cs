@@ -9,9 +9,6 @@ using UnityEngine.SceneManagement;
 
 public class TitleController : MonoBehaviour
 {
-    // サウンド
-    [SerializeField] GameObject soundManager;
-
     // タイトルロゴ
     [SerializeField] GameObject titleLogo = null;
 
@@ -23,9 +20,8 @@ public class TitleController : MonoBehaviour
     // ボタンが操作可能になるフラグ
     bool buttonActiveFlg;
 
-    public AudioClip[] sound = null;
-
-    AudioSource audioSource;
+    [SerializeField]
+    SoundManager script;
 
     // 初期化
     void Start()
@@ -33,9 +29,6 @@ public class TitleController : MonoBehaviour
         // 最初はボタンを表示しない
         buttonGroup.SetActive(false);
 
-        audioSource = soundManager.GetComponent<AudioSource>();
-
-        audioSource.PlayOneShot(sound[1]);
     }
 
     // 更新
@@ -64,7 +57,6 @@ public class TitleController : MonoBehaviour
     {
 
         // アニメーションが終了したら(未実装)
-        audioSource.PlayOneShot(sound[0]);
 
         // プレイシーンに遷移
         SceneManager.LoadScene(playSceneName);
@@ -75,7 +67,6 @@ public class TitleController : MonoBehaviour
     public void PushExitButton()
     {
         // アニメーションが終了したら(未実装)
-
 
         // ゲームを終了する
         UnityEditor.EditorApplication.isPlaying = false;
