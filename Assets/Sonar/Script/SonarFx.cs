@@ -120,6 +120,8 @@ public class SonarFx : MonoBehaviour
     {
         public Vector3 center;
         public float radius;
+        public float maxRadius;
+        public bool isValid;
     }
 
     public IEnumerator<SonarBounds> GetSonarBounds()
@@ -128,12 +130,14 @@ public class SonarFx : MonoBehaviour
         {
             var vec = _sonarWaveVectors[i];
             var radius = (_sonarTimer - _sonarWaves[i]) * _waveSpeed;
-            if (0 < radius && radius < vec.w)
-                yield return new SonarBounds()
-                {
-                    center = (Vector3)vec,
-                    radius = radius,
-                };
+            //if (0 < radius && radius < vec.w)
+            yield return new SonarBounds()
+            {
+                center = (Vector3)vec,
+                radius = radius,
+                maxRadius = vec.w,
+                isValid = (0 < radius && radius < vec.w),
+            };
         }
     }
 
