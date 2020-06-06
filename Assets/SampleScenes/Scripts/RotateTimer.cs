@@ -13,6 +13,6 @@ public class RotateTimer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.Rotate(new Vector3(0, 0, 0.02f));
+        transform.Rotate(new Vector3(0, 0, -0.06f));
     }
 }

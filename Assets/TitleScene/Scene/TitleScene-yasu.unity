@@ -160,8 +160,9 @@ GameObject:
   - component: {fileID: 520058629}
   - component: {fileID: 520058628}
   - component: {fileID: 520058627}
+  - component: {fileID: 520058630}
   m_Layer: 0
-  m_Name: SoundManager
+  m_Name: SoundDirector
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -289,6 +290,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &520058630
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 520058626}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a39673a5061bde24fb0afaf93defe918, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sound:
+  - {fileID: 8300000, guid: 5446e8ace741469488e8a84ca4f8b683, type: 3}
+  - {fileID: 8300000, guid: faece356b22f71c46b01d15297762653, type: 3}
 --- !u!1 &602838853
 GameObject:
   m_ObjectHideFlags: 0
@@ -1389,13 +1405,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c068351845b12b4a9aa2236c79c5993, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  soundManager: {fileID: 520058626}
   titleLogo: {fileID: 1929264923}
   buttonGroup: {fileID: 212828920}
   playSceneName: StageSelectScene
-  sound:
-  - {fileID: 8300000, guid: 5446e8ace741469488e8a84ca4f8b683, type: 3}
-  - {fileID: 8300000, guid: faece356b22f71c46b01d15297762653, type: 3}
+  script: {fileID: 520058630}
 --- !u!1001 &1830993875014705712
 PrefabInstance:
   m_ObjectHideFlags: 0

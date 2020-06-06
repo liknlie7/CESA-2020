@@ -19,5 +19,9 @@ public class TimerController : MonoBehaviour
     {
         totalTime -= Time.deltaTime;
         seconds = (int)totalTime;
+
+        if (seconds < 0)
+            UnityEditor.EditorApplication.isPlaying = false;
+
     }
 }
