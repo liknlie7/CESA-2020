@@ -7,7 +7,7 @@ using UnityEngine.AI;
 public class EnemyAlertState : EnemyState
 {
     [SerializeField]
-    private GameObject _questionObj;
+    private GameObject _questionObj = null;
 
     private float _alertGauge         = 0.0f;
     private float _attentionTime      = 0.0f;

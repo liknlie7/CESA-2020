@@ -12,7 +12,7 @@ public class EnemyStopState : EnemyState
 
     private Vector3 _initPos;
 
-    private int _routeNum = 0;                 // 現在巡回している番号
+    //private int _routeNum = 0;                 // 現在巡回している番号
     [SerializeField]
     private bool _isSemiAlertState = true;
 

@@ -54,8 +54,6 @@ public class TitleController : MonoBehaviour
     // スタートボタンが押された時
     public void PushStartButton()
     {
-
-        // アニメーションが終了したら(未実装)
         clickSound.Play();
         // プレイシーンに遷移
         SceneManager.LoadScene(playSceneName);
@@ -64,8 +62,6 @@ public class TitleController : MonoBehaviour
     // ゲーム終了ボタンが押された時
     public void PushExitButton()
     {
-        // アニメーションが終了したら(未実装)
-
         // ゲームを終了する
         UnityEditor.EditorApplication.isPlaying = false;
     }

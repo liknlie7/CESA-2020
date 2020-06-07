@@ -4,12 +4,18 @@ using UnityEngine;
 
 public class Scrollcontroller : MonoBehaviour
 {
-    
+    [SerializeField]
+    GameObject rightArrow = null;
 
-    private  int PaugCount=1;
+    [SerializeField]
+    GameObject leftArrow = null;
 
-    private float A = 1200.0f;
-    private float B = 800.0f;
+    [SerializeField]
+    GameObject rightPage = null;
+
+    [SerializeField]
+    GameObject leftPage = null;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -25,30 +31,20 @@ public class Scrollcontroller : MonoBehaviour
     //左
     public void LeftOnClick()
     {
-        if(PaugCount>1)
-        {
-            PaugCount--;
-            // 移動させたいオブジェクトを取得
-            GameObject obj = GameObject.Find("Panel");
-            // オブジェクトを移動
+        leftPage.SetActive(true);
+        rightPage.SetActive(false);
 
-            obj.transform.Translate(A - B * PaugCount, 0.0f, 0.0f);
-        }
-
-        
+        rightArrow.SetActive(true);
+        leftArrow.SetActive(false);
     }
     //右
     public void RightOnClick()
     {
-        if(PaugCount<2)
-        {
-            PaugCount++;
-            // 移動させたいオブジェクトを取得
-            GameObject obj = GameObject.Find("Panel");
-            // オブジェクトを移動
-            obj.transform.Translate(A - B * PaugCount, 0.0f, 0.0f);
-        }
-        
+        leftPage.SetActive(false);
+        rightPage.SetActive(true);
+
+        rightArrow.SetActive(false);
+        leftArrow.SetActive(true);   
     }
 
 }
