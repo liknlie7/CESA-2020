@@ -14,12 +14,31 @@ public class RippleManager : MonoBehaviour
     // エミュメレーター
     IEnumerator<SonarFx.SonarBounds> enumerator;
 
+    // スクリプト内で使うエネミー情報
+    public struct EnemyInfo
+    {
+        public GameObject obj;
+        public float time;
+    };
+
     // 波紋当たり判定のオブジェクト群
     GameObject[] rSpheres = new GameObject[16];
     // 波紋の疑似当たり判定
     [SerializeField]
     GameObject rSphere = null;
 
+    // 衝突したエネミーのリスト
+    List<EnemyInfo> colEnemyList = new List<EnemyInfo>();
+    // 輪郭を付けている時間
+    [SerializeField] float activeOutlineTime = 3.0f;
+    // アウトラインが設定されたレイヤーの番号
+    [SerializeField] int LayerNumber = 10;
+    // タイムを計算する関数
+    private EnemyInfo TimeCount(EnemyInfo e)
+    {
+        e.time += Time.deltaTime;
+        return e;
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -87,6 +106,51 @@ public class RippleManager : MonoBehaviour
             i++;
         }
 
-        
+        // アウトライン継続時間の更新
+        i = 0;
+        while (i < colEnemyList.Count)
+        {
+            colEnemyList[i] = TimeCount(colEnemyList[i]);
+            if (colEnemyList[i].time > activeOutlineTime)
+            {
+                colEnemyList[i].obj.layer = 0;
+                colEnemyList.RemoveAt(i);
+                
+            }
+            i++;
+        }
+        Debug.Log(colEnemyList.Count);
+    }
+
+    public void AddEnemyList(GameObject go)
+    {
+        EnemyInfo e = new EnemyInfo();
+        e.obj = go;
+        e.time = 0.0f;
+        if (colEnemyList.Count == 0)
+        {
+            go.layer = 10;
+            colEnemyList.Add(e);
+            
+        }
+        else
+        {
+            int i = 0;
+            foreach (var v in colEnemyList)
+            {
+                if (go.name == v.obj.name)
+                {
+                    break;
+                }
+                i++;
+            }
+
+            if (i == colEnemyList.Count)
+            {
+                go.layer = 10;
+                colEnemyList.Add(e);
+                
+            }
+        }
     }
 }
