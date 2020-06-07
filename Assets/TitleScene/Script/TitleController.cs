@@ -20,8 +20,7 @@ public class TitleController : MonoBehaviour
     // ボタンが操作可能になるフラグ
     bool buttonActiveFlg;
 
-    [SerializeField]
-    SoundManager script;
+    public AudioSource clickSound;
 
     // 初期化
     void Start()
@@ -57,10 +56,9 @@ public class TitleController : MonoBehaviour
     {
 
         // アニメーションが終了したら(未実装)
-
+        clickSound.Play();
         // プレイシーンに遷移
         SceneManager.LoadScene(playSceneName);
-
     }
 
     // ゲーム終了ボタンが押された時

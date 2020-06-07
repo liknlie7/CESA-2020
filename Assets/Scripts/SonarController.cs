@@ -13,8 +13,6 @@ public class SonarController : MonoBehaviour
 
     // 波紋の生成のインターバル
     [SerializeField] const float activetime = 3.0f;
-    // 波紋の疑似当たり判定
-    [SerializeField] GameObject rippleSphere;
     // インターバル用カウント変数
     float count = 0;
     // インターバルフラグ

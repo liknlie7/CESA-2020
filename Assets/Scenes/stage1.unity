@@ -338,6 +338,11 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8828731612720361765, guid: c5a7419369c1c234db246bc844bbbe85,
+        type: 3}
+      propertyPath: m_TagString
+      value: Ripple
+      objectReference: {fileID: 0}
     - target: {fileID: 8828731612720361766, guid: c5a7419369c1c234db246bc844bbbe85,
         type: 3}
       propertyPath: _searchRoutes.Array.size
@@ -1172,6 +1177,16 @@ PrefabInstance:
     - target: {fileID: 8525840938632447574, guid: cff65e190eced524fbeaa899ca9a3135,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8525840938632447569, guid: cff65e190eced524fbeaa899ca9a3135,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8525840938632447568, guid: cff65e190eced524fbeaa899ca9a3135,
+        type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
