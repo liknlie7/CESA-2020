@@ -1,10 +1,10 @@
 ﻿//
-// Sonar FX
+// Sonar FX PostProcessing
 //
 // Copyright (C) 2013, 2014 Keijiro Takahashi
-//
-// SonarFx改造
-// 2020/05/17
+
+// SonarFx PostProcessing
+// 2020/06/8
 // 佐竹晴登
 // 山口寛雅
 
@@ -12,9 +12,12 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
+[ExecuteInEditMode]
 [RequireComponent(typeof(Camera))]
 public class SonarFx : MonoBehaviour
 {
+    #region Sonar
+
     // Sonar mode (directional or spherical)
     public enum SonarMode { Directional, Spherical }
     [SerializeField] SonarMode _mode = SonarMode.Directional;
@@ -52,14 +55,14 @@ public class SonarFx : MonoBehaviour
     [SerializeField] float _waveRadius = 10.0f;
 
     public float WaveRadius { get { return _waveRadius; } set { _waveRadius = value; } }
-    
+
     // Additional color (emission)
     [SerializeField] Color _addColor = Color.black;
-    
+
     public Color addColor { get { return _addColor; } set { _addColor = value; } }
 
     [SerializeField] SonarPulse _defaultPulse;
-    
+
     public SonarPulse defaultPulse { get { return _defaultPulse; } set { _defaultPulse = value; } }
 
     // Sonar Timings
@@ -70,9 +73,6 @@ public class SonarFx : MonoBehaviour
     private Vector4[] _sonarWaveColors = Enumerable.Repeat(Vector4.zero, 16).ToArray();
 
 
-    // Reference to the shader.
-    [SerializeField] Shader shader;
-
     // Private shader variables
     int baseColorID;
     int waveParamsID;
@@ -82,8 +82,8 @@ public class SonarFx : MonoBehaviour
     int wavesID;
     int waveVectorsID;
     int waveColorsID;
-    
-    void Awake()
+
+    private void OnInitParamID()
     {
         baseColorID = Shader.PropertyToID("_SonarBaseColor");
         waveParamsID = Shader.PropertyToID("_SonarWaveParams");
@@ -93,17 +93,6 @@ public class SonarFx : MonoBehaviour
         wavesID = Shader.PropertyToID("_SonarWaves");
         waveVectorsID = Shader.PropertyToID("_SonarWaveVectors");
         waveColorsID = Shader.PropertyToID("_SonarWaveColors");
-    }
-
-    void OnEnable()
-    {
-        GetComponent<Camera>().SetReplacementShader(shader, null);
-        Update();
-    }
-
-    void OnDisable()
-    {
-        GetComponent<Camera>().ResetReplacementShader();
     }
 
     public void Pulse(Vector3 pos, SonarPulse pulse = null)
@@ -144,27 +133,118 @@ public class SonarFx : MonoBehaviour
     void Update()
     {
         _sonarTimer += Time.deltaTime;
+    }
 
+    private void OnShaderParameter(Material mat)
+    {
         //Debug.Log(_sonarTimer);
-        Shader.SetGlobalColor(baseColorID, _baseColor);
-        Shader.SetGlobalColor(addColorID, _addColor);
-        Shader.SetGlobalFloat(waveRadiusID, _waveRadius);
-        Shader.SetGlobalFloat(sonarTimerID, _sonarTimer);
+        mat.SetColor(baseColorID, _baseColor);
+        mat.SetColor(addColorID, _addColor);
+        mat.SetFloat(waveRadiusID, _waveRadius);
+        mat.SetFloat(sonarTimerID, _sonarTimer);
         var param = new Vector4(_waveAmplitude, _waveExponent, _waveInterval, _waveSpeed);
-        Shader.SetGlobalVector(waveParamsID, param);
-        Shader.SetGlobalVectorArray(waveVectorsID, _sonarWaveVectors);
-        Shader.SetGlobalFloatArray(wavesID, _sonarWaves);
-        Shader.SetGlobalVectorArray(waveColorsID, _sonarWaveColors);
+        mat.SetVector(waveParamsID, param);
+        mat.SetVectorArray(waveVectorsID, _sonarWaveVectors);
+        mat.SetFloatArray(wavesID, _sonarWaves);
+        mat.SetVectorArray(waveColorsID, _sonarWaveColors);
 
         if (_mode == SonarMode.Directional)
         {
-            Shader.DisableKeyword("SONAR_SPHERICAL");
+            mat.DisableKeyword("SONAR_SPHERICAL");
             //Shader.SetGlobalVector(waveVectorID, _direction.normalized);
         }
         else
         {
-            Shader.EnableKeyword("SONAR_SPHERICAL");
+            mat.EnableKeyword("SONAR_SPHERICAL");
             //Shader.SetGlobalVector(waveVectorID, _origin);
         }
     }
+
+    #endregion
+
+
+    #region PostEffect
+
+    //the main post effect shader
+    [SerializeField] Shader shader;
+
+    // Private shader variables
+    int leftWorldFromViewID;
+    int leftViewFromScreenID;
+
+    //material field + accessor that creates it when needed (done this way to avoid editor confusion when OnEnable doesn't get called in time)
+    Material m_material = null;
+    Material Material
+    {
+        get
+        {
+            if (m_material == null)
+            {
+                m_material = new Material(shader);
+                m_material.hideFlags = HideFlags.DontSave;
+            }
+            return m_material;
+        }
+    }
+
+    //camera field + accessor
+    Camera m_camera;
+    Camera Camera
+    {
+        get
+        {
+            if (m_camera == null)
+                m_camera = GetComponent<Camera>();
+            return m_camera;
+        }
+    }
+
+    void Awake()
+    {
+        leftWorldFromViewID = Shader.PropertyToID("_LeftWorldFromView");
+        leftViewFromScreenID = Shader.PropertyToID("_LeftViewFromScreen");
+
+        // Sonar Param ID initialization
+        OnInitParamID();
+    }
+
+    //on disable destroys the material
+    protected void OnDisable()
+    {
+        if (m_material)
+            DestroyImmediate(m_material);
+    }
+
+    //pre render captures all the necessary matrix info, which is normally mangled by the time OnRenderImage is called
+    private void OnPreRender()
+    {
+        //camera must at least be in depth mode
+        Camera.depthTextureMode |= DepthTextureMode.DepthNormals;
+
+        // Main eye inverse view matrix
+        Matrix4x4 leftWorldFromView = Camera.cameraToWorldMatrix;
+
+        // Inverse projection matrices, plumbed through GetGPUProjectionMatrix to compensate for render texture
+        Matrix4x4 screenFromView = Camera.projectionMatrix;
+        Matrix4x4 leftViewFromScreen = GL.GetGPUProjectionMatrix(screenFromView, true).inverse;
+
+        // Negate [1,1] to reflect Unity's CBuffer state
+        leftViewFromScreen[1, 1] *= -1;
+
+        // Store matrices
+        Material.SetMatrix(leftWorldFromViewID, leftWorldFromView);
+        Material.SetMatrix(leftViewFromScreenID, leftViewFromScreen);
+
+        // Sonar params
+        OnShaderParameter(Material);
+    }
+
+    //simplest possible on render image just blits from source to dest using our shader
+    [ImageEffectOpaque]
+    void OnRenderImage(RenderTexture source, RenderTexture dest)
+    {
+        Graphics.Blit(source, dest, Material);
+    }
+
+    #endregion
 }
