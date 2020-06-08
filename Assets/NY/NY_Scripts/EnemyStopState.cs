@@ -12,11 +12,14 @@ public class EnemyStopState : EnemyState
 
     private Vector3 _initPos;
 
-    //private int _routeNum = 0;                 // 現在巡回している番号
+    private int _routeNum = 0;                 // 現在巡回している番号
     [SerializeField]
     private bool _isSemiAlertState = true;
 
     private const string SONAR_TAG_NAME = "PlayerSonar";
+
+    [SerializeField]
+    private float _killLengrh; // 確殺距離の半径
 
     void Start()
     {
@@ -36,8 +39,8 @@ public class EnemyStopState : EnemyState
         Vector3 playerPos = _prop.PlayerTrs.position;
         float distance = Vector3.Distance(playerPos, StateController.transform.position);
         // プレイヤーとの距離が一定範囲内なら索敵開始
-        if (distance < _prop.FovLength)
-            _isPlayerDiscovery = IsSearch();
+        if (distance < _killLengrh)
+            _isPlayerDiscovery = true;
         else
             _isPlayerDiscovery = false;
         
@@ -49,38 +52,6 @@ public class EnemyStopState : EnemyState
 
     // ステートから出ていくとき
     public override void ExitEvent() { }
-
-
-    bool IsSearch()
-    {
-        Vector3 playerPos = _prop.PlayerTrs.position;
-        Vector3 dir = StateController.transform.forward;
-
-        // プレイヤーが視野範囲内に入ったら
-        if (Vector3.Angle((playerPos - StateController.transform.position).normalized, dir) <= _prop.FovAngle / 2)
-            return IsPlayerSee();
-
-        return false;
-    }
-
-
-    // プレイヤーを障害物なしに視認できたか
-    bool IsPlayerSee()
-    {
-        // プレイヤーを障害物なしに視認できたか
-        Vector3 playerPos = _prop.PlayerTrs.position;
-        Vector3 searchDire = playerPos - StateController.transform.position;
-        Ray ray = new Ray(StateController.transform.position, searchDire.normalized);
-        RaycastHit hit;
-        if (Physics.Raycast(ray, out hit, _prop.FovLength))
-        {
-            if (hit.collider.gameObject.tag == "Player")
-                return true;
-        }
-        return false;
-    }
-
-
 
     void OnTriggerEnter(Collider other)
     {
