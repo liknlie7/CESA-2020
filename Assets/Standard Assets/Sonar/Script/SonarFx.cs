@@ -69,6 +69,7 @@ public class SonarFx : MonoBehaviour
     private float _sonarTimer = 0.0f;
     private int _sonarCounter = 0;
     private float[] _sonarWaves = Enumerable.Repeat(-float.MaxValue, 16).ToArray();
+    private GameObject[] _sonarSource = new GameObject[16];
     private Vector4[] _sonarWaveVectors = Enumerable.Repeat(Vector4.zero, 16).ToArray();
     private Vector4[] _sonarWaveColors = Enumerable.Repeat(Vector4.zero, 16).ToArray();
 
@@ -95,13 +96,14 @@ public class SonarFx : MonoBehaviour
         waveColorsID = Shader.PropertyToID("_SonarWaveColors");
     }
 
-    public void Pulse(Vector3 pos, SonarPulse pulse = null)
+    public void Pulse(Vector3 pos, SonarPulse pulse = null, GameObject source = null)
     {
         if (!pulse)
             pulse = defaultPulse;
         _sonarWaves[_sonarCounter] = _sonarTimer;
         _sonarWaveVectors[_sonarCounter] = new Vector4(pos.x, pos.y, pos.z, pulse.range);
         _sonarWaveColors[_sonarCounter] = pulse.color;
+        _sonarSource[_sonarCounter] = source;
         _sonarCounter = (_sonarCounter + 1) % _sonarWaves.Length;
     }
 
@@ -110,6 +112,7 @@ public class SonarFx : MonoBehaviour
         public Vector3 center;
         public float radius;
         public float maxRadius;
+        public GameObject source;
         public bool isValid;
     }
 
@@ -125,6 +128,7 @@ public class SonarFx : MonoBehaviour
                 center = (Vector3)vec,
                 radius = radius,
                 maxRadius = vec.w,
+                source = _sonarSource[i],
                 isValid = (0 < radius && radius < vec.w),
             };
         }
