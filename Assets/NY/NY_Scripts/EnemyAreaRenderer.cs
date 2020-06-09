@@ -21,15 +21,11 @@ public class EnemyAreaRenderer : MonoBehaviour
         }
     }
 
-    private void Awake()
-    {
-        MeshFilter.mesh = CreateFanMesh(enemyProperty.FovAngle, 16);
-        transform.localScale = Vector3.one * enemyProperty.FovLength;
-    }
-
     // Start is called before the first frame update
     void Start()
     {
+        MeshFilter.mesh = CreateFanMesh(enemyProperty.FovAngle, 16);
+        transform.localScale = Vector3.one * enemyProperty.FovLength;
     }
 
     #region Fan

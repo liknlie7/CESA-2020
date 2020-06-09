@@ -63,6 +63,10 @@ public class TitleController : MonoBehaviour
     public void PushExitButton()
     {
         // ゲームを終了する
+#if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;
+#elif UNITY_STANDALONE
+        UnityEngine.Application.Quit();
+#endif
     }
 }

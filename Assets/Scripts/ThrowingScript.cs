@@ -37,11 +37,11 @@ public class ThrowingScript : MonoBehaviour
         _throwingInterval = _throwingIntervalMax;
 
         Collider collider = GetComponent<Collider>();
-        if (collider != null)
-        {
-            // 干渉しないようにisTriggerをつける
-            collider.isTrigger = true;
-        }
+        //if (collider != null)
+        //{
+        //    // 干渉しないようにisTriggerをつける
+        //    collider.isTrigger = true;
+        //}
     }
 
     // Update is called once per frame
