@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 2116896123211908893}
   - component: {fileID: 941118707888022132}
   - component: {fileID: 2046650631}
+  - component: {fileID: 5675542815874233799}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -120,3 +121,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sonarCamera: {fileID: 2116896123211908866}
   sonarFx: {fileID: 0}
+--- !u!114 &5675542815874233799
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2116896123211908892}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 534113d2f486aab4eb2be6d1ccef1cb8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Post_Outline: {fileID: 4800000, guid: 8c8a31cc3ef9b4b48b32d3ad0e711479, type: 3}
+  DrawSimple: {fileID: 4800000, guid: 25490af94c07f54479c9ad0e50e96cfe, type: 3}
+  outlineColor: {r: 0, g: 1, b: 0, a: 1}
