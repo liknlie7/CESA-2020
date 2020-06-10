@@ -53,6 +53,7 @@ public class RippleManager : MonoBehaviour
             // 最初に全部作っておく
             var obj = Instantiate(rSphere, transform);
             obj.SetActive(false);
+            obj.GetComponent<rippleSphere>().sonarbound = bound;
             waveBounds[i] = new WaveBound()
             {
                 bound = bound,
@@ -98,7 +99,7 @@ public class RippleManager : MonoBehaviour
 
         //Debug.Log(colEnemyList.Count);
     }
-
+    // アウトラインをつけるエネミーをリストに入れる処理
     public void AddEnemyList(GameObject go)
     {
         // 敵がリストに含まれなければ
