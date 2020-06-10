@@ -9,7 +9,8 @@ using UnityEngine;
 public class rippleSphere : MonoBehaviour
 {
     RippleManager manager = null;
-    
+
+    public SonarFx.SonarBounds sonarbound;
     // 初期化
     void Start()
     {
@@ -22,10 +23,14 @@ public class rippleSphere : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.tag == "Enemy")
+
+        
+        if (other.gameObject.tag == "Enemy")
         {
-            Debug.Log(other.gameObject.name);
-            manager.AddEnemyList(other.gameObject);
+            if (sonarbound.source.gameObject.tag == "Player")
+            {
+                manager.AddEnemyList(other.gameObject);
+            }
         }
     }
 }

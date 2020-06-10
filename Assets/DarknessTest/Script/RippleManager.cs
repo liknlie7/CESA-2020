@@ -86,7 +86,8 @@ public class RippleManager : MonoBehaviour
                 if (rSpheres[i] == null)
                 {
                     // プレファブを生成
-                    rSpheres[i] = Instantiate(rSphere, v.center, Quaternion.identity);
+                    rSpheres[i] = Instantiate(rSphere, v.center, Quaternion.identity);;
+                    rSpheres[i].GetComponent<rippleSphere>().sonarbound = sonarBounds[i];
                     // コライダー取得
                     rSpheres[i].GetComponent<SphereCollider>().radius = v.radius;
                 }
@@ -119,19 +120,18 @@ public class RippleManager : MonoBehaviour
             }
             i++;
         }
-        Debug.Log(colEnemyList.Count);
     }
-
+    // アウトラインをつけるエネミーをリストに入れる処理
     public void AddEnemyList(GameObject go)
     {
         EnemyInfo e = new EnemyInfo();
         e.obj = go;
         e.time = 0.0f;
+        // リストの要素数が0の時
         if (colEnemyList.Count == 0)
-        {
+        {   
             go.layer = 10;
             colEnemyList.Add(e);
-            
         }
         else
         {
