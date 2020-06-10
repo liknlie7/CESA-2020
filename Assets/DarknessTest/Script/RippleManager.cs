@@ -42,9 +42,7 @@ public class RippleManager : MonoBehaviour
     void Start()
     {
         // SonarFx取得
-        GameObject camera = GameObject.Find("Main Camera");
-
-        var bounds = camera.GetComponent<CameraManager>().sonarFx.GetSonarBounds();
+        var bounds = CameraManager.Get().sonarFx.GetSonarBounds();
 
         // 波紋当たり判定群の初期化
         int i = 0;
