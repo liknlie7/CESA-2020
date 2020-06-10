@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CausticsGenerator xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Caustics>
+    <FrameCount>32</FrameCount>
+    <Resolution>128</Resolution>
+    <Depth>1.26712346</Depth>
+    <Intensity>0.0760274</Intensity>
+    <AmplitudeFilter>5.75342369</AmplitudeFilter>
+    <FrequencyFilter>0.5582193</FrequencyFilter>
+    <TimeFilter>6.123288</TimeFilter>
+    <BackgroundColor>
+      <R>0</R>
+      <G>0</G>
+      <B>0</B>
+      <A>255</A>
+    </BackgroundColor>
+    <BackgroundIntensity>2</BackgroundIntensity>
+    <SpectralSamples>1</SpectralSamples>
+    <RefractionSpread>0.08</RefractionSpread>
+    <LightAngle>0</LightAngle>
+  </Caustics>
+  <Output>
+    <Size>512</Size>
+    <SaveAsBmp>true</SaveAsBmp>
+    <SaveAsHdr>false</SaveAsHdr>
+    <SaveHeightMap>false</SaveHeightMap>
+    <SaveNormalMap>false</SaveNormalMap>
+    <OutputFileName>D:\students\s182246\git\CESA-2021\Assets\Unity5CausticsShader\Caustics\Frame_%03d</OutputFileName>
+    <Antialiasing>4</Antialiasing>
+    <MotionBlur>1</MotionBlur>
+  </Output>
+  <Preview>
+    <ShowAsTiled>false</ShowAsTiled>
+    <AutoRender>false</AutoRender>
+    <FramesPerSecond>25</FramesPerSecond>
+  </Preview>
+</CausticsGenerator>
