@@ -1,0 +1,28 @@
+﻿using System;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
+
+public class StageSelectButton : MonoBehaviour
+{
+    public int id;
+    private StageSelectManager manager;
+
+    private void Start()
+    {
+        manager = GetComponentInParent<StageSelectManager>();
+    }
+
+    public void OnSubmit()
+    {
+        SceneManager.LoadScene($"Stage{id}");
+    }
+
+    public void OnClicked()
+    {
+        manager.activeId = id;
+        EventSystem.current.SetSelectedGameObject(gameObject);
+    }
+}
