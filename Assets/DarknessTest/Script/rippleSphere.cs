@@ -22,7 +22,7 @@ public class rippleSphere : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.tag == "Enemy")
+        if(other.gameObject.CompareTag("Enemy"))
         {
             Debug.Log(other.gameObject.name);
             manager.AddEnemyList(other.gameObject);
