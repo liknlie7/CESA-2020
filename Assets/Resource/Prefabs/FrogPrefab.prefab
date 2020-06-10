@@ -157,7 +157,7 @@ Transform:
   m_GameObject: {fileID: 4837367464624185512}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 4.47, y: 0, z: 4.45}
-  m_LocalScale: {x: 5, y: 5, z: 5}
+  m_LocalScale: {x: 3, y: 3, z: 3}
   m_Children:
   - {fileID: 4837367464624094366}
   - {fileID: 4837367464624094376}
@@ -173,12 +173,12 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4837367464624185512}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 9027e11225dea51419202a71812c0304, type: 3}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 0a7af0f0dd757b1448b50e7c113e2b4c, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
-  m_ApplyRootMotion: 0
+  m_ApplyRootMotion: 1
   m_LinearVelocityBlending: 0
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
@@ -223,6 +223,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ThrowingObject: {fileID: 7003664422167830602, guid: 5bb065e6de6bb3d43aa271060b24ca2c,
     type: 3}
+  _throwingIntervalMax: 0
   ThrowingAngle: 45
   ThrowingOffset: {fileID: 5143192437464675587}
 --- !u!114 &6462140396503315430
