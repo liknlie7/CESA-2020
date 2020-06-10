@@ -114,11 +114,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _mode: 1
   _baseColor: {r: 0.2, g: 0.2, b: 0.2, a: 0}
-  _waveAmplitude: 2
+  _waveAmplitude: 1.11
   _waveExponent: 22
-  _waveInterval: 20
+  _waveInterval: 14.7
   _waveSpeed: 10
-  _waveRadius: 10
+  _waveRadius: 1.16
   _addColor: {r: 0, g: 0, b: 0, a: 1}
   _defaultPulse: {fileID: 11400000, guid: d832fe9ec442a25479e307615b64011d, type: 2}
   shader: {fileID: 4800000, guid: 57dc4d3851714f5897bc939d8f9ed021, type: 3}

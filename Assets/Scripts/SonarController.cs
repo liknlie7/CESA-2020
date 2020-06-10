@@ -44,7 +44,7 @@ public class SonarController : MonoBehaviour
                 intervalFlg = true;
                 count = 0.0f;
                 // 2020/06/02追加分-2020/06/03編集---------------------------
-                CameraManager.Get().sonarFx.Pulse(this.transform.position);
+                CameraManager.Get().sonarFx.Pulse(this.transform.position,null,this.gameObject);
                 // ----------------------------------------------------------
 
             }
