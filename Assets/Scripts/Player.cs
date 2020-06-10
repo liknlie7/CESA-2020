@@ -1,14 +1,18 @@
-﻿using System.Collections;
+﻿// 2020/6/10
+// 西村優希
+// プレイヤーの回転方法の変更/プレイヤーの移動方向を変更
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-   
  　 // Rigidbodyを変数に入れる
     Rigidbody rb;
     // 移動スピード
-    public float speed = 3.0f;
+    [SerializeField]
+    private float _moveForce = 3.0f;
     // プレイヤーの位置を入れる
     Vector3 playerPos;
     // Animator
@@ -24,32 +28,42 @@ public class Player : MonoBehaviour
         anim = GetComponent<Animator>();
     }
 
-    void Update()
+    void FixedUpdate()
     {
 
         //A・Dキー、←→キーで横移動
-        float x = Input.GetAxisRaw("Horizontal") * Time.deltaTime * speed;
+        //float x = Input.GetAxisRaw("Horizontal") * Time.deltaTime * speed;
 
 
         //W・Sキー、↑↓キーで前後移動
-        float z = Input.GetAxisRaw("Vertical") * Time.deltaTime * speed;
+        //float z = Input.GetAxisRaw("Vertical") * Time.deltaTime * speed;
 
         //現在の位置＋入力した数値の場所に移動する
-        rb.MovePosition(transform.position + new Vector3(x, 0, z));
+        //rb.MovePosition(transform.position + new Vector3(x, 0, z));
+        
+        Rotation();
 
-        //最新の位置から少し前の位置を引いて方向を割り出す
-        Vector3 direction = transform.position - playerPos;
-
-        //移動距離が少しでもあった場合に方向転換
-        if (direction.magnitude > 0.01f)
+        if (Input.GetKey(KeyCode.W))
         {
-            //directionのX軸とZ軸の方向を向かせる
-            transform.rotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
+            float torque = _moveForce;
+            Vector3 vel = transform.forward * Time.deltaTime * torque;
+            rb.MovePosition(this.transform.position + vel);
         }
 
 
-        //位置を更新する
-        playerPos = transform.position;
+
+    }
+
+    // プレイヤーの回転
+    void Rotation()
+    {
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        RaycastHit hit;
+        if (Physics.Raycast(ray, out hit, Mathf.Infinity))
+        {
+            Vector3 direction = hit.point - this.transform.position;
+            this.transform.rotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
+        }
     }
 
 }
