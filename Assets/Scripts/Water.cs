@@ -15,6 +15,8 @@ public class Water : MonoBehaviour
         // ソナーを発信
         CameraManager.Get().sonarFx.Pulse(this.transform.position, null, source);
 
+        Debug.Log(other.transform.name);
+
         Destroy(this.gameObject);
     }
 }
