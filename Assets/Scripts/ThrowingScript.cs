@@ -47,13 +47,15 @@ public class ThrowingScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetButtonDown("Fire") && _isThrowing)
+        if (Input.GetMouseButtonDown(1) && _isThrowing)
         {
             var plane = new Plane(Vector3.up, Vector3.zero);
             var ray = CameraManager.Get().sonarCamera.ScreenPointToRay(Input.mousePosition);
             if (plane.Raycast(ray, out float enter))
             {
                 var target = ray.GetPoint(enter);
+
+
                 // Fireボタンでボールを射出する
                 ThrowingBall(target);
 

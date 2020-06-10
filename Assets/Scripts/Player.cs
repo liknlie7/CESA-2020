@@ -5,10 +5,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class Player : MonoBehaviour
 {
- 　 // Rigidbodyを変数に入れる
+    // Rigidbodyを変数に入れる
     Rigidbody rb;
     // 移動スピード
     [SerializeField]
@@ -17,7 +18,9 @@ public class Player : MonoBehaviour
     Vector3 playerPos;
     // Animator
     Animator anim;
- 
+
+    private NavMeshAgent _agent;
+
     void Start()
     {
         //Rigidbodyを取得
@@ -26,45 +29,52 @@ public class Player : MonoBehaviour
         playerPos = transform.position;
         // Animator取得
         anim = GetComponent<Animator>();
+
+        _agent = this.GetComponent<NavMeshAgent>();
+        _agent.SetDestination(this.transform.position);
     }
 
     void FixedUpdate()
     {
-
-        //A・Dキー、←→キーで横移動
-        //float x = Input.GetAxisRaw("Horizontal") * Time.deltaTime * speed;
-
-
-        //W・Sキー、↑↓キーで前後移動
-        //float z = Input.GetAxisRaw("Vertical") * Time.deltaTime * speed;
-
-        //現在の位置＋入力した数値の場所に移動する
-        //rb.MovePosition(transform.position + new Vector3(x, 0, z));
-        
         Rotation();
 
-        if (Input.GetKey(KeyCode.W))
-        {
-            float torque = _moveForce;
-            Vector3 vel = transform.forward * Time.deltaTime * torque;
-            rb.MovePosition(this.transform.position + vel);
-        }
+        //if (Input.GetKey(KeyCode.W))
+        //{
+        //    float torque = _moveForce;
+        //    Vector3 vel = transform.forward * Time.deltaTime * torque;
+        //    rb.MovePosition(this.transform.position + vel);
+        //}
 
-
+        //if(Input.GetMouseButtonDown(0))
+        //{
+        //    Vector3 pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        //    _agent.SetDestination(pos);
+        //    Debug.Log(pos + " / " + this.transform.position);
+        //}
 
     }
 
     // プレイヤーの回転
     void Rotation()
     {
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        RaycastHit hit;
-        if (Physics.Raycast(ray, out hit, Mathf.Infinity))
+        var plane = new Plane(Vector3.up, Vector3.zero);
+        var ray = CameraManager.Get().sonarCamera.ScreenPointToRay(Input.mousePosition);
+        if (plane.Raycast(ray, out float enter))
         {
-            Vector3 direction = hit.point - this.transform.position;
-            this.transform.rotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
-        }
-    }
+            var target = ray.GetPoint(enter);
+            if (_agent.remainingDistance <= 0.3f)
+            {
+                Vector3 direction = target - this.transform.position;
+                //float rad = Mathf.Atan2(direction.x, direction.z);
 
+
+                this.transform.rotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
+            }
+
+            if (Input.GetMouseButtonDown(0))
+                _agent.SetDestination(target);
+        }
+
+    }
 }
 
