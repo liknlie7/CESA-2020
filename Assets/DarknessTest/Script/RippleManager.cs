@@ -5,24 +5,28 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 public class RippleManager : MonoBehaviour
 {
-    // SonarFXスクリプト(波紋情報)
-    SonarFx fx = null;
-    // 波紋の管理用リスト
-    List<SonarFx.SonarBounds> sonarBounds = new List<SonarFx.SonarBounds>();
-    // エミュメレーター
-    IEnumerator<SonarFx.SonarBounds> enumerator;
-
     // スクリプト内で使うエネミー情報
-    public struct EnemyInfo
+    public class EnemyInfo
     {
         public GameObject obj;
-        public float time;
+        // 作成時の時間
+        public float activateTime;
+        // 削除フラグ
+        public bool delete;
     };
 
+    public struct WaveBound
+    {
+        public SonarFx.SonarBounds bound;
+        public GameObject obj;
+        public SphereCollider collider;
+    }
+
     // 波紋当たり判定のオブジェクト群
-    GameObject[] rSpheres = new GameObject[16];
+    WaveBound[] waveBounds = new WaveBound[16];
     // 波紋の疑似当たり判定
     [SerializeField]
     GameObject rSphere = null;
@@ -33,124 +37,78 @@ public class RippleManager : MonoBehaviour
     [SerializeField] float activeOutlineTime = 3.0f;
     // アウトラインが設定されたレイヤーの番号
     [SerializeField] int LayerNumber = 10;
-    // タイムを計算する関数
-    private EnemyInfo TimeCount(EnemyInfo e)
-    {
-        e.time += Time.deltaTime;
-        return e;
-    }
+
     // Start is called before the first frame update
     void Start()
     {
         // SonarFx取得
         GameObject camera = GameObject.Find("Main Camera");
 
-        fx = camera.GetComponent<CameraManager>().sonarFx;
-
-        
+        var bounds = camera.GetComponent<CameraManager>().sonarFx.GetSonarBounds();
 
         // 波紋当たり判定群の初期化
-        for (int i = 0; i < rSpheres.Length; i++)
+        int i = 0;
+        foreach (var bound in bounds)
         {
-            rSpheres[i] = null;
-        }
-
-        // 波紋情報取得
-        enumerator = fx.GetSonarBounds();
-        // リストに空きを作っておく
-        while (enumerator.MoveNext())
-        {
-            sonarBounds.Add(enumerator.Current);
+            // 最初に全部作っておく
+            var obj = Instantiate(rSphere, transform);
+            obj.SetActive(false);
+            obj.GetComponent<rippleSphere>().sonarbound = bound;
+            waveBounds[i] = new WaveBound()
+            {
+                bound = bound,
+                obj = obj,
+                collider = obj.GetComponent<SphereCollider>(),
+            };
+            i++;
         }
     }
 
     // Update is called once per frame
     void Update()
     {
-        // 波紋情報更新
-        enumerator = fx.GetSonarBounds();
-        int i = 0;
-        while (enumerator.MoveNext())
+        foreach (var waveBound in waveBounds)
         {
-            sonarBounds[i] = enumerator.Current;
-            i++;
-        }
-
-        i = 0;
-        // 波紋の数だけプレファブを生成
-        foreach (var v in sonarBounds)
-        {
-            // sonarBoundが有効の時のみ
-            if(sonarBounds[i].isValid)
+            // sonarBoundが有効の時はコライダー有効
             {
-                if (rSpheres[i] == null)
+                // 登録されているオブジェクトを更新
+                if (waveBound.bound.IsValid)
                 {
-                    // プレファブを生成
-                    rSpheres[i] = Instantiate(rSphere, v.center, Quaternion.identity);;
-                    rSpheres[i].GetComponent<rippleSphere>().sonarbound = sonarBounds[i];
-                    // コライダー取得
-                    rSpheres[i].GetComponent<SphereCollider>().radius = v.radius;
+                    waveBound.obj.transform.position = waveBound.bound.center;
+                    waveBound.collider.radius = waveBound.bound.Radius;
+                    waveBound.obj.SetActive(true);
                 }
                 else
                 {
-                    // 登録されているオブジェクトを更新
-                    rSpheres[i].transform.position = v.center;
-                    rSpheres[i].GetComponent<SphereCollider>().radius = v.radius;
-                }
-                // 波紋自身の設定されたrangeを超えたら削除する
-                if (rSpheres[i].GetComponent<SphereCollider>().radius > (sonarBounds[i].maxRadius - 1.0f))
-                {
-                    Destroy(rSpheres[i]);
-                    rSpheres[i] = null;
+                    waveBound.obj.SetActive(false);
                 }
             }
-            i++;
         }
 
         // アウトライン継続時間の更新
-        i = 0;
-        while (i < colEnemyList.Count)
-        {
-            colEnemyList[i] = TimeCount(colEnemyList[i]);
-            if (colEnemyList[i].time > activeOutlineTime)
+        var remove = colEnemyList
+            .Where(e => Time.time - e.activateTime > activeOutlineTime)
+            .Select(e =>
             {
-                colEnemyList[i].obj.layer = 0;
-                colEnemyList.RemoveAt(i);
-                
-            }
-            i++;
-        }
+                e.obj.layer = 0;
+                e.delete = true;
+                return e;
+            })
+            .ToList();
+        colEnemyList.RemoveAll(e => e.delete);
+
+        //Debug.Log(colEnemyList.Count);
     }
     // アウトラインをつけるエネミーをリストに入れる処理
     public void AddEnemyList(GameObject go)
     {
-        EnemyInfo e = new EnemyInfo();
-        e.obj = go;
-        e.time = 0.0f;
-        // リストの要素数が0の時
-        if (colEnemyList.Count == 0)
-        {   
-            go.layer = 10;
-            colEnemyList.Add(e);
-        }
-        else
+        // 敵がリストに含まれなければ
+        if (!colEnemyList.Select(e => e.obj).Contains(go))
         {
-            int i = 0;
-            foreach (var v in colEnemyList)
-            {
-                if (go.name == v.obj.name)
-                {
-                    break;
-                }
-                i++;
-            }
-
-            if (i == colEnemyList.Count)
-            {
-                go.layer = 10;
-                colEnemyList.Add(e);
-                
-            }
+            // 光らせて敵をリストに追加
+            EnemyInfo enemyInfo = new EnemyInfo { obj = go, activateTime = Time.time };
+            go.layer = 10;
+            colEnemyList.Add(enemyInfo);
         }
     }
 }

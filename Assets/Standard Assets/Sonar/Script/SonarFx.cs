@@ -8,6 +8,8 @@
 // 佐竹晴登
 // 山口寛雅
 
+using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -68,11 +70,17 @@ public class SonarFx : MonoBehaviour
     // Sonar Timings
     private float _sonarTimer = 0.0f;
     private int _sonarCounter = 0;
-    private float[] _sonarWaves = Enumerable.Repeat(-float.MaxValue, 16).ToArray();
-    private GameObject[] _sonarSource = new GameObject[16];
+    private float[] _sonarStartTimes = Enumerable.Repeat(-float.MaxValue, 16).ToArray();
     private Vector4[] _sonarWaveVectors = Enumerable.Repeat(Vector4.zero, 16).ToArray();
     private Vector4[] _sonarWaveColors = Enumerable.Repeat(Vector4.zero, 16).ToArray();
+    private SonarBounds[] _sonarBounds;
 
+    SonarFx()
+    {
+        _sonarBounds = new SonarBounds[16];
+        for (int i = 0; i < _sonarBounds.Length; i++)
+            _sonarBounds[i] = new SonarBounds(this, i);
+    }
 
     // Private shader variables
     int baseColorID;
@@ -80,7 +88,7 @@ public class SonarFx : MonoBehaviour
     int addColorID;
     int waveRadiusID;
     int sonarTimerID;
-    int wavesID;
+    int sonarStartTimesID;
     int waveVectorsID;
     int waveColorsID;
 
@@ -91,47 +99,66 @@ public class SonarFx : MonoBehaviour
         addColorID = Shader.PropertyToID("_SonarAddColor");
         waveRadiusID = Shader.PropertyToID("_SonarRadius");
         sonarTimerID = Shader.PropertyToID("_SonarTimer");
-        wavesID = Shader.PropertyToID("_SonarWaves");
+        sonarStartTimesID = Shader.PropertyToID("_SonarStartTimes");
         waveVectorsID = Shader.PropertyToID("_SonarWaveVectors");
         waveColorsID = Shader.PropertyToID("_SonarWaveColors");
     }
 
     public void Pulse(Vector3 pos, SonarPulse pulse = null, GameObject source = null)
     {
-        if (!pulse)
+        if (pulse == null)
             pulse = defaultPulse;
-        _sonarWaves[_sonarCounter] = _sonarTimer;
-        _sonarWaveVectors[_sonarCounter] = new Vector4(pos.x, pos.y, pos.z, pulse.range);
-        _sonarWaveColors[_sonarCounter] = pulse.color;
-        _sonarSource[_sonarCounter] = source;
-        _sonarCounter = (_sonarCounter + 1) % _sonarWaves.Length;
+
+        var bound = _sonarBounds[_sonarCounter];
+        bound.source = source;
+        bound.center = pos;
+        bound.pulse = pulse;
+        bound.startTime = _sonarTimer;
+        bound.Apply();
+
+        _sonarCounter = (_sonarCounter + 1) % _sonarBounds.Length;
     }
 
-    public struct SonarBounds
+    public class SonarBounds
     {
+        private readonly SonarFx _fx;
+        private readonly int _id;
+
+        public float startTime = -float.MaxValue;
         public Vector3 center;
-        public float radius;
-        public float maxRadius;
+        public SonarPulse pulse;
         public GameObject source;
-        public bool isValid;
+
+        public SonarBounds(SonarFx fx, int id)
+        {
+            _fx = fx;
+            _id = id;
+        }
+
+        public float Radius => (_fx._sonarTimer - startTime) * _fx._waveSpeed;
+
+        public bool IsValid
+        {
+            get
+            {
+                if (pulse == null)
+                    return false;
+                var r = Radius;
+                return (0 < r && r < pulse.range);
+            }
+        }
+
+        public void Apply()
+        {
+            _fx._sonarStartTimes[_id] = startTime;
+            _fx._sonarWaveVectors[_id] = new Vector4(center.x, center.y, center.z, pulse.range);
+            _fx._sonarWaveColors[_id] = pulse.color;
+        }
     }
 
-    public IEnumerator<SonarBounds> GetSonarBounds()
+    public SonarBounds[] GetSonarBounds()
     {
-        for (int i = 0; i < _sonarWaves.Length; i++)
-        {
-            var vec = _sonarWaveVectors[i];
-            var radius = (_sonarTimer - _sonarWaves[i]) * _waveSpeed;
-            //if (0 < radius && radius < vec.w)
-            yield return new SonarBounds()
-            {
-                center = (Vector3)vec,
-                radius = radius,
-                maxRadius = vec.w,
-                source = _sonarSource[i],
-                isValid = (0 < radius && radius < vec.w),
-            };
-        }
+        return _sonarBounds;
     }
 
     void Update()
@@ -149,7 +176,7 @@ public class SonarFx : MonoBehaviour
         var param = new Vector4(_waveAmplitude, _waveExponent, _waveInterval, _waveSpeed);
         mat.SetVector(waveParamsID, param);
         mat.SetVectorArray(waveVectorsID, _sonarWaveVectors);
-        mat.SetFloatArray(wavesID, _sonarWaves);
+        mat.SetFloatArray(sonarStartTimesID, _sonarStartTimes);
         mat.SetVectorArray(waveColorsID, _sonarWaveColors);
 
         if (_mode == SonarMode.Directional)

@@ -13,6 +13,11 @@ public class ThrowingScript : MonoBehaviour
     [SerializeField, Tooltip("射出するオブジェクトをここに割り当てる")]
     private GameObject ThrowingObject;
 
+    [SerializeField,Range(0F,60F), Tooltip("次に水を吐くためのインターバル")]
+    private float _throwingIntervalMax;
+    private float _throwingInterval = 0.0f;
+    private bool  _isThrowing       = true;
+
     //// 標的のオブジェクト
     //[SerializeField, Tooltip("標的のオブジェクトをここに割り当てる")]
     //private GameObject TargetObject;
@@ -28,18 +33,21 @@ public class ThrowingScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        // 最初から水を吐ける状態にしておく
+        _throwingInterval = _throwingIntervalMax;
+
         Collider collider = GetComponent<Collider>();
-        if (collider != null)
-        {
-            // 干渉しないようにisTriggerをつける
-            collider.isTrigger = true;
-        }
+        //if (collider != null)
+        //{
+        //    // 干渉しないようにisTriggerをつける
+        //    collider.isTrigger = true;
+        //}
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetButtonDown("Fire"))
+        if (Input.GetButtonDown("Fire") && _isThrowing)
         {
             var plane = new Plane(Vector3.up, Vector3.zero);
             var ray = CameraManager.Get().sonarCamera.ScreenPointToRay(Input.mousePosition);
@@ -48,7 +56,19 @@ public class ThrowingScript : MonoBehaviour
                 var target = ray.GetPoint(enter);
                 // Fireボタンでボールを射出する
                 ThrowingBall(target);
+
+                // インターバルをリセットする
+                _isThrowing = false;
+                _throwingInterval = 0.0f;
             }
+        }
+
+        // 水を吐くまでのインターバルを設ける
+        if(!_isThrowing)
+        {
+            _throwingInterval += Time.deltaTime;
+            if (_throwingInterval > _throwingIntervalMax)
+                _isThrowing = true;
         }
     }
     // ボールを射出する
@@ -59,6 +79,10 @@ public class ThrowingScript : MonoBehaviour
             // Ballオブジェクトの生成
             GameObject ball = Instantiate(ThrowingObject, ThrowingOffset.transform.position, Quaternion.identity);
 
+            var water = ball.GetComponent<Water>();
+            if (water != null)
+                water.source = gameObject;
+
             // 標的の座標
             Vector3 targetPosition = Target;
 
@@ -66,7 +90,7 @@ public class ThrowingScript : MonoBehaviour
             float angle = ThrowingAngle;
 
             // 射出速度を算出
-            Vector3 velocity = CalculateVelocity(this.transform.position, targetPosition, angle);
+            Vector3 velocity = CalculateVelocity(ThrowingOffset.transform.position, targetPosition, angle);
 
             // 射出
             Rigidbody rid = ball.GetComponent<Rigidbody>();

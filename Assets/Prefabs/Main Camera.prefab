@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2116896123211908867}
   - component: {fileID: 2116896123211908866}
   - component: {fileID: 2116896123211908893}
+  - component: {fileID: 5675542815874233799}
   - component: {fileID: 941118707888022132}
   - component: {fileID: 2046650631}
   m_Layer: 0
@@ -84,6 +85,21 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2116896123211908892}
   m_Enabled: 1
+--- !u!114 &5675542815874233799
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2116896123211908892}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 534113d2f486aab4eb2be6d1ccef1cb8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Post_Outline: {fileID: 4800000, guid: 8c8a31cc3ef9b4b48b32d3ad0e711479, type: 3}
+  DrawSimple: {fileID: 4800000, guid: 25490af94c07f54479c9ad0e50e96cfe, type: 3}
+  outlineColor: {r: 0, g: 1, b: 0, a: 1}
 --- !u!114 &941118707888022132
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -98,11 +114,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _mode: 1
   _baseColor: {r: 0.2, g: 0.2, b: 0.2, a: 0}
-  _waveAmplitude: 2
+  _waveAmplitude: 1.11
   _waveExponent: 22
-  _waveInterval: 20
+  _waveInterval: 14.7
   _waveSpeed: 10
-  _waveRadius: 10
+  _waveRadius: 1.16
   _addColor: {r: 0, g: 0, b: 0, a: 1}
   _defaultPulse: {fileID: 11400000, guid: d832fe9ec442a25479e307615b64011d, type: 2}
   shader: {fileID: 4800000, guid: 57dc4d3851714f5897bc939d8f9ed021, type: 3}

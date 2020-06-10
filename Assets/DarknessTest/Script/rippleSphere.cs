@@ -19,15 +19,13 @@ public class rippleSphere : MonoBehaviour
 
         manager = dir.GetComponent<RippleManager>();
     }
-    
+
 
     private void OnTriggerEnter(Collider other)
     {
-
-        
-        if (other.gameObject.tag == "Enemy")
+        if (other.gameObject.CompareTag("Enemy"))
         {
-            if (sonarbound.source.gameObject.tag == "Player")
+            if (sonarbound.source?.CompareTag("Player") ?? false)
             {
                 manager.AddEnemyList(other.gameObject);
             }

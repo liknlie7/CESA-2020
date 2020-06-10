@@ -45,41 +45,40 @@ public class StageManager : MonoBehaviour
     void Update()
     {
         // ゴールしたなら
-        if (player.GetGoalFlag())
-        {
-            // ライトをONにする
-            light.SetActive(true);
+        //if (player.GetGoalFlag())
+        //{
+        //    // ライトをONにする
+        //    light.SetActive(true);
 
-            // ボタンの表示
-            nextButton.gameObject.SetActive(true);
-            selectButton.gameObject.SetActive(true);
-            // 画像の表示
-            stageClear.gameObject.SetActive(true);
+        //    // ボタンの表示
+        //    nextButton.gameObject.SetActive(true);
+        //    selectButton.gameObject.SetActive(true);
+        //    // 画像の表示
+        //    stageClear.gameObject.SetActive(true);
 
-            if (tadpoleCount == 1)
-            {
-                tadpole1.gameObject.SetActive(true);
-            }
-            else if (tadpoleCount == 2)
-            {
-                tadpole1.gameObject.SetActive(true);
-                tadpole2.gameObject.SetActive(true);
-            }
-            else if (tadpoleCount == 3)
-            {
-                tadpole1.gameObject.SetActive(true);
-                tadpole2.gameObject.SetActive(true);
-                tadpole3.gameObject.SetActive(true);
-            }
-        }
-        // オタマジャクシを拾ったなら
-        if(player.GetTadpoleFlag())
-        {
-            // カウントを増やす
-            tadpoleCount += 1;
-            countText.text = "Score: " + tadpoleCount.ToString();
-            player.SetTadpoleFlag(false);
-        }
-
+        //    if (tadpoleCount == 1)
+        //    {
+        //        tadpole1.gameObject.SetActive(true);
+        //    }
+        //    else if (tadpoleCount == 2)
+        //    {
+        //        tadpole1.gameObject.SetActive(true);
+        //        tadpole2.gameObject.SetActive(true);
+        //    }
+        //    else if (tadpoleCount == 3)
+        //    {
+        //        tadpole1.gameObject.SetActive(true);
+        //        tadpole2.gameObject.SetActive(true);
+        //        tadpole3.gameObject.SetActive(true);
+        //    }
+        //}
+        //// オタマジャクシを拾ったなら
+        //if(player.GetTadpoleFlag())
+        //{
+        //    // カウントを増やす
+        //    tadpoleCount += 1;
+        //    countText.text = "Score: " + tadpoleCount.ToString();
+        //    player.SetTadpoleFlag(false);
+        //}
     }
 }

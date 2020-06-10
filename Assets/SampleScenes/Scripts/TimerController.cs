@@ -21,7 +21,7 @@ public class TimerController : MonoBehaviour
         seconds = (int)totalTime;
 
         if (seconds < 0)
-            UnityEditor.EditorApplication.isPlaying = false;
+            ; //UnityEditor.EditorApplication.isPlaying = false;
 
     }
 }
