@@ -642,7 +642,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _nextStateName: EnemyAlertState
-  _questionObj: {fileID: 0}
+  _questionObj: {fileID: 8384584408958015772}
   _backStateName: EnemyStopState
 --- !u!114 &7166597350134512046
 MonoBehaviour:
@@ -657,7 +657,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _nextStateName: EnemyAlertState
-  _discoveryObj: {fileID: 0}
+  _discoveryObj: {fileID: 7067248624960847297}
 --- !u!114 &7166597350134512033
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -671,7 +671,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _nextStateName: EnemyTrackingState
-  _questionObj: {fileID: 0}
+  _questionObj: {fileID: 8384584408958015772}
 --- !u!114 &8294723973805992224
 MonoBehaviour:
   m_ObjectHideFlags: 0
