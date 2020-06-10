@@ -79,6 +79,10 @@ public class ThrowingScript : MonoBehaviour
             // Ballオブジェクトの生成
             GameObject ball = Instantiate(ThrowingObject, ThrowingOffset.transform.position, Quaternion.identity);
 
+            var water = ball.GetComponent<Water>();
+            if (water != null)
+                water.source = gameObject;
+
             // 標的の座標
             Vector3 targetPosition = Target;
 
