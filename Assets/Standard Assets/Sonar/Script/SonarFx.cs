@@ -250,7 +250,7 @@ public class SonarFx : MonoBehaviour
     private void OnPreRender()
     {
         //camera must at least be in depth mode
-        Camera.depthTextureMode |= DepthTextureMode.DepthNormals;
+        Camera.depthTextureMode |= DepthTextureMode.Depth | DepthTextureMode.DepthNormals;
 
         // Main eye inverse view matrix
         Matrix4x4 leftWorldFromView = Camera.cameraToWorldMatrix;

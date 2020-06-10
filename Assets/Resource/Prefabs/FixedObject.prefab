@@ -4901,7 +4901,7 @@ Light:
   m_Enabled: 1
   serializedVersion: 8
   m_Type: 1
-  m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_Intensity: 1
   m_Range: 10
   m_SpotAngle: 30
@@ -5810,6 +5810,51 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 407242026971760261, guid: 11eedabdceb110846899b3fdfbde2b4f,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 407242026971760261, guid: 11eedabdceb110846899b3fdfbde2b4f,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 407242026971760261, guid: 11eedabdceb110846899b3fdfbde2b4f,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 407242026971760261, guid: 11eedabdceb110846899b3fdfbde2b4f,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 338
+      objectReference: {fileID: 0}
+    - target: {fileID: 407242026971760261, guid: 11eedabdceb110846899b3fdfbde2b4f,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 175
+      objectReference: {fileID: 0}
+    - target: {fileID: 407242026971760261, guid: 11eedabdceb110846899b3fdfbde2b4f,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 237.76
+      objectReference: {fileID: 0}
+    - target: {fileID: 7470056350375314872, guid: 11eedabdceb110846899b3fdfbde2b4f,
+        type: 3}
+      propertyPath: m_AdditionalShaderChannelsFlag
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 7470056350375314887, guid: 11eedabdceb110846899b3fdfbde2b4f,
+        type: 3}
+      propertyPath: m_UiScaleMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7470056350375314887, guid: 11eedabdceb110846899b3fdfbde2b4f,
+        type: 3}
+      propertyPath: m_ScreenMatchMode
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 11eedabdceb110846899b3fdfbde2b4f, type: 3}

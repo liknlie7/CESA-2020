@@ -107,6 +107,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _collider: {fileID: 572878528480386506, guid: 91da9f45ad6578a4e8115aa59f8354da,
     type: 3}
+  source: {fileID: 0}
 --- !u!54 &3898269146912044417
 Rigidbody:
   m_ObjectHideFlags: 0

@@ -361,7 +361,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 539348f899de5bb4ba5266dbd30ac9d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyProperty: {fileID: 0}
+  enemyProperty: {fileID: 7166597350134512045}
 --- !u!23 &6920125223476749518
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -885,6 +885,21 @@ PrefabInstance:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: dc72ca9f69ab76040ad1045c14395d80, type: 2}
+    - target: {fileID: 6481238188950674372, guid: 24af9cbde96de07449bd2c41097da1ef,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 77aa63013ab1ad7429a15712708070ae, type: 2}
+    - target: {fileID: 6959244185442464980, guid: 24af9cbde96de07449bd2c41097da1ef,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 77aa63013ab1ad7429a15712708070ae, type: 2}
+    - target: {fileID: 3933764595776062385, guid: 24af9cbde96de07449bd2c41097da1ef,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 77aa63013ab1ad7429a15712708070ae, type: 2}
     m_RemovedComponents:
     - {fileID: 4503125335963828552, guid: 24af9cbde96de07449bd2c41097da1ef, type: 3}
     - {fileID: 675398947822850870, guid: 24af9cbde96de07449bd2c41097da1ef, type: 3}
