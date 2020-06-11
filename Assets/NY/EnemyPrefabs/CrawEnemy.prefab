@@ -814,6 +814,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Snake
       objectReference: {fileID: 0}
+    - target: {fileID: 3712912349340240985, guid: 440c5d58ec3aed446a5a9392cf3b9aa1,
+        type: 3}
+      propertyPath: m_TagString
+      value: Model
+      objectReference: {fileID: 0}
     - target: {fileID: 3712912349340240987, guid: 440c5d58ec3aed446a5a9392cf3b9aa1,
         type: 3}
       propertyPath: m_LocalPosition.x

@@ -9,6 +9,8 @@ TagManager:
   - PlayerSonar
   - Ripple
   - Goal
+  - Tadpole
+  - Model
   layers:
   - Default
   - TransparentFX
