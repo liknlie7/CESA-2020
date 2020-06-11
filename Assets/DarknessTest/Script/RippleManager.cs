@@ -89,6 +89,13 @@ public class RippleManager : MonoBehaviour
             .Select(e =>
             {
                 e.obj.layer = 0;
+                foreach (Transform child in e.obj.transform)
+                {
+                    foreach (Transform c in child.transform)
+                    {
+                        c.gameObject.layer = 0;
+                    }
+                }
                 e.delete = true;
                 return e;
             })
