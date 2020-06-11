@@ -8,7 +8,9 @@ using UnityEngine;
 
 public class SonarGenerator : MonoBehaviour
 {
-
+    // ソナー情報
+    [SerializeField]
+    SonarPulse pulse = null;
     // ソナーが出てくる間隔
     [SerializeField]
     float sonar_Inteval = 0.0f;
@@ -27,7 +29,7 @@ public class SonarGenerator : MonoBehaviour
     {
         if (sonar_Inteval < count)
         {
-            CameraManager.Get().sonarFx.Pulse(this.transform.position,null, this.gameObject);
+            CameraManager.Get().sonarFx.Pulse(this.transform.position,pulse, this.gameObject);
             count = 0.0f;
         }
         count += Time.deltaTime;
