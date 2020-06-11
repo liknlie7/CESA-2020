@@ -11,17 +11,22 @@ public class StageSelectManager : MonoBehaviour
     public Animator fadeOut;
     public Animator blurFadeOut;
 
-    public void OnStageButtonClicked()
+    public void OnBack()
     {
-        StartCoroutine(ExecuteAfterTime(3));
+        StartCoroutine(ExecuteAfterTime($"TitleScene", 3));
     }
 
-    IEnumerator ExecuteAfterTime(float time)
+    public void OnStageButtonClicked()
+    {
+        StartCoroutine(ExecuteAfterTime($"Stage{activeId}", 3));
+    }
+
+    IEnumerator ExecuteAfterTime(string scene, float time)
     {
         fadeOut.SetBool("Enabled", false);
         blurFadeOut.SetBool("Enabled", false);
         DontDestroyOnLoad(ui);
-        SceneManager.LoadScene($"Stage{activeId}");
+        SceneManager.LoadScene(scene);
         yield return new WaitForSeconds(time);
         Destroy(ui);
     }
