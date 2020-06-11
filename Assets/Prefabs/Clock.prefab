@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7470056350375314887}
   - component: {fileID: 7470056350375314886}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: Clock
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -72,11 +72,11 @@ MonoBehaviour:
   m_Script: {fileID: 1980459831, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
-  m_ScreenMatchMode: 0
+  m_ReferenceResolution: {x: 1920, y: 1080}
+  m_ScreenMatchMode: 1
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
@@ -169,17 +169,17 @@ PrefabInstance:
     - target: {fileID: 3653795323510345192, guid: 86ead48a417bc12458afe0f4f4e0780f,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 823.4
+      value: -127.5
       objectReference: {fileID: 0}
     - target: {fileID: 3653795323510345192, guid: 86ead48a417bc12458afe0f4f4e0780f,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 461
+      value: -74.8999
       objectReference: {fileID: 0}
     - target: {fileID: 3653795323510345192, guid: 86ead48a417bc12458afe0f4f4e0780f,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 239.45
+      value: 239.44995
       objectReference: {fileID: 0}
     - target: {fileID: 3653795323510345192, guid: 86ead48a417bc12458afe0f4f4e0780f,
         type: 3}
@@ -189,22 +189,22 @@ PrefabInstance:
     - target: {fileID: 3653795323510345192, guid: 86ead48a417bc12458afe0f4f4e0780f,
         type: 3}
       propertyPath: m_AnchorMin.x
-      value: 0.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3653795323510345192, guid: 86ead48a417bc12458afe0f4f4e0780f,
         type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3653795323510345192, guid: 86ead48a417bc12458afe0f4f4e0780f,
         type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3653795323510345192, guid: 86ead48a417bc12458afe0f4f4e0780f,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3653795323510345192, guid: 86ead48a417bc12458afe0f4f4e0780f,
         type: 3}

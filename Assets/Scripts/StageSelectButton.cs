@@ -17,7 +17,8 @@ public class StageSelectButton : MonoBehaviour
 
     public void OnSubmit()
     {
-        SceneManager.LoadScene($"Stage{id}");
+        manager.activeId = id;
+        manager.OnStageButtonClicked();
     }
 
     public void OnClicked()
