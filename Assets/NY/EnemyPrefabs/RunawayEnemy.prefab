@@ -527,7 +527,7 @@ GameObject:
   - component: {fileID: 8437117421780469792}
   - component: {fileID: 8437117421780469801}
   - component: {fileID: 8437117421780469795}
-  - component: {fileID: 8437117421780469807}
+  - component: {fileID: 4774878070410094379}
   m_Layer: 0
   m_Name: RunawayEnemy
   m_TagString: Enemy
@@ -675,7 +675,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _nextStateName: EnemyRunawayState
   _sinkSpeed: 0.1
---- !u!114 &8437117421780469807
+--- !u!114 &4774878070410094379
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -687,13 +687,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34330dd33b085524d9059f4da7ca21f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _nextStateName: EnemyRunawayState
-  _searchRoutes:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  _isSemiAlertState: 0
+  _nextStateName: 
+  _searchRoutes: []
+  _isSemiAlertState: 1
 --- !u!1 &8437117421795453877
 GameObject:
   m_ObjectHideFlags: 0
