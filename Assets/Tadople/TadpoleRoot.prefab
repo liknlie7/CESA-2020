@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5306147454788490195}
   m_Layer: 0
   m_Name: Tale1
-  m_TagString: Enemy
+  m_TagString: Model
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -90,7 +90,7 @@ GameObject:
   - component: {fileID: 5306147454913751200}
   m_Layer: 0
   m_Name: Tale4
-  m_TagString: Enemy
+  m_TagString: Model
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -167,7 +167,7 @@ GameObject:
   - component: {fileID: 5306147454970994224}
   m_Layer: 0
   m_Name: Tale2
-  m_TagString: Enemy
+  m_TagString: Model
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -244,7 +244,7 @@ GameObject:
   - component: {fileID: 5306147455179403702}
   m_Layer: 0
   m_Name: Tale3
-  m_TagString: Enemy
+  m_TagString: Model
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -321,7 +321,7 @@ GameObject:
   - component: {fileID: 5306147455527980791}
   m_Layer: 0
   m_Name: Tale
-  m_TagString: Enemy
+  m_TagString: Model
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -400,7 +400,7 @@ GameObject:
   - component: {fileID: 5306147455889583691}
   m_Layer: 0
   m_Name: TadpoleRoot
-  m_TagString: Enemy
+  m_TagString: Model
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -498,12 +498,8 @@ PrefabInstance:
       value: Tadpole_tale
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: 708191bc50dc60a43abcca36c0c486a4, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 100000, guid: 708191bc50dc60a43abcca36c0c486a4, type: 3}
       propertyPath: m_TagString
-      value: Enemy
+      value: Model
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 708191bc50dc60a43abcca36c0c486a4, type: 3}
       propertyPath: m_LocalPosition.x
@@ -586,7 +582,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: 6b62f32cebc980e4781b5ce215ab2bc7, type: 3}
       propertyPath: m_TagString
-      value: Enemy
+      value: Model
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 6b62f32cebc980e4781b5ce215ab2bc7, type: 3}
       propertyPath: m_LocalPosition.x
