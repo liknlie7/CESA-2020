@@ -106,6 +106,13 @@ public class RippleManager : MonoBehaviour
             // 光らせて敵をリストに追加
             EnemyInfo enemyInfo = new EnemyInfo { obj = go, activateTime = Time.time };
             go.layer = 10;
+            foreach(Transform child in go.transform)
+            {
+                foreach(Transform c in child.transform)
+                {
+                    c.gameObject.layer = 10;
+                }
+            }
             colEnemyList.Add(enemyInfo);
         }
     }
