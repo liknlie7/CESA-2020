@@ -13,10 +13,10 @@ public class ThrowingScript : MonoBehaviour
     [SerializeField, Tooltip("射出するオブジェクトをここに割り当てる")]
     private GameObject ThrowingObject;
 
-    [SerializeField,Range(0F,60F), Tooltip("次に水を吐くためのインターバル")]
+    [SerializeField, Range(0F, 60F), Tooltip("次に水を吐くためのインターバル")]
     private float _throwingIntervalMax;
     private float _throwingInterval = 0.0f;
-    private bool  _isThrowing       = true;
+    private bool _isThrowing = true;
 
     //// 標的のオブジェクト
     [SerializeField, Tooltip("標的のオブジェクトをここに割り当てる")]
@@ -32,8 +32,25 @@ public class ThrowingScript : MonoBehaviour
     private GameObject ThrowingOffset;
 
     // 投げる位置の最大値
-    [SerializeField]//,Range(0.0f,10.0f)]
+    [SerializeField]
     private float _throwLengthMax;
+
+    [SerializeField]
+    private Material[] _targetMaterials;
+    enum TargetMaterialID
+    { possible = 0, inpossible }
+
+    enum State
+    {
+        ThrowingPossible = 0,
+        ThrowingInpossible
+    }
+    private State _currentState = State.ThrowingPossible;
+
+    [SerializeField]
+    GameObject DRAG_PARTICLE;  // PS_DragStarを割り当てること
+    private GameObject _dragParticle;
+
 
     // Start is called before the first frame update
     void Start()
@@ -42,46 +59,22 @@ public class ThrowingScript : MonoBehaviour
         _throwingInterval = _throwingIntervalMax;
 
         Collider collider = GetComponent<Collider>();
-        //if (collider != null)
-        //{
-        //    // 干渉しないようにisTriggerをつける
-        //    collider.isTrigger = true;
-        //}
 
         targetFX = Instantiate(targetFXPrefab);
+
+        _dragParticle = Instantiate(DRAG_PARTICLE);
+        _dragParticle.GetComponent<ParticleSystem>().Play();
     }
 
     // Update is called once per frame
     void Update()
     {
-        var plane = new Plane(Vector3.up, Vector3.zero);
-        var ray = CameraManager.Get().sonarCamera.ScreenPointToRay(Input.mousePosition);
-        if (plane.Raycast(ray, out float enter))
+        switch (_currentState)
         {
-            var target = ray.GetPoint(enter);
-
-            // 射程距離を制限
-            Vector3 distance = target - transform.position;
-            if (distance.magnitude >= _throwLengthMax)
-            {
-                distance.Normalize();
-                distance *= _throwLengthMax;
-                target = distance + transform.position;
-            }
-            
-            targetFX.transform.position = target;
-
-            if (Input.GetMouseButtonDown(1) && _isThrowing)
-            {
-                // Fireボタンでボールを射出する
-                ThrowingBall(target);
-
-                // インターバルをリセットする
-                _isThrowing = false;
-                _throwingInterval = 0.0f;
-            }
+            case State.ThrowingPossible: ThrowingPossibleState(); break;
+            case State.ThrowingInpossible: ThrowingInpossibleState(); break;
+            default: break;
         }
-
 
         // 水を吐くまでのインターバルを設ける
         if (!_isThrowing)
@@ -148,6 +141,61 @@ public class ThrowingScript : MonoBehaviour
         else
         {
             return (new Vector3(pointB.x - pointA.x, x * Mathf.Tan(rad), pointB.z - pointA.z).normalized * speed);
+        }
+    }
+
+    private void ThrowingPossibleState()
+    {
+        var plane = new Plane(Vector3.up, new Vector3(0.0f, 0.8f, 0.0f));
+        var ray = CameraManager.Get().sonarCamera.ScreenPointToRay(Input.mousePosition);
+        if (plane.Raycast(ray, out float enter))
+        {
+            var target = ray.GetPoint(enter);
+
+            // 射程距離を制限
+            Vector3 distance = target - transform.position;
+            if (distance.magnitude > _throwLengthMax)
+            {
+                // 色を変更する
+                targetFX.transform.GetChild(0).GetComponent<Renderer>().material = _targetMaterials[(int)TargetMaterialID.inpossible];
+                _currentState = State.ThrowingInpossible;
+                _dragParticle.GetComponent<ParticleSystem>().Stop();
+            }
+            // 右クリックで水を吐き出す
+            if (Input.GetMouseButtonDown(1) && _isThrowing)
+            {
+                // Fireボタンでボールを射出する
+                ThrowingBall(target);
+
+                // インターバルをリセットする
+                _isThrowing = false;
+                _throwingInterval = 0.0f;
+            }
+            targetFX.transform.position = target;
+            Vector3 particlePos = target;
+            _dragParticle.transform.position = particlePos;
+        }
+    }
+
+
+    private void ThrowingInpossibleState()
+    {
+        var plane = new Plane(Vector3.up, new Vector3(0.0f, 0.8f, 0.0f));
+        var ray = CameraManager.Get().sonarCamera.ScreenPointToRay(Input.mousePosition);
+        if (plane.Raycast(ray, out float enter))
+        {
+            var target = ray.GetPoint(enter);
+
+            // 射程距離を制限
+            Vector3 distance = target - transform.position;
+            if (distance.magnitude < _throwLengthMax - 0.3f)
+            {
+                // 色を変更する
+                targetFX.transform.GetChild(0).GetComponent<Renderer>().material = _targetMaterials[(int)TargetMaterialID.possible];
+                _currentState = State.ThrowingPossible;
+                _dragParticle.GetComponent<ParticleSystem>().Play();
+            }
+            targetFX.transform.position = target;
         }
     }
 }

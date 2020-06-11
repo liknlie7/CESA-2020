@@ -1,15 +1,14 @@
 fileFormatVersion: 2
-guid: f302cceb9f720ee4e988a995bc58ea4c
+guid: 6a87d6a2dc980d346bbfafa933a4357e
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
     100000: //RootNode
     400000: //RootNode
-    2100000: Terrain_default
+    2100000: No Name
     2300000: //RootNode
     3300000: //RootNode
-    4300000: ___I___u___W___F___N___g004
-    2186277476908879412: ImportLogs
+    4300000: Tube001
   externalObjects: {}
   materials:
     importMaterials: 1
