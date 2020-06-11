@@ -275,7 +275,7 @@ PrefabInstance:
     - target: {fileID: 5525683325234129332, guid: 5b11bafb128648047878b44693fc6a47,
         type: 3}
       propertyPath: m_text
-      value: "\u6B21\u306E\u30B9\u30C6\u30FC\u30B8\u3078\n"
+      value: "\u30CD\u30AF\u30B9\u30C8\u30B9\u30C6\u30FC\u30B8"
       objectReference: {fileID: 0}
     - target: {fileID: 5525683325234129332, guid: 5b11bafb128648047878b44693fc6a47,
         type: 3}
@@ -305,7 +305,18 @@ PrefabInstance:
     - target: {fileID: 5525683325234129332, guid: 5b11bafb128648047878b44693fc6a47,
         type: 3}
       propertyPath: m_textInfo.spaceCount
-      value: 1
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5525683325234129332, guid: 5b11bafb128648047878b44693fc6a47,
+        type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 21766456504872840, guid: 2aa27ffdbc7484f42bb8f4877f600ed8,
+        type: 2}
+    - target: {fileID: 5525683325234129332, guid: 5b11bafb128648047878b44693fc6a47,
+        type: 3}
+      propertyPath: m_firstOverflowCharacterIndex
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 247186444079075080, guid: 5b11bafb128648047878b44693fc6a47,
         type: 3}
@@ -320,7 +331,7 @@ PrefabInstance:
     - target: {fileID: 247186444079075080, guid: 5b11bafb128648047878b44693fc6a47,
         type: 3}
       propertyPath: m_padding
-      value: 8.45
+      value: 1.25
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5b11bafb128648047878b44693fc6a47, type: 3}

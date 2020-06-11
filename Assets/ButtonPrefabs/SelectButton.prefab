@@ -275,12 +275,12 @@ PrefabInstance:
     - target: {fileID: 5525683325234129332, guid: 5b11bafb128648047878b44693fc6a47,
         type: 3}
       propertyPath: m_text
-      value: "\u30B9\u30C6\u30FC\u30B8\u30BB\u30EC\u30AF\u30C8\u3078\n"
+      value: "\u30B9\u30C6\u30FC\u30B8\u30BB\u30EC\u30AF\u30C8\u3078"
       objectReference: {fileID: 0}
     - target: {fileID: 5525683325234129332, guid: 5b11bafb128648047878b44693fc6a47,
         type: 3}
       propertyPath: m_textInfo.characterCount
-      value: 10
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 5525683325234129332, guid: 5b11bafb128648047878b44693fc6a47,
         type: 3}
@@ -300,17 +300,33 @@ PrefabInstance:
     - target: {fileID: 5525683325234129332, guid: 5b11bafb128648047878b44693fc6a47,
         type: 3}
       propertyPath: m_textInfo.spaceCount
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5525683325234129332, guid: 5b11bafb128648047878b44693fc6a47,
         type: 3}
       propertyPath: m_textInfo.materialCount
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5525683325234129332, guid: 5b11bafb128648047878b44693fc6a47,
+        type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 21766456504872840, guid: 2aa27ffdbc7484f42bb8f4877f600ed8,
+        type: 2}
     - target: {fileID: 247186444079075080, guid: 5b11bafb128648047878b44693fc6a47,
         type: 3}
       propertyPath: m_padding
-      value: 0
+      value: 1.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 247186444079075080, guid: 5b11bafb128648047878b44693fc6a47,
+        type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 247186444079075080, guid: 5b11bafb128648047878b44693fc6a47,
+        type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5b11bafb128648047878b44693fc6a47, type: 3}

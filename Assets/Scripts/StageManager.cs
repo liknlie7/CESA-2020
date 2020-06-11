@@ -28,7 +28,6 @@ public class StageManager : MonoBehaviour
         //ゴールしたなら
         if (player.GetGoalFlag())
         {
-            Debug.Log("p");
             // ボタンの表示
             nextButton.gameObject.SetActive(true);
             selectButton.gameObject.SetActive(true);
