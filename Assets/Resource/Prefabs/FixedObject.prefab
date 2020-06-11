@@ -5999,25 +5999,20 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1577098731831330758}
     m_Modifications:
-    - target: {fileID: 4675335789270082789, guid: e3cd2e44d2d44524eaaf66edea5e9fab,
-        type: 3}
-      propertyPath: m_Name
-      value: Click
-      objectReference: {fileID: 0}
     - target: {fileID: 4675335789270082795, guid: e3cd2e44d2d44524eaaf66edea5e9fab,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.2141762
+      value: 1.8147364
       objectReference: {fileID: 0}
     - target: {fileID: 4675335789270082795, guid: e3cd2e44d2d44524eaaf66edea5e9fab,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.0248928
+      value: 20.21167
       objectReference: {fileID: 0}
     - target: {fileID: 4675335789270082795, guid: e3cd2e44d2d44524eaaf66edea5e9fab,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -8.084984
+      value: -7.294862
       objectReference: {fileID: 0}
     - target: {fileID: 4675335789270082795, guid: e3cd2e44d2d44524eaaf66edea5e9fab,
         type: 3}
@@ -6059,6 +6054,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4675335789270082789, guid: e3cd2e44d2d44524eaaf66edea5e9fab,
+        type: 3}
+      propertyPath: m_Name
+      value: Click
+      objectReference: {fileID: 0}
     - target: {fileID: 4675335789270082794, guid: e3cd2e44d2d44524eaaf66edea5e9fab,
         type: 3}
       propertyPath: tapEffect
@@ -6090,11 +6090,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1577098731831330758}
     m_Modifications:
-    - target: {fileID: 7470056350375314885, guid: 11eedabdceb110846899b3fdfbde2b4f,
-        type: 3}
-      propertyPath: m_Name
-      value: Canvas
-      objectReference: {fileID: 0}
     - target: {fileID: 7470056350375314873, guid: 11eedabdceb110846899b3fdfbde2b4f,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -6199,6 +6194,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7470056350375314885, guid: 11eedabdceb110846899b3fdfbde2b4f,
+        type: 3}
+      propertyPath: m_Name
+      value: Canvas
       objectReference: {fileID: 0}
     - target: {fileID: 7470056350375314872, guid: 11eedabdceb110846899b3fdfbde2b4f,
         type: 3}

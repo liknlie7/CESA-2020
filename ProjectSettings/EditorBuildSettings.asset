@@ -59,4 +59,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/YStage/Stage16.unity
     guid: 5ebd37ea287065e45b9e8f88e052612c
+  - enabled: 1
+    path: Assets/PauseScene/PauseScene.unity
+    guid: b464294a79197a047bce483d3c3b9ed8
   m_configObjects: {}
