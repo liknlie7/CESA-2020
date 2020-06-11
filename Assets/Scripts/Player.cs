@@ -22,8 +22,11 @@ public class Player : MonoBehaviour
     // 回転速度
     [SerializeField,Range(0.0f,10.0f)]
     private float _rotateSpeed; 
-
+   
     private NavMeshAgent _agent;
+
+    // ゴールとの接触
+    bool goalFlag = false;
 
     void Start()
     {
@@ -67,6 +70,23 @@ public class Player : MonoBehaviour
                 _agent.SetDestination(target);
         }
 
+    }
+
+    // ゴールとの当たり判定
+    public void OnTriggerEnter(Collider other)
+    {
+
+        if (other.tag == "Goal")
+        {
+            Debug.Log("a");
+            goalFlag = true;
+        }
+    }
+
+    // ゴール判定の取得
+    public bool GetGoalFlag()
+    {
+        return goalFlag;
     }
 }
 
