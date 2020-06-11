@@ -497,6 +497,7 @@ GameObject:
   - component: {fileID: 7166597350134512046}
   - component: {fileID: 7166597350134512033}
   - component: {fileID: 8294723973805992224}
+  - component: {fileID: 8109197345569072542}
   m_Layer: 0
   m_Name: StopEnemy
   m_TagString: Enemy
@@ -513,7 +514,7 @@ Transform:
   m_GameObject: {fileID: 7166597350134512035}
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.7, y: 0.7, z: 0.7}
   m_Children:
   - {fileID: 3488860119932725049}
   - {fileID: 2779102224759528695}
@@ -630,7 +631,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f92b82088cecfc84ab9e0b8bfde2faa7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _fovAngle: 110
+  _fovAngle: 60
   _fovLength: 10
   _agent: {fileID: 7166597350134512042}
 --- !u!114 &7166597350134512044
@@ -704,6 +705,20 @@ MonoBehaviour:
   _nextStateName: EnemyTrackingState
   _isSemiAlertState: 1
   _killLengrh: 2
+--- !u!114 &8109197345569072542
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7166597350134512035}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36a74dbb720f1f74e9b1af909b779b7f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pulse: {fileID: 11400000, guid: 49908ac2ed078ff4ca80a920266b61e4, type: 2}
+  sonar_Inteval: 0.5
 --- !u!1 &8019240102243566830
 GameObject:
   m_ObjectHideFlags: 0
@@ -829,13 +844,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 569438836789332257, guid: 24af9cbde96de07449bd2c41097da1ef,
         type: 3}
-      propertyPath: m_Layer
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 569438836789332257, guid: 24af9cbde96de07449bd2c41097da1ef,
-        type: 3}
       propertyPath: m_TagString
-      value: Enemy
+      value: Model
       objectReference: {fileID: 0}
     - target: {fileID: 7957553027467654750, guid: 24af9cbde96de07449bd2c41097da1ef,
         type: 3}
@@ -899,34 +909,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7957553027467654750, guid: 24af9cbde96de07449bd2c41097da1ef,
         type: 3}
-      propertyPath: m_LocalScale.z
+      propertyPath: m_LocalScale.y
       value: 0.7
       objectReference: {fileID: 0}
     - target: {fileID: 7957553027467654750, guid: 24af9cbde96de07449bd2c41097da1ef,
         type: 3}
-      propertyPath: m_LocalScale.y
+      propertyPath: m_LocalScale.z
       value: 0.7
-      objectReference: {fileID: 0}
-    - target: {fileID: 6481238188952864004, guid: 24af9cbde96de07449bd2c41097da1ef,
-        type: 3}
-      propertyPath: m_Layer
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8868974716959886403, guid: 24af9cbde96de07449bd2c41097da1ef,
         type: 3}
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: dc72ca9f69ab76040ad1045c14395d80, type: 2}
-    - target: {fileID: 6959244185444723220, guid: 24af9cbde96de07449bd2c41097da1ef,
-        type: 3}
-      propertyPath: m_Layer
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3933764595774070129, guid: 24af9cbde96de07449bd2c41097da1ef,
-        type: 3}
-      propertyPath: m_Layer
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 6481238188950674372, guid: 24af9cbde96de07449bd2c41097da1ef,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -942,9 +937,7 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 77aa63013ab1ad7429a15712708070ae, type: 2}
-    m_RemovedComponents:
-    - {fileID: 4503125335963828552, guid: 24af9cbde96de07449bd2c41097da1ef, type: 3}
-    - {fileID: 675398947822850870, guid: 24af9cbde96de07449bd2c41097da1ef, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 24af9cbde96de07449bd2c41097da1ef, type: 3}
 --- !u!4 &3488860119932725049 stripped
 Transform:

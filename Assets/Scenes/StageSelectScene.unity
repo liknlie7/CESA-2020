@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.37311912, g: 0.3807398, b: 0.3587271, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1332,6 +1332,15 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 557694709, guid: 816c25dee1a69c3489a818a4786565b2, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5488202990660346255, guid: 816c25dee1a69c3489a818a4786565b2,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 816c25dee1a69c3489a818a4786565b2, type: 3}
 --- !u!224 &685595254 stripped
@@ -1463,21 +1472,6 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
-    - target: {fileID: 247186444079075080, guid: 5b11bafb128648047878b44693fc6a47,
-        type: 3}
-      propertyPath: m_Material
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 247186444079075080, guid: 5b11bafb128648047878b44693fc6a47,
-        type: 3}
-      propertyPath: m_sharedMaterial
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 247186444079075080, guid: 5b11bafb128648047878b44693fc6a47,
-        type: 3}
-      propertyPath: m_padding
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 5525683325234129332, guid: 5b11bafb128648047878b44693fc6a47,
         type: 3}
       propertyPath: m_margin.z
@@ -1532,6 +1526,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_fontSizeBase
       value: 72
+      objectReference: {fileID: 0}
+    - target: {fileID: 247186444079075080, guid: 5b11bafb128648047878b44693fc6a47,
+        type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 247186444079075080, guid: 5b11bafb128648047878b44693fc6a47,
+        type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 247186444079075080, guid: 5b11bafb128648047878b44693fc6a47,
+        type: 3}
+      propertyPath: m_padding
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5b11bafb128648047878b44693fc6a47, type: 3}

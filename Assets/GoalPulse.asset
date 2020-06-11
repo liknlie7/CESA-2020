@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 029c1d25c6a546841ab2837e367f2e2b, type: 3}
-  m_Name: EnemyPulse
+  m_Name: GoalPulse
   m_EditorClassIdentifier: 
   range: 1
-  color: {r: 1, g: 0.16568048, b: 0, a: 1}
+  color: {r: 1, g: 0.9880785, b: 0, a: 1}
