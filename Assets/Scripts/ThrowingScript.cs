@@ -19,8 +19,9 @@ public class ThrowingScript : MonoBehaviour
     private bool  _isThrowing       = true;
 
     //// 標的のオブジェクト
-    //[SerializeField, Tooltip("標的のオブジェクトをここに割り当てる")]
-    //private GameObject TargetObject;
+    [SerializeField, Tooltip("標的のオブジェクトをここに割り当てる")]
+    private GameObject targetFXPrefab;
+    private GameObject targetFX;
 
     // 射出角度
     [SerializeField, Range(0F, 90F), Tooltip("射出する角度")]
@@ -29,6 +30,10 @@ public class ThrowingScript : MonoBehaviour
     // 射出位置オフセット
     [SerializeField, Tooltip("射出位置")]
     private GameObject ThrowingOffset;
+
+    // 投げる位置の最大値
+    [SerializeField]//,Range(0.0f,10.0f)]
+    private float _throwLengthMax;
 
     // Start is called before the first frame update
     void Start()
@@ -42,20 +47,32 @@ public class ThrowingScript : MonoBehaviour
         //    // 干渉しないようにisTriggerをつける
         //    collider.isTrigger = true;
         //}
+
+        targetFX = Instantiate(targetFXPrefab);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(1) && _isThrowing)
+        var plane = new Plane(Vector3.up, Vector3.zero);
+        var ray = CameraManager.Get().sonarCamera.ScreenPointToRay(Input.mousePosition);
+        if (plane.Raycast(ray, out float enter))
         {
-            var plane = new Plane(Vector3.up, Vector3.zero);
-            var ray = CameraManager.Get().sonarCamera.ScreenPointToRay(Input.mousePosition);
-            if (plane.Raycast(ray, out float enter))
+            var target = ray.GetPoint(enter);
+
+            // 射程距離を制限
+            Vector3 distance = target - transform.position;
+            if (distance.magnitude >= _throwLengthMax)
             {
-                var target = ray.GetPoint(enter);
+                distance.Normalize();
+                distance *= _throwLengthMax;
+                target = distance + transform.position;
+            }
+            
+            targetFX.transform.position = target;
 
-
+            if (Input.GetMouseButtonDown(1) && _isThrowing)
+            {
                 // Fireボタンでボールを射出する
                 ThrowingBall(target);
 
@@ -65,8 +82,9 @@ public class ThrowingScript : MonoBehaviour
             }
         }
 
+
         // 水を吐くまでのインターバルを設ける
-        if(!_isThrowing)
+        if (!_isThrowing)
         {
             _throwingInterval += Time.deltaTime;
             if (_throwingInterval > _throwingIntervalMax)
