@@ -24,6 +24,8 @@ public class EnemyAreaRenderer : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        if (MeshFilter == null)
+            return;
         MeshFilter.mesh = CreateFanMesh(enemyProperty.FovAngle, 16);
         transform.localScale = Vector3.one * enemyProperty.FovLength;
     }
