@@ -31,24 +31,6 @@ public class CursorManager : MonoBehaviour
             var target = ray.GetPoint(enter);
             m_DragParticle.transform.position = target;
         }
-
-        // パーティクルをマウスカーソルに追従させる
-        //Vector3 mousePosition = Input.mousePosition;
-        //mousePosition = Camera.main.ScreenToWorldPoint(mousePosition);
-        //mousePosition.z = 20f;  // ※Canvasよりは手前に位置させること
-        //m_DragParticle.transform.position = mousePosition;
-
-        // マウス操作
-        //if (Input.GetMouseButtonDown(0))
-        {
-            // 左ボタンダウンを検知したら、マウスカーソル位置からキラキラエフェクトを再生する。
-            //m_DragParticleSystem.Play();    // ループ再生(ParticleSystemのLoopingがtrueだから)
-        }
-        //if (Input.GetMouseButtonUp(0))
-        {
-            // 左ボタンアップを検知したら、Particleの放出を停止する
-          //  m_DragParticleSystem.Stop();
-        }
     }
 
 }
