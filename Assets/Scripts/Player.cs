@@ -17,7 +17,11 @@ public class Player : MonoBehaviour
     // プレイヤーの位置を入れる
     Vector3 playerPos;
     // Animator
-    Animator anim;
+    Animator _animator;
+
+    // 回転速度
+    [SerializeField,Range(0.0f,10.0f)]
+    private float _rotateSpeed; 
 
     private NavMeshAgent _agent;
 
@@ -28,7 +32,7 @@ public class Player : MonoBehaviour
         //在より少し前の位置を保存
         playerPos = transform.position;
         // Animator取得
-        anim = GetComponent<Animator>();
+        _animator = transform.GetChild(0).GetComponent<Animator>();
 
         _agent = this.GetComponent<NavMeshAgent>();
         _agent.SetDestination(this.transform.position);
@@ -36,26 +40,11 @@ public class Player : MonoBehaviour
 
     void FixedUpdate()
     {
-        Rotation();
-
-        //if (Input.GetKey(KeyCode.W))
-        //{
-        //    float torque = _moveForce;
-        //    Vector3 vel = transform.forward * Time.deltaTime * torque;
-        //    rb.MovePosition(this.transform.position + vel);
-        //}
-
-        //if(Input.GetMouseButtonDown(0))
-        //{
-        //    Vector3 pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        //    _agent.SetDestination(pos);
-        //    Debug.Log(pos + " / " + this.transform.position);
-        //}
-
+        Move();
     }
 
     // プレイヤーの回転
-    void Rotation()
+    void Move()
     {
         var plane = new Plane(Vector3.up, Vector3.zero);
         var ray = CameraManager.Get().sonarCamera.ScreenPointToRay(Input.mousePosition);
@@ -64,11 +53,14 @@ public class Player : MonoBehaviour
             var target = ray.GetPoint(enter);
             if (_agent.remainingDistance <= 0.3f)
             {
-                Vector3 direction = target - this.transform.position;
-                //float rad = Mathf.Atan2(direction.x, direction.z);
+                Vector3 targetDir = target - transform.position;
+                targetDir.y = transform.position.y;
 
-
-                this.transform.rotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
+                float speed = _rotateSpeed * Time.deltaTime;
+                Vector3 newDir = Vector3.RotateTowards(transform.forward, targetDir, speed, 0.0F);
+                transform.rotation = Quaternion.LookRotation(newDir);
+                
+                //_animator.SetBool("Swiming", false);
             }
 
             if (Input.GetMouseButtonDown(0))
