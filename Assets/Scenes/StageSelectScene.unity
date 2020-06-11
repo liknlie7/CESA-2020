@@ -875,6 +875,57 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7065066837880028597, guid: 816c25dee1a69c3489a818a4786565b2,
+        type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7065066837880028597, guid: 816c25dee1a69c3489a818a4786565b2,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7065066837880028597, guid: 816c25dee1a69c3489a818a4786565b2,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7065066837880028597, guid: 816c25dee1a69c3489a818a4786565b2,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7065066837880028597, guid: 816c25dee1a69c3489a818a4786565b2,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -127.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7065066837880028597, guid: 816c25dee1a69c3489a818a4786565b2,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -74.8999
+      objectReference: {fileID: 0}
+    - target: {fileID: 7065066837880028597, guid: 816c25dee1a69c3489a818a4786565b2,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 239.44995
+      objectReference: {fileID: 0}
+    - target: {fileID: 557694711, guid: 816c25dee1a69c3489a818a4786565b2, type: 3}
+      propertyPath: m_UiScaleMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 557694711, guid: 816c25dee1a69c3489a818a4786565b2, type: 3}
+      propertyPath: m_ReferenceResolution.x
+      value: 1920
+      objectReference: {fileID: 0}
+    - target: {fileID: 557694711, guid: 816c25dee1a69c3489a818a4786565b2, type: 3}
+      propertyPath: m_ReferenceResolution.y
+      value: 1080
+      objectReference: {fileID: 0}
+    - target: {fileID: 557694711, guid: 816c25dee1a69c3489a818a4786565b2, type: 3}
+      propertyPath: m_ScreenMatchMode
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 816c25dee1a69c3489a818a4786565b2, type: 3}
 --- !u!224 &685595254 stripped

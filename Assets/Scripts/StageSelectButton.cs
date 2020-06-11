@@ -23,6 +23,7 @@ public class StageSelectButton : MonoBehaviour
     public void OnClicked()
     {
         manager.activeId = id;
-        EventSystem.current.SetSelectedGameObject(gameObject);
+        if (EventSystem.current.currentSelectedGameObject != gameObject)
+            EventSystem.current.SetSelectedGameObject(gameObject);
     }
 }
