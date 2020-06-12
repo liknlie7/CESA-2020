@@ -2,6 +2,11 @@
 # Created by https://www.gitignore.io/api/unity
 # Edit at https://www.gitignore.io/?templates=unity
 
+fmod_editor.log
+Assets/StreamingAssets/Master.bank
+Assets/StreamingAssets/Master.bank.meta
+Assets/StreamingAssets/Resources/FMOD/Audio/Build/Desktop.meta
+
 ### Unity ###
 # This .gitignore file should be placed at the root of your Unity project directory
 #

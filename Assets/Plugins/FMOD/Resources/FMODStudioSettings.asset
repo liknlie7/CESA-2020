@@ -77,7 +77,8 @@ MonoBehaviour:
     Value: 32
   Plugins: []
   MasterBanks:
-  - Master
-  Banks: []
+  - C:\Users\owner\Desktop\cesa-2021\\Master
+  Banks:
+  - Master.strings
   BanksToLoad: []
   LiveUpdatePort: 9264
