@@ -719,7 +719,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pulse: {fileID: 11400000, guid: 49908ac2ed078ff4ca80a920266b61e4, type: 2}
-  sonar_Inteval: 0.5
+  sonar_Inteval: 1
 --- !u!114 &7487668232170547264
 MonoBehaviour:
   m_ObjectHideFlags: 0
