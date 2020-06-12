@@ -8,23 +8,15 @@ public class SceneSoundSwitcher : MonoBehaviour
 {
     public Animator anim;
 
-    private int titleSceneID;
-    private int selectSceneID;
     private static readonly int Scene = Animator.StringToHash("Scene");
-
-    private void Start()
-    {
-        titleSceneID = SceneManager.GetSceneByName("TitleScene").buildIndex;
-        selectSceneID = SceneManager.GetSceneByName("StageSelectScene").buildIndex;
-    }
 
     // Update is called once per frame
     void Update()
     {
-        var sceneID = SceneManager.GetActiveScene().buildIndex;
-        if (sceneID == titleSceneID)
+        var sceneName = SceneManager.GetActiveScene().name;
+        if (sceneName == "TitleScene")
             anim.SetInteger(Scene, 0);
-        else if (sceneID == selectSceneID)
+        else if (sceneName == "StageSelectScene")
             anim.SetInteger(Scene, 1);
         else
             anim.SetInteger(Scene, 2);

@@ -15,7 +15,7 @@ MonoBehaviour:
   SwitchSettingsMigration: 1
   HasSourceProject: 1
   HasPlatforms: 1
-  sourceProjectPath: C:\git\CESA-2021\Resources\FMOD\Audio\Audio.fspro
+  sourceProjectPath: E:\softdata\git\CESA-2021\Resources\FMOD\Audio\Audio.fspro
   SourceProjectPathUnformatted: Resources\FMOD\Audio\Audio.fspro
   SourceBankPathUnformatted: Resources\FMOD\Audio\Build
   AutomaticEventLoading: 1
@@ -46,7 +46,7 @@ MonoBehaviour:
     Value: 0
   OverlaySettings:
   - Platform: 1
-    Value: 1
+    Value: 0
   - Platform: 2
     Value: 0
   - Platform: 20

@@ -3,12 +3,11 @@ using System.Collections.Generic;
 using FMODUnity;
 using UnityEngine;
 
-public class SoundManager : MonoBehaviour
+public class SoundManager : SingletonMonoBehaviour<SoundManager>
 {
     private FMOD.Studio.EventInstance instance;
 
     [SerializeField] [Range(0f, 2f)] private float scene;
-
 
     void Start()
     {
