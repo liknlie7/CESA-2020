@@ -11,15 +11,12 @@ public class StageManager : MonoBehaviour
     Player player;
 
     // ボタン
-    public Button nextButton;
-    public Button selectButton;
-    // 画像
-    public Image stageClear;
+    private GameObject menuObject;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        menuObject = FixedManager.Get().menuCanvas;
     }
 
     // Update is called once per frame
@@ -28,13 +25,9 @@ public class StageManager : MonoBehaviour
         //ゴールしたなら
         if (player.GetGoalFlag())
         {
-            // ボタンの表示
-            nextButton.gameObject.SetActive(true);
-            selectButton.gameObject.SetActive(true);
-            // 画像の表示
-            stageClear.gameObject.SetActive(true);
+            // メニューの表示
+            menuObject.SetActive(true);
         }
-
     }
 }
 
