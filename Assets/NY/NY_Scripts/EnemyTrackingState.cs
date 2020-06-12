@@ -5,8 +5,6 @@ using UnityEngine.AI;
 
 public class EnemyTrackingState : EnemyState
 {
-    [SerializeField]
-    private GameObject _discoveryObj;
     public override string GetStateName() { return "EnemyTrackingState"; }
 
     // ステートが遷移してきたとき
@@ -15,8 +13,6 @@ public class EnemyTrackingState : EnemyState
         if (_prop.Agent == null)
             _prop.Agent = StateController.GetComponent<NavMeshAgent>();
         _prop.Agent.SetDestination(_prop.PlayerTrs.position);
-
-        _discoveryObj.SetActive(true);
 
         Debug.Log("EnemyTrackingState : に移行");
     }
@@ -33,7 +29,6 @@ public class EnemyTrackingState : EnemyState
     // ステートから出ていくとき
     public override void ExitEvent()
     {
-        _discoveryObj.SetActive(false);
     }
 
     // プレイヤーを障害物なしに視認できたか

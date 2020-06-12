@@ -44,6 +44,9 @@ public class Player : MonoBehaviour
     void FixedUpdate()
     {
         Move();
+
+        float speed = _agent.velocity.magnitude;
+        _animator.SetFloat("Speed", speed);
     }
 
     // プレイヤーの回転
@@ -62,8 +65,6 @@ public class Player : MonoBehaviour
                 float speed = _rotateSpeed * Time.deltaTime;
                 Vector3 newDir = Vector3.RotateTowards(transform.forward, targetDir, speed, 0.0F);
                 transform.rotation = Quaternion.LookRotation(newDir);
-                
-                //_animator.SetBool("Swiming", false);
             }
 
             if (Input.GetMouseButtonDown(0))
