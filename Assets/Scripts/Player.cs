@@ -57,6 +57,7 @@ public class Player : MonoBehaviour
         if (plane.Raycast(ray, out float enter))
         {
             var target = ray.GetPoint(enter);
+            _animator.SetBool("Swiming", true);
             if (_agent.remainingDistance <= 0.3f)
             {
                 Vector3 targetDir = target - transform.position;
@@ -65,6 +66,7 @@ public class Player : MonoBehaviour
                 float speed = _rotateSpeed * Time.deltaTime;
                 Vector3 newDir = Vector3.RotateTowards(transform.forward, targetDir, speed, 0.0F);
                 transform.rotation = Quaternion.LookRotation(newDir);
+                _animator.SetBool("Swiming", false);
             }
 
             if (Input.GetMouseButtonDown(0))
