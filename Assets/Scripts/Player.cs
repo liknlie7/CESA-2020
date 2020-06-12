@@ -62,18 +62,19 @@ public class Player : MonoBehaviour
             var target = ray.GetPoint(enter);
             _animator.SetBool("Swimming", true);
             Swimming = true;
+            
             if (_agent.remainingDistance <= 0.3f)
             {
                 Vector3 targetDir = target - transform.position;
                 targetDir.y = transform.position.y;
-
+                
                 float speed = _rotateSpeed * Time.deltaTime;
                 Vector3 newDir = Vector3.RotateTowards(transform.forward, targetDir, speed, 0.0F);
                 transform.rotation = Quaternion.LookRotation(newDir);
                 _animator.SetBool("Swimming", false);
                 Swimming = false;
             }
-
+            
             if (Input.GetMouseButtonDown(0))
                 _agent.SetDestination(target);
         }
