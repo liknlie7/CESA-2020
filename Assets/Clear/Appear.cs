@@ -17,8 +17,8 @@ public class Appear : MonoBehaviour
         a_color = 0;
         //SE
         audioSource = GetComponent<AudioSource>();
-        // iamge
-        image.gameObject.SetActive(true);
+        //// iamge
+        //image.gameObject.SetActive(true);
     }
 
     // Update is called once per frame
@@ -40,6 +40,7 @@ public class Appear : MonoBehaviour
         {
             a_color = 1;
             Flag = true;
+
             //音(sound1)を鳴らす
             audioSource.PlayOneShot(sound1);
         }
