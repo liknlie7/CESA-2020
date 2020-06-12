@@ -48,11 +48,6 @@ public class GameOverStaging : MonoBehaviour
     //ゲームオーバーの処理を書く
     void GameOverProduction()
     {
-        if (GameObject.Find("GameOverUi(Clone)") == null)
-        {
-            GameObject Obj = Instantiate(GameOverUi);
-            Obj.GetComponent<RectTransform>().position = new Vector2(1920/2,0);
-            Obj.transform.SetParent(GameObject.Find("ClockCanvas").transform);
-        }
+        GameOverUi.SetActive(true);
     }
 }
