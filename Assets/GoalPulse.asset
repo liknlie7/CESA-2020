@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: GoalPulse
   m_EditorClassIdentifier: 
   range: 1
+  speed: 1
   color: {r: 1, g: 0.9880785, b: 0, a: 1}

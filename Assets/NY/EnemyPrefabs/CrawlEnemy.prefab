@@ -110,6 +110,7 @@ GameObject:
   - component: {fileID: 8828731612720361768}
   - component: {fileID: 8828731612720361767}
   - component: {fileID: 8828731612720361766}
+  - component: {fileID: 5388212518329642186}
   m_Layer: 2
   m_Name: CrawlEnemy
   m_TagString: Enemy
@@ -301,6 +302,20 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   _isSemiAlertState: 1
+--- !u!114 &5388212518329642186
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8828731612720361765}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36a74dbb720f1f74e9b1af909b779b7f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pulse: {fileID: 11400000, guid: 49908ac2ed078ff4ca80a920266b61e4, type: 2}
+  sonar_Inteval: 2
 --- !u!1001 &977354845104879214
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -311,6 +326,10 @@ PrefabInstance:
     - target: {fileID: 100102, guid: 59867a8c96ec25745ab8de9f0f0e0310, type: 3}
       propertyPath: m_Name
       value: snake
+      objectReference: {fileID: 0}
+    - target: {fileID: 100102, guid: 59867a8c96ec25745ab8de9f0f0e0310, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400102, guid: 59867a8c96ec25745ab8de9f0f0e0310, type: 3}
       propertyPath: m_LocalPosition.x
@@ -408,7 +427,7 @@ PrefabInstance:
     - target: {fileID: 3712912349340240985, guid: 440c5d58ec3aed446a5a9392cf3b9aa1,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3712912349340240987, guid: 440c5d58ec3aed446a5a9392cf3b9aa1,
         type: 3}
@@ -479,11 +498,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 0.7
-      objectReference: {fileID: 0}
-    - target: {fileID: 2495712782923404131, guid: 440c5d58ec3aed446a5a9392cf3b9aa1,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3712912349340240984, guid: 440c5d58ec3aed446a5a9392cf3b9aa1,
         type: 3}
@@ -590,6 +604,11 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 2f6ab0f58358cb1439b3b6d25d88b011, type: 2}
+    - target: {fileID: 2495712782923404131, guid: 440c5d58ec3aed446a5a9392cf3b9aa1,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 440c5d58ec3aed446a5a9392cf3b9aa1, type: 3}
 --- !u!4 &4383251886502018130 stripped

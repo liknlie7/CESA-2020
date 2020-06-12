@@ -30,5 +30,7 @@ public class StageManager : MonoBehaviour
             FixedManager.Get().scoreManager.SaveScore();
         }
     }
+
+
 }
 

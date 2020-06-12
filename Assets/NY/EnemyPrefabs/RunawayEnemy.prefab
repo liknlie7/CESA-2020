@@ -890,6 +890,7 @@ GameObject:
   - component: {fileID: 6728200110136926049}
   - component: {fileID: 4190538533005971628}
   - component: {fileID: 4506577623428161236}
+  - component: {fileID: 1751060330467734899}
   m_Layer: 0
   m_Name: RunawayEnemy
   m_TagString: Enemy
@@ -1087,6 +1088,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b18ca2734b40f5c489d552d970d8a236, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1751060330467734899
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8437117421780470230}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36a74dbb720f1f74e9b1af909b779b7f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pulse: {fileID: 11400000, guid: 49908ac2ed078ff4ca80a920266b61e4, type: 2}
+  sonar_Inteval: 2
 --- !u!1 &8657919197573191817
 GameObject:
   m_ObjectHideFlags: 0
@@ -1307,6 +1322,11 @@ PrefabInstance:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: 4046947e5354c874c9f93e4231c88180, type: 2}
+    - target: {fileID: 4877117232679123212, guid: 573ab75a678413640b369d7d6f630663,
+        type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     - target: {fileID: 5236707035514476496, guid: 573ab75a678413640b369d7d6f630663,
         type: 3}
       propertyPath: m_Enabled
@@ -1441,11 +1461,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Layer
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4877117232679123212, guid: 573ab75a678413640b369d7d6f630663,
-        type: 3}
-      propertyPath: m_TagString
-      value: Enemy
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 4722379020967747163, guid: 573ab75a678413640b369d7d6f630663, type: 3}
