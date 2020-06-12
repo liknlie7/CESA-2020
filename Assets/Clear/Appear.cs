@@ -4,19 +4,21 @@ using UnityEngine;
 using UnityEngine.UI;
 public class Appear : MonoBehaviour
 {
-    public Text Qtext;
+    public Image image;
     bool Flag;
     float a_color;
     public AudioClip sound1;
     AudioSource audioSource;
+
     // Start is called before the first frame update
     void Start()
     {
         Flag = false;
         a_color = 0;
         //SE
-        audioSource = GetComponent<AudioSource>(); 
-        
+        audioSource = GetComponent<AudioSource>();
+        // iamge
+        image.gameObject.SetActive(true);
     }
 
     // Update is called once per frame
@@ -24,7 +26,7 @@ public class Appear : MonoBehaviour
 
     {          
         //テキストの透明度を変更する
-        Qtext.color = new Color(255, 246, 0, a_color);
+        image.color = new Color(image.color.r,image.color.g , image.color.b, a_color);
         if (Flag)
             a_color -= Time.deltaTime;
         else
