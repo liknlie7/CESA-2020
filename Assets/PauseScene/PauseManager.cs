@@ -49,13 +49,19 @@ public class PauseManager : MonoBehaviour
     // ゲーム停止
     void Pause()
     {
+        if (SceneManager.GetActiveScene().buildIndex < 2)
+            return;
+
         // オブジェクトにアタッチされているレンダラー以外を停止させる
         foreach(var g in targets)
         {
-            Behaviour[] behavs = g.GetComponentsInChildren<Behaviour>();
-            foreach(var b in behavs)
+            if (g != null)
             {
-                b.enabled = false;
+                Behaviour[] behavs = g.GetComponentsInChildren<Behaviour>();
+                foreach (var b in behavs)
+                {
+                    b.enabled = false;
+                }
             }
         }
         // ポーズシーンの呼び出し
@@ -71,10 +77,13 @@ public class PauseManager : MonoBehaviour
         // オブジェクトにアタッチされているレンダラー以外を再開させる
         foreach (var g in targets)
         {
-            Behaviour[] behavs = g.GetComponentsInChildren<Behaviour>();
-            foreach (var b in behavs)
+            if (g != null)
             {
-                b.enabled = true;
+                Behaviour[] behavs = g.GetComponentsInChildren<Behaviour>();
+                foreach (var b in behavs)
+                {
+                    b.enabled = true;
+                }
             }
         }
         //SceneManager.UnloadSceneAsync("PauseScene");

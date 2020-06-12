@@ -48,6 +48,7 @@ MonoBehaviour:
   stageSelectSceneName: StageSelectScene
   pauseObject: {fileID: 123322216991904891}
   pauseAnim: {fileID: 877732624060185534}
+  pauseBlur: {fileID: 0}
 --- !u!1001 &3111581488326774525
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -165,6 +166,16 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3069394495357737367, guid: e851edc8f61ddbb41b28a7aace60f580,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 7201265508535713655}
+    - target: {fileID: 3069394494648153887, guid: e851edc8f61ddbb41b28a7aace60f580,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 7201265508535713655}
     - target: {fileID: 5234142013567278038, guid: e851edc8f61ddbb41b28a7aace60f580,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -190,11 +201,6 @@ PrefabInstance:
       propertyPath: m_textInfo.pageCount
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 3069394495357737367, guid: e851edc8f61ddbb41b28a7aace60f580,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 7201265508535713655}
     - target: {fileID: 7365502718345901973, guid: e851edc8f61ddbb41b28a7aace60f580,
         type: 3}
       propertyPath: m_textInfo.characterCount
@@ -215,11 +221,6 @@ PrefabInstance:
       propertyPath: m_textInfo.pageCount
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 3069394494648153887, guid: e851edc8f61ddbb41b28a7aace60f580,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 7201265508535713655}
     - target: {fileID: 7365502717435931954, guid: e851edc8f61ddbb41b28a7aace60f580,
         type: 3}
       propertyPath: m_textInfo.characterCount
