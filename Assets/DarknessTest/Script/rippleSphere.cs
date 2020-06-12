@@ -23,9 +23,11 @@ public class rippleSphere : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        this.tag = sonarbound.source.tag;
+
         if (other.gameObject.CompareTag("Enemy"))
         {
-            if (sonarbound.source?.CompareTag("Player") ?? false)
+            if (sonarbound.source?.CompareTag("PlayerSonar") ?? false)
             {
                 manager.AddEnemyList(other.gameObject);
             }

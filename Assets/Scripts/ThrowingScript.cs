@@ -6,6 +6,7 @@ using Plane = UnityEngine.Plane;
 using Quaternion = UnityEngine.Quaternion;
 using Vector2 = UnityEngine.Vector2;
 using Vector3 = UnityEngine.Vector3;
+using UnityEngine.AI;
 
 public class ThrowingScript : MonoBehaviour
 {
@@ -51,6 +52,8 @@ public class ThrowingScript : MonoBehaviour
     GameObject DRAG_PARTICLE;  // PS_DragStarを割り当てること
     private GameObject _dragParticle;
 
+    private NavMeshAgent _agent;
+
 
     // Start is called before the first frame update
     void Start()
@@ -64,6 +67,8 @@ public class ThrowingScript : MonoBehaviour
 
         _dragParticle = Instantiate(DRAG_PARTICLE);
         _dragParticle.GetComponent<ParticleSystem>().Play();
+
+        _agent = this.GetComponent<NavMeshAgent>();
     }
 
     // Update is called once per frame
@@ -93,8 +98,6 @@ public class ThrowingScript : MonoBehaviour
             GameObject ball = Instantiate(ThrowingObject, ThrowingOffset.transform.position, Quaternion.identity);
 
             var water = ball.GetComponent<Water>();
-            if (water != null)
-                water.source = gameObject;
 
             // 標的の座標
             Vector3 targetPosition = Target;
@@ -162,7 +165,7 @@ public class ThrowingScript : MonoBehaviour
                 _dragParticle.GetComponent<ParticleSystem>().Stop();
             }
             // 右クリックで水を吐き出す
-            if (Input.GetMouseButtonDown(1) && _isThrowing)
+            if (Input.GetMouseButtonDown(1) && _isThrowing && _agent.remainingDistance <= 0.1f)
             {
                 // Fireボタンでボールを射出する
                 ThrowingBall(target);

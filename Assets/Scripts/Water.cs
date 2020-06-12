@@ -8,13 +8,20 @@ public class Water : MonoBehaviour
     [SerializeField]
     private GameObject _collider;
 
-    public GameObject source;
-
     void OnCollisionEnter(Collision other)
     {
         // ソナーを発信
-        CameraManager.Get().sonarFx.Pulse(this.transform.position, null, source);
-        
+        CameraManager.Get().sonarFx.Pulse(this.transform.position, null, this.gameObject);
+
+        this.GetComponent<Collider>().enabled = false;
+        this.GetComponent<Renderer>().enabled = false;
+
+        StartCoroutine("DestroyObject");
+    }
+
+    IEnumerator DestroyObject()
+    {
+        yield return new WaitForSeconds(5.0f);
         Destroy(this.gameObject);
     }
 }
