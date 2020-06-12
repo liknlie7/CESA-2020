@@ -76,6 +76,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1349988012}
   - component: {fileID: 1349988011}
+  - component: {fileID: 396150927994158565}
   m_Layer: 0
   m_Name: RippleDirector
   m_TagString: Untagged
@@ -112,6 +113,19 @@ MonoBehaviour:
   rSphere: {fileID: 1893386144936946336, guid: 85ab52b4dfb4aa040911d19c8fe51610, type: 3}
   activeOutlineTime: 1
   LayerNumber: 10
+--- !u!114 &396150927994158565
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1349988010}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e932ee94d633862428f593692639a445, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _speed: 0
 --- !u!199 &3331557076678002179
 ParticleSystemRenderer:
   serializedVersion: 6
@@ -5616,11 +5630,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1577098731831330758}
     m_Modifications:
-    - target: {fileID: 4675335789270082789, guid: e3cd2e44d2d44524eaaf66edea5e9fab,
-        type: 3}
-      propertyPath: m_Name
-      value: Click
-      objectReference: {fileID: 0}
     - target: {fileID: 4675335789270082795, guid: e3cd2e44d2d44524eaaf66edea5e9fab,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5675,6 +5684,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4675335789270082789, guid: e3cd2e44d2d44524eaaf66edea5e9fab,
+        type: 3}
+      propertyPath: m_Name
+      value: Click
       objectReference: {fileID: 0}
     - target: {fileID: 4675335789270082794, guid: e3cd2e44d2d44524eaaf66edea5e9fab,
         type: 3}
@@ -5816,6 +5830,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7470056350375314885, guid: 11eedabdceb110846899b3fdfbde2b4f,
+        type: 3}
+      propertyPath: m_Name
+      value: Canvas
       objectReference: {fileID: 0}
     - target: {fileID: 7470056350375314872, guid: 11eedabdceb110846899b3fdfbde2b4f,
         type: 3}

@@ -8,7 +8,9 @@ public class GameOverStaging : MonoBehaviour
 
     [SerializeField]
     private float _speed; // スローモーションの速度
-    
+
+    [SerializeField]
+    GameObject GameOverUi = null;
 
     // Update is called once per frame
     void Update()
@@ -20,6 +22,7 @@ public class GameOverStaging : MonoBehaviour
                 Time.timeScale = 0.0f;
             else
                 Time.timeScale -= _speed;
+
         }
         
         if (Time.timeScale == 0.0f)
@@ -33,12 +36,19 @@ public class GameOverStaging : MonoBehaviour
 
     public void GameOver()
     {
-        _isGameOver = true;
+        if(!_isGameOver)
+            _isGameOver = true;
     }
 
     //ゲームオーバーの処理を書く
     void GameOverProduction()
     {
-        Debug.Log("ゲームオーバー");
+        if (GameObject.Find("GameOverUi(Clone)") == null)
+        {
+            GameObject Obj = Instantiate(GameOverUi);
+            Obj.GetComponent<RectTransform>().position = new Vector2(0,0);
+            Obj.transform.parent = GameObject.Find("Canvas").transform;
+            Obj.SetActive(true);
+        }
     }
 }

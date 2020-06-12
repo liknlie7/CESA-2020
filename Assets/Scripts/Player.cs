@@ -81,6 +81,10 @@ public class Player : MonoBehaviour
             Debug.Log("a");
             goalFlag = true;
         }
+        if(other.tag == "Enemy")
+        {
+            GameObject.Find("RippleDirector").GetComponent<GameOverStaging>().GameOver();
+        }
     }
 
     // ゴール判定の取得
