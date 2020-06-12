@@ -13,7 +13,7 @@ public class AnimatedProjector : MonoBehaviour
     //Starts the actuall function
     void Start()
     {
-        projector = GetComponent<Renderer>().sharedMaterial;
+        projector = GetComponent<Renderer>().material;
         NextFrame();
         InvokeRepeating(nameof(NextFrame), 1 / fps, 1 / fps);
     }
