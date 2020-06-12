@@ -49,10 +49,6 @@ public class SonarFx : MonoBehaviour
     [SerializeField] float _waveInterval = 20.0f;
     public float waveInterval { get { return _waveInterval; } set { _waveInterval = value; } }
 
-    // Wave speed
-    [SerializeField] float _waveSpeed = 10.0f;
-    public float waveSpeed { get { return _waveSpeed; } set { _waveSpeed = value; } }
-
     // Wave Radius
     [SerializeField] float _waveRadius = 10.0f;
 
@@ -70,7 +66,7 @@ public class SonarFx : MonoBehaviour
     // Sonar Timings
     private float _sonarTimer = 0.0f;
     private int _sonarCounter = 0;
-    private float[] _sonarStartTimes = Enumerable.Repeat(-float.MaxValue, 16).ToArray();
+    private Vector4[] _sonarStartTimes = Enumerable.Repeat(new Vector4(-float.MaxValue, 0, 0, 0), 16).ToArray();
     private Vector4[] _sonarWaveVectors = Enumerable.Repeat(Vector4.zero, 16).ToArray();
     private Vector4[] _sonarWaveColors = Enumerable.Repeat(Vector4.zero, 16).ToArray();
     private SonarBounds[] _sonarBounds;
@@ -135,7 +131,7 @@ public class SonarFx : MonoBehaviour
             _id = id;
         }
 
-        public float Radius => (_fx._sonarTimer - startTime) * _fx._waveSpeed;
+        public float Radius => (_fx._sonarTimer - startTime) * pulse.speed;
 
         public bool IsValid
         {
@@ -150,7 +146,7 @@ public class SonarFx : MonoBehaviour
 
         public void Apply()
         {
-            _fx._sonarStartTimes[_id] = startTime;
+            _fx._sonarStartTimes[_id] = new Vector4(startTime, pulse.speed, 0, 0);
             _fx._sonarWaveVectors[_id] = new Vector4(center.x, center.y, center.z, pulse.range);
             _fx._sonarWaveColors[_id] = pulse.color;
         }
@@ -173,10 +169,10 @@ public class SonarFx : MonoBehaviour
         mat.SetColor(addColorID, _addColor);
         mat.SetFloat(waveRadiusID, _waveRadius);
         mat.SetFloat(sonarTimerID, _sonarTimer);
-        var param = new Vector4(_waveAmplitude, _waveExponent, _waveInterval, _waveSpeed);
+        var param = new Vector4(_waveAmplitude, _waveExponent, _waveInterval, 0);
         mat.SetVector(waveParamsID, param);
         mat.SetVectorArray(waveVectorsID, _sonarWaveVectors);
-        mat.SetFloatArray(sonarStartTimesID, _sonarStartTimes);
+        mat.SetVectorArray(sonarStartTimesID, _sonarStartTimes);
         mat.SetVectorArray(waveColorsID, _sonarWaveColors);
 
         if (_mode == SonarMode.Directional)

@@ -53,7 +53,7 @@ public class SonarFxEditor : Editor
         propWaveAmplitude = serializedObject.FindProperty("_waveAmplitude");
         propWaveExponent  = serializedObject.FindProperty("_waveExponent");
         propWaveInterval  = serializedObject.FindProperty("_waveInterval");
-        propWaveSpeed     = serializedObject.FindProperty("_waveSpeed");
+        //propWaveSpeed     = serializedObject.FindProperty("_waveSpeed");
         propAddColor      = serializedObject.FindProperty("_addColor");
         propWaveRadius    = serializedObject.FindProperty("_waveRadius");
         propPulse         = serializedObject.FindProperty("_defaultPulse");
@@ -91,7 +91,7 @@ public class SonarFxEditor : Editor
         EditorGUILayout.PropertyField(propWaveAmplitude, new GUIContent("まぶしさ(x:Amplitude)"));
         EditorGUILayout.PropertyField(propWaveExponent, new GUIContent("内側の塗り(y:Exponent)"));
         EditorGUILayout.PropertyField(propWaveInterval, new GUIContent("ソナーのぼかし(z:Interval)"));
-        EditorGUILayout.PropertyField(propWaveSpeed, new GUIContent("Speed(w)"));
+        //EditorGUILayout.PropertyField(propWaveSpeed, new GUIContent("Speed(w)"));
         EditorGUILayout.PropertyField(propWaveRadius, new GUIContent("範囲のぼかし(Radius)"));
         EditorGUI.indentLevel--;
 

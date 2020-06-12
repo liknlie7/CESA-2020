@@ -18,7 +18,7 @@ Shader "Hidden/SonarFX"
 		_SonarAddColor("Add Color",   Color) = (0, 0, 0, 0)
 		_SonarRadius("Wave Radius", Float) = 5
 		_SonarTimer("Sonar Timer", Float) = 0
-		//_SonarStartTimes("Waves", Float[]) = (0, -1, -1, -1)
+		//_SonarStartTimes("Waves", Vector[])
 		//_SonarWaveVectors("Wave Vectors", Vector[])
 		//_SonarWaveColors("Wave Colors", Vector[])
 	}
@@ -51,7 +51,7 @@ Shader "Hidden/SonarFX"
 			float3 _SonarAddColor;
 			float  _SonarRadius;
 			float _SonarTimer;
-			float _SonarStartTimes[16];
+			float4 _SonarStartTimes[16];
 			float4 _SonarWaveVectors[16];
 			float4 _SonarWaveColors[16];
 
@@ -110,7 +110,7 @@ Shader "Hidden/SonarFX"
 					float radiusMultiplier = 1 - smoothstep(radius - _SonarRadius, radius + _SonarRadius, w);
 
 					// Moving wave. _waveSpeed
-					w -= (_SonarTimer - _SonarStartTimes[i]) * _SonarWaveParams.w; // w < 0
+					w -= (_SonarTimer - _SonarStartTimes[i].x) * _SonarStartTimes[i].y; // w < 0
 
 					// Get modulo (w % params.z / params.z)
 					w /= _SonarWaveParams.z; // _waveInterval
