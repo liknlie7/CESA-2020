@@ -15,9 +15,7 @@ public class rippleSphere : MonoBehaviour
     void Start()
     {
         // SonarFx取得
-        GameObject dir = GameObject.Find("RippleDirector");
-
-        manager = dir.GetComponent<RippleManager>();
+        manager = FixedManager.Get().rippleManager;
     }
 
 

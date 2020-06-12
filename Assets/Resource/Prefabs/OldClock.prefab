@@ -37,7 +37,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -1.6103516, y: -50.19995}
+  m_AnchoredPosition: {x: -1.6103516, y: -51.1}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1245960882779182327
@@ -126,7 +126,7 @@ GameObject:
   - component: {fileID: 3653795323510345192}
   - component: {fileID: 8757284793023709693}
   m_Layer: 5
-  m_Name: Clock
+  m_Name: OldClock
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

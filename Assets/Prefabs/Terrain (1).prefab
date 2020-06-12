@@ -1237,7 +1237,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: 89ec9fa810645cc43a11629c33f970b6, type: 3}
       propertyPath: m_TagString
-      value: Enemy
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: 89ec9fa810645cc43a11629c33f970b6, type: 3}
       propertyPath: m_IsActive
@@ -1306,10 +1306,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8525840938632447574}
     m_Modifications:
-    - target: {fileID: 100000, guid: 7616b22d6ef33b645b6936230eeffa39, type: 3}
-      propertyPath: m_Name
-      value: LowPolyTerrain02
-      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 7616b22d6ef33b645b6936230eeffa39, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -1353,6 +1349,10 @@ PrefabInstance:
     - target: {fileID: 400000, guid: 7616b22d6ef33b645b6936230eeffa39, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 7616b22d6ef33b645b6936230eeffa39, type: 3}
+      propertyPath: m_Name
+      value: LowPolyTerrain02
       objectReference: {fileID: 0}
     - target: {fileID: 2300000, guid: 7616b22d6ef33b645b6936230eeffa39, type: 3}
       propertyPath: m_Materials.Array.data[0]
