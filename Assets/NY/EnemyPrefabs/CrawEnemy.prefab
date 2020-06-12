@@ -264,8 +264,7 @@ GameObject:
   - component: {fileID: 8828731612720361768}
   - component: {fileID: 8828731612720361767}
   - component: {fileID: 8828731612720361766}
-  - component: {fileID: 6104120061437046415}
-  - component: {fileID: 7939811983228914589}
+  - component: {fileID: 3167913261971409203}
   m_Layer: 2
   m_Name: CrawEnemy
   m_TagString: Enemy
@@ -461,6 +460,20 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   _isSemiAlertState: 1
+--- !u!114 &3167913261971409203
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8828731612720361765}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36a74dbb720f1f74e9b1af909b779b7f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pulse: {fileID: 11400000, guid: 49908ac2ed078ff4ca80a920266b61e4, type: 2}
+  sonar_Inteval: 0.5
 --- !u!1 &8828731613380923520
 GameObject:
   m_ObjectHideFlags: 0
@@ -891,6 +904,61 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0.7
       objectReference: {fileID: 0}
+    - target: {fileID: 3712912349340240984, guid: 440c5d58ec3aed446a5a9392cf3b9aa1,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3712912349409419888, guid: 440c5d58ec3aed446a5a9392cf3b9aa1,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3712912349772568913, guid: 440c5d58ec3aed446a5a9392cf3b9aa1,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3712912349048486892, guid: 440c5d58ec3aed446a5a9392cf3b9aa1,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3712912348887680649, guid: 440c5d58ec3aed446a5a9392cf3b9aa1,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3712912349153481937, guid: 440c5d58ec3aed446a5a9392cf3b9aa1,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3712912350472869199, guid: 440c5d58ec3aed446a5a9392cf3b9aa1,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3712912350814600609, guid: 440c5d58ec3aed446a5a9392cf3b9aa1,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3712912350335041834, guid: 440c5d58ec3aed446a5a9392cf3b9aa1,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3712912350354362602, guid: 440c5d58ec3aed446a5a9392cf3b9aa1,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3712912350371798044, guid: 440c5d58ec3aed446a5a9392cf3b9aa1,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3712912349409419890, guid: 440c5d58ec3aed446a5a9392cf3b9aa1,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -941,6 +1009,11 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 2f6ab0f58358cb1439b3b6d25d88b011, type: 2}
+    - target: {fileID: 2495712782923404131, guid: 440c5d58ec3aed446a5a9392cf3b9aa1,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 440c5d58ec3aed446a5a9392cf3b9aa1, type: 3}
 --- !u!4 &4383251886502018130 stripped
