@@ -18,6 +18,12 @@ public class PauseManager : MonoBehaviour
     [SerializeField]
     string stageSelectSceneName = "StageSelectScene";
     // Start is called before the first frame update
+
+    public GameObject pauseObject;
+    public Animator pauseAnim;
+    public Animator pauseBlur;
+    private static readonly int Enabled = Animator.StringToHash("Enabled");
+
     void Start()
     {
         
@@ -28,8 +34,7 @@ public class PauseManager : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.Escape))
         {
-            Scene scene = SceneManager.GetSceneByName("PauseScene");
-            if (!scene.IsValid())
+            if (!pauseAnim.GetBool(Enabled))
             {
 
                 Pause();
@@ -54,7 +59,10 @@ public class PauseManager : MonoBehaviour
             }
         }
         // ポーズシーンの呼び出し
-        Application.LoadLevelAdditiveAsync("PauseScene");
+        //Application.LoadLevelAdditiveAsync("PauseScene");
+        pauseObject.SetActive(true);
+        pauseAnim.SetBool(Enabled, true);
+        pauseBlur.SetBool(Enabled, true);
     }
     // 再開
     void  Resume()
@@ -69,7 +77,10 @@ public class PauseManager : MonoBehaviour
                 b.enabled = true;
             }
         }
-        SceneManager.UnloadSceneAsync("PauseScene");
+        //SceneManager.UnloadSceneAsync("PauseScene");
+        //pauseObject.SetActive(false);
+        pauseAnim.SetBool(Enabled, false);
+        pauseBlur.SetBool(Enabled, false);
     }
     // オブジェクトをリストに追加
     public void AddPauseTarget(GameObject go)

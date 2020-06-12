@@ -12,6 +12,9 @@ public class GameOverStaging : MonoBehaviour
     [SerializeField]
     GameObject GameOverUi = null;
 
+    [SerializeField]
+    Animator Blur = null;
+
     // Update is called once per frame
     void Update()
     {
@@ -49,5 +52,6 @@ public class GameOverStaging : MonoBehaviour
     void GameOverProduction()
     {
         GameOverUi.SetActive(true);
+        Blur.SetBool("Enabled", true);
     }
 }

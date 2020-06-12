@@ -14,16 +14,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EditorBanks:
   - {fileID: 114048100862956278}
-  - {fileID: 114555226103636864}
-  - {fileID: 114094963441682854}
+  - {fileID: 114551923210234728}
+  - {fileID: 114254419730553998}
   EditorEvents:
   - {fileID: 114939454544373272}
   EditorParameters: []
   MasterBanks:
-  - {fileID: 114555226103636864}
+  - {fileID: 114551923210234728}
   StringsBanks:
   - {fileID: 114048100862956278}
-  stringsBankWriteTime: 637276047889685894
+  stringsBankWriteTime: 637275988460348531
   cacheVersion: 3
 --- !u!114 &114002601481953318
 MonoBehaviour:
@@ -63,7 +63,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Path: Resources\FMOD\Audio\Build\Desktop\Master.strings.bank
   SubDir: 
-  lastModified: 637276047889685894
+  lastModified: 637275988460348531
   LoadResult: 0
   FileSizes:
   - Name: Desktop
@@ -104,6 +104,41 @@ MonoBehaviour:
   Max: 2
   Default: 0
   Exists: 0
+--- !u!114 &114254419730553998
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.strings.bank
+  m_EditorClassIdentifier: 
+  Path: E:\softdata\git\CESA-2021\Resources\FMOD\Audio\Build\Desktop\Master.strings.bank
+  SubDir: 
+  lastModified: 637275988460348531
+  LoadResult: 70
+  FileSizes: []
+  Exists: 1
+--- !u!114 &114261958518696962
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/TitleBGM/Scene
+  m_EditorClassIdentifier: 
+  Name: Scene
+  Min: 0
+  Max: 2
+  Default: 0
+  Exists: 1
 --- !u!114 &114375288234341440
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -164,6 +199,24 @@ MonoBehaviour:
   - Name: Desktop
     Value: 2269728
   Exists: 0
+--- !u!114 &114551923210234728
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.bank
+  m_EditorClassIdentifier: 
+  Path: E:\softdata\git\CESA-2021\Resources\FMOD\Audio\Build\Desktop\Master.bank
+  SubDir: E:\softdata\git\CESA-2021\
+  lastModified: 637275988460598586
+  LoadResult: 0
+  FileSizes: []
+  Exists: 1
 --- !u!114 &114555226103636864
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -231,12 +284,12 @@ MonoBehaviour:
   Path: event:/TitleBGM
   guid: 9cb7073e8973004cac1a84ea84c53f81
   Banks:
-  - {fileID: 114555226103636864}
+  - {fileID: 114551923210234728}
   IsStream: 1
   Is3D: 0
   IsOneShot: 0
   Parameters:
-  - {fileID: 114852322650183786}
+  - {fileID: 114261958518696962}
   MinDistance: 0
   MaxDistance: 0
   Length: 72010
