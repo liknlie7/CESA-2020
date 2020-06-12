@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 329717265969911157}
   - component: {fileID: 7746112306392154010}
   - component: {fileID: 2327949727510144823}
+  - component: {fileID: 2695343594716587522}
   m_Layer: 0
   m_Name: Goal
   m_TagString: Goal
@@ -112,6 +113,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pulse: {fileID: 11400000, guid: 16bb91dad14b1634ea0215a5891e73f2, type: 2}
   sonar_Inteval: 2
+--- !u!114 &2695343594716587522
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7054222519536535512}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76695142b01e71e42bf5f5e5504397d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7054222519536535516
 GameObject:
   m_ObjectHideFlags: 0

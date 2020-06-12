@@ -528,6 +528,7 @@ GameObject:
   - component: {fileID: 8437117421780469801}
   - component: {fileID: 8437117421780469795}
   - component: {fileID: 4774878070410094379}
+  - component: {fileID: 6728200110136926049}
   m_Layer: 0
   m_Name: RunawayEnemy
   m_TagString: Enemy
@@ -690,6 +691,18 @@ MonoBehaviour:
   _nextStateName: EnemyRunawayState
   _searchRoutes: []
   _isSemiAlertState: 1
+--- !u!114 &6728200110136926049
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8437117421780470230}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76695142b01e71e42bf5f5e5504397d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8437117421795453877
 GameObject:
   m_ObjectHideFlags: 0
