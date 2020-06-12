@@ -48,10 +48,6 @@ public class ThrowingScript : MonoBehaviour
     }
     private State _currentState = State.ThrowingPossible;
 
-    [SerializeField]
-    GameObject DRAG_PARTICLE;  // PS_DragStarを割り当てること
-    private GameObject _dragParticle;
-
     private NavMeshAgent _agent;
 
 
@@ -64,9 +60,6 @@ public class ThrowingScript : MonoBehaviour
         Collider collider = GetComponent<Collider>();
 
         targetFX = Instantiate(targetFXPrefab);
-
-        _dragParticle = Instantiate(DRAG_PARTICLE);
-        _dragParticle.GetComponent<ParticleSystem>().Play();
 
         _agent = this.GetComponent<NavMeshAgent>();
     }
@@ -162,7 +155,6 @@ public class ThrowingScript : MonoBehaviour
                 // 色を変更する
                 targetFX.transform.GetChild(0).GetComponent<Renderer>().material = _targetMaterials[(int)TargetMaterialID.inpossible];
                 _currentState = State.ThrowingInpossible;
-                _dragParticle.GetComponent<ParticleSystem>().Stop();
             }
             // 右クリックで水を吐き出す
             if (Input.GetMouseButtonDown(1) && _isThrowing && _agent.remainingDistance <= 0.1f)
@@ -176,7 +168,6 @@ public class ThrowingScript : MonoBehaviour
             }
             targetFX.transform.position = target;
             Vector3 particlePos = target;
-            _dragParticle.transform.position = particlePos;
         }
     }
 
@@ -196,7 +187,6 @@ public class ThrowingScript : MonoBehaviour
                 // 色を変更する
                 targetFX.transform.GetChild(0).GetComponent<Renderer>().material = _targetMaterials[(int)TargetMaterialID.possible];
                 _currentState = State.ThrowingPossible;
-                _dragParticle.GetComponent<ParticleSystem>().Play();
             }
             targetFX.transform.position = target;
         }

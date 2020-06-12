@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 
 public class EnemyController : MonoBehaviour
@@ -18,6 +19,8 @@ public class EnemyController : MonoBehaviour
         SetState(_startStateName);
         foreach (EnemyState state in _stateList)
             state.StateController = this;
+
+        FixedManager.Get().enemyManager.RegisterEnemy(this.gameObject);
     }
 
     // Update is called once per frame
@@ -53,5 +56,12 @@ public class EnemyController : MonoBehaviour
     public string GetStateName()
     {
         return _state.GetStateName();
+    }
+
+
+    public void StopNavMeshAgent()
+    {
+        NavMeshAgent agent = this.GetComponent<NavMeshAgent>();
+        agent.speed = 0;
     }
 }

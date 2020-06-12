@@ -10,6 +10,7 @@ public class FixedManager : MonoBehaviour
     public RippleManager rippleManager;
 
     public ScoreManager scoreManager;
+    public EnemyManager enemyManager;
 
     private void Awake()
     {

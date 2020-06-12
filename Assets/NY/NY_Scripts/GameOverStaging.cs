@@ -15,20 +15,20 @@ public class GameOverStaging : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // スローモーション
-        if (_isGameOver && Time.timeScale >= _speed)
-        {
-            if (Time.timeScale - _speed <= _speed)
-                Time.timeScale = 0.0f;
-            else
-                Time.timeScale -= _speed;
+        //// スローモーション
+        //if (_isGameOver && Time.timeScale >= _speed)
+        //{
+        //    if (Time.timeScale - _speed <= _speed)
+        //        Time.timeScale = 0.0f;
+        //    else
+        //        Time.timeScale -= _speed;
 
-        }
+        //}
         
-        if (Time.timeScale == 0.0f)
-        {
-            GameOverProduction();
-        }
+        //if (Time.timeScale == 0.0f)
+        //{
+        //    GameOverProduction();
+        //}
 
         
 
@@ -38,6 +38,11 @@ public class GameOverStaging : MonoBehaviour
     {
         if(!_isGameOver)
             _isGameOver = true;
+
+        // 敵を全て停止させる
+        FixedManager.Get().enemyManager.StopAllEnemy();
+
+        GameOverProduction();
     }
 
     //ゲームオーバーの処理を書く
@@ -46,9 +51,8 @@ public class GameOverStaging : MonoBehaviour
         if (GameObject.Find("GameOverUi(Clone)") == null)
         {
             GameObject Obj = Instantiate(GameOverUi);
-            Obj.GetComponent<RectTransform>().position = new Vector2(0,0);
-            Obj.transform.parent = GameObject.Find("Canvas").transform;
-            Obj.SetActive(true);
+            Obj.GetComponent<RectTransform>().position = new Vector2(1920/2,0);
+            Obj.transform.SetParent(GameObject.Find("ClockCanvas").transform);
         }
     }
 }

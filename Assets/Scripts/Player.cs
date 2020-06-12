@@ -57,6 +57,8 @@ public class Player : MonoBehaviour
         if (plane.Raycast(ray, out float enter))
         {
             var target = ray.GetPoint(enter);
+
+            // アニメーションを泳いでいる状態に移行
             _animator.SetBool("Swiming", true);
             if (_agent.remainingDistance <= 0.3f)
             {
@@ -66,6 +68,8 @@ public class Player : MonoBehaviour
                 float speed = _rotateSpeed * Time.deltaTime;
                 Vector3 newDir = Vector3.RotateTowards(transform.forward, targetDir, speed, 0.0F);
                 transform.rotation = Quaternion.LookRotation(newDir);
+
+                // アニメーションをアイドル状態に移行
                 _animator.SetBool("Swiming", false);
             }
 
@@ -83,10 +87,18 @@ public class Player : MonoBehaviour
         {
             Debug.Log("a");
             goalFlag = true;
+
+            this.transform.GetChild(0).GetComponent<Collider>().enabled = false;
         }
         if(other.tag == "Enemy")
         {
             GameObject.Find("RippleDirector").GetComponent<GameOverStaging>().GameOver();
+            this.transform.GetChild(0).GetComponent<Collider>().enabled = false;
+
+            this.enabled = false;
+
+            // プレイヤーを停止
+            this.GetComponent<NavMeshAgent>().speed = 0.0f;
         }
     }
 
