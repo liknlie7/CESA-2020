@@ -70,10 +70,14 @@ public class EnemyCrawlState : EnemyState
         Vector3 playerPos = _prop.PlayerTrs.position;
         Vector3 searchDire = playerPos - StateController.transform.position;
         Ray ray = new Ray(StateController.transform.position, searchDire.normalized);
+
+
+        Debug.DrawRay(StateController.transform.position, searchDire.normalized,Color.red,1.0f);
+
         RaycastHit hit;
         if (Physics.Raycast(ray, out hit, _prop.FovLength))
         {
-            Debug.Log(hit.collider.gameObject.tag);
+            Debug.Log(hit.collider.gameObject);
             if (hit.collider.gameObject.tag == "Player")
                 return true;
         }

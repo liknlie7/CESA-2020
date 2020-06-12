@@ -6,9 +6,6 @@ using UnityEngine.AI;
 
 public class EnemyAlertState : EnemyState
 {
-    [SerializeField]
-    private GameObject _questionObj = null;
-
     private float _alertGauge         = 0.0f;
     private float _attentionTime      = 0.0f;
     private float _crawlAttentionTime = 8.0f;
@@ -23,8 +20,6 @@ public class EnemyAlertState : EnemyState
     {
         _alertGauge = 0.0f;
         Debug.Log("EnemyAlertState : に移行");
-
-        _questionObj.SetActive(true);
     }
 
 
@@ -67,7 +62,6 @@ public class EnemyAlertState : EnemyState
     // ステートから出ていくとき
     public override void ExitEvent()
     {
-        _questionObj.SetActive(false);
     }
 
 

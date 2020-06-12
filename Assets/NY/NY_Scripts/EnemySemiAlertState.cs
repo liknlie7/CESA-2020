@@ -7,8 +7,6 @@ public class EnemySemiAlertState : EnemyState
 {    
     // ステートの名前を取得
     public override string GetStateName() { return "EnemySemiAlertState"; }
-    [SerializeField]
-    private GameObject _questionObj;
 
     [SerializeField]
     private string _backStateName = "EnemyCrawlState";
@@ -20,7 +18,6 @@ public class EnemySemiAlertState : EnemyState
     // ステートが遷移してきたとき
     public override void EnterEvent()
     {
-        _questionObj.SetActive(true);
         // 波紋のコライダーが消えている
         _prop.Agent.SetDestination(_prop.TargetTrs.position);
         Debug.Log("SemiAlertState : に移行");
@@ -51,7 +48,7 @@ public class EnemySemiAlertState : EnemyState
     // ステートから出ていくとき
     public override void ExitEvent()
     {
-        _questionObj.SetActive(false);
+
     }
 
 
