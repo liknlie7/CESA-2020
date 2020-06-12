@@ -7,6 +7,10 @@ public class TadpoleController : MonoBehaviour
 {
     private const string RADPOLE_KEYWORD = "_tadpoleNum";
     private string _keyName;
+
+    [SerializeField]
+    private GameObject _fxPrefab;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -27,6 +31,7 @@ public class TadpoleController : MonoBehaviour
             TadpoleUIController.RefreshUI();
 
             // TODO::ここで消している あとでアニメーションを付けるかも
+            Instantiate(_fxPrefab, this.transform.position,Quaternion.identity);
             Destroy(this.gameObject);
         }
     }

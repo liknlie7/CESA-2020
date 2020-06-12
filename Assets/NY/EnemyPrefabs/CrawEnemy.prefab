@@ -454,39 +454,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34330dd33b085524d9059f4da7ca21f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _nextStateName: EnemySemiAlertState
+  _nextStateName: EnemyAlertState
   _searchRoutes:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  _isSemiAlertState: 0
---- !u!114 &6104120061437046415
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8828731612720361765}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 36a74dbb720f1f74e9b1af909b779b7f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pulse: {fileID: 11400000, guid: 49908ac2ed078ff4ca80a920266b61e4, type: 2}
-  sonar_Inteval: 0.5
---- !u!114 &7939811983228914589
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8828731612720361765}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 76695142b01e71e42bf5f5e5504397d7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  _isSemiAlertState: 1
 --- !u!1 &8828731613380923520
 GameObject:
   m_ObjectHideFlags: 0

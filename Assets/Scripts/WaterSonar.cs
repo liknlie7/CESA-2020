@@ -9,17 +9,12 @@ public class WaterSonar : MonoBehaviour
         // ソナーを発信
         CameraManager.Get().sonarFx.Pulse(this.transform.position);
 
-        Destroy(this.gameObject);
+        StartCoroutine("DestroyObject");
     }
 
-    //// Update is called once per frame
-    //void FixedUpdate()
-    //{
-    //    _count += Time.deltaTime;
-    //    if (_count >= MAX_COUNT)
-    //    {
-    //        CameraManager.Get().sonarFxSwitcher.SetFlag(false);
-    //        Destroy(this.gameObject);
-    //    }
-    //}
+    IEnumerator DestroyObject()
+    {
+        yield return new WaitForSeconds(2.0f);
+        Destroy(this.gameObject);
+    }
 }

@@ -21,6 +21,7 @@ public class EnemySemiAlertState : EnemyState
     public override void EnterEvent()
     {
         _questionObj.SetActive(true);
+        // 波紋のコライダーが消えている
         _prop.Agent.SetDestination(_prop.TargetTrs.position);
         Debug.Log("SemiAlertState : に移行");
 
