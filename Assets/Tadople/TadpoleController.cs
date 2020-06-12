@@ -7,7 +7,6 @@ public class TadpoleController : MonoBehaviour
 {
     private const string RADPOLE_KEYWORD = "_tadpoleNum";
     private string _keyName;
-
     [SerializeField]
     private GameObject _fxPrefab;
 
