@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 2046650631}
   - component: {fileID: 6923480629654764987}
   - component: {fileID: 2981936663834607384}
+  - component: {fileID: 8138057060293321359}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -119,7 +120,6 @@ MonoBehaviour:
   _waveAmplitude: 1.11
   _waveExponent: 22
   _waveInterval: 14.7
-  _waveSpeed: 10
   _waveRadius: 1.16
   _addColor: {r: 0, g: 0, b: 0, a: 1}
   _defaultPulse: {fileID: 11400000, guid: d832fe9ec442a25479e307615b64011d, type: 2}
@@ -172,3 +172,16 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &8138057060293321359
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2116896123211908892}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86c6556701af9e04380698b89f691b6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ListenerNumber: 0

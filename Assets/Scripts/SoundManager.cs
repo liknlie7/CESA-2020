@@ -1,20 +1,23 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using FMODUnity;
 using UnityEngine;
 
 public class SoundManager : MonoBehaviour
 {
-    public AudioSource[] audioSource;
+    private FMOD.Studio.EventInstance instance;
 
-    // Start is called before the first frame update
+    [SerializeField] [Range(0f, 2f)] private float scene;
+
+
     void Start()
     {
-        audioSource[1].Play();
+        instance = GetComponent<StudioEventEmitter>().EventInstance;
     }
 
-    // Update is called once per frame
     void Update()
     {
-        
+
+        instance.setParameterByName("Scene", scene);
     }
 }
