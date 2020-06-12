@@ -8,8 +8,7 @@ public class TadpoleUIController : MonoBehaviour
 {
     [SerializeField]
     private Image _higlight;
-
-    private const string RADPOLE_KEYWORD = "_tadpoleNum";
+    
     private const float WIDTH = 0.3335f;
     private const float ADD_SPEED = 0.8f;
     private const float OFFSET = 0.05f;
@@ -22,7 +21,6 @@ public class TadpoleUIController : MonoBehaviour
     void Start()
     {
         _targetFillAmount = 0.0f;
-        _keyName = SceneManager.GetActiveScene().name + RADPOLE_KEYWORD;
         _higlight.fillAmount = 0.0f;
     }
 
@@ -41,7 +39,7 @@ public class TadpoleUIController : MonoBehaviour
     // UIをリフレッシュ
     static public void RefreshUI()
     {
-        int count = PlayerPrefs.GetInt(_keyName);
+        int count = FixedManager.Get().scoreManager._score;
         _targetFillAmount = WIDTH * count;
         _isAddition = true;
     }

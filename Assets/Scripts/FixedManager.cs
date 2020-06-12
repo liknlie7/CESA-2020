@@ -9,6 +9,8 @@ public class FixedManager : MonoBehaviour
     public GameObject menuCanvas;
     public RippleManager rippleManager;
 
+    public ScoreManager scoreManager;
+
     private void Awake()
     {
         instance = this;
