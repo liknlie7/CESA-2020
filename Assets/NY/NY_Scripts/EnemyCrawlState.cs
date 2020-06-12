@@ -73,6 +73,7 @@ public class EnemyCrawlState : EnemyState
         RaycastHit hit;
         if (Physics.Raycast(ray, out hit, _prop.FovLength))
         {
+            Debug.Log(hit.collider.gameObject.tag);
             if (hit.collider.gameObject.tag == "Player")
                 return true;
         }

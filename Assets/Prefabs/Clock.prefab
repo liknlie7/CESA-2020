@@ -182,6 +182,38 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 6162623871493125841, guid: 3b2fb00983294344699aa91fc7092aa7,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 7bb96cea091866a49b195ab76b9163ec,
+        type: 3}
+    - target: {fileID: 6162623871493125841, guid: 3b2fb00983294344699aa91fc7092aa7,
+        type: 3}
+      propertyPath: m_FillAmount
+      value: 0.386
+      objectReference: {fileID: 0}
+    - target: {fileID: 6162623872273224526, guid: 3b2fb00983294344699aa91fc7092aa7,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: adc97010e3ae52641b36856900f8acb2,
+        type: 3}
+    - target: {fileID: 6162623872273224526, guid: 3b2fb00983294344699aa91fc7092aa7,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6162623872273224526, guid: 3b2fb00983294344699aa91fc7092aa7,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6162623872273224526, guid: 3b2fb00983294344699aa91fc7092aa7,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3b2fb00983294344699aa91fc7092aa7, type: 3}
 --- !u!4 &8081296877200152204 stripped
@@ -197,11 +229,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7470056350375314873}
     m_Modifications:
-    - target: {fileID: 2058928077146264018, guid: 86ead48a417bc12458afe0f4f4e0780f,
-        type: 3}
-      propertyPath: m_Name
-      value: Clock
-      objectReference: {fileID: 0}
     - target: {fileID: 3653795323510345192, guid: 86ead48a417bc12458afe0f4f4e0780f,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -306,6 +333,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2058928077146264018, guid: 86ead48a417bc12458afe0f4f4e0780f,
+        type: 3}
+      propertyPath: m_Name
+      value: Clock
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 86ead48a417bc12458afe0f4f4e0780f, type: 3}

@@ -487,6 +487,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 869dbc840af566749ad0c7dcd54efb53, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _fxPrefab: {fileID: 4774868211262680012, guid: a9c7fc5667342e647bc960b57f21b7c3,
+    type: 3}
 --- !u!114 &5293428492384824535
 MonoBehaviour:
   m_ObjectHideFlags: 0

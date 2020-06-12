@@ -452,13 +452,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34330dd33b085524d9059f4da7ca21f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _nextStateName: EnemySemiAlertState
+  _nextStateName: EnemyAlertState
   _searchRoutes:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  _isSemiAlertState: 0
+  _isSemiAlertState: 1
 --- !u!1 &8828731613380923520
 GameObject:
   m_ObjectHideFlags: 0
