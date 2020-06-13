@@ -11,28 +11,12 @@ public class Scrollcontroller : MonoBehaviour
     GameObject leftArrow = null;
 
     [SerializeField]
-    GameObject rightPage = null;
-
-    [SerializeField]
-    GameObject leftPage = null;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    Animator pageAnimator;
 
     //左
     public void LeftOnClick()
     {
-        leftPage.SetActive(true);
-        rightPage.SetActive(false);
+        pageAnimator.SetInteger("Page", 0);
 
         rightArrow.SetActive(true);
         leftArrow.SetActive(false);
@@ -40,8 +24,7 @@ public class Scrollcontroller : MonoBehaviour
     //右
     public void RightOnClick()
     {
-        leftPage.SetActive(false);
-        rightPage.SetActive(true);
+        pageAnimator.SetInteger("Page", 1);
 
         rightArrow.SetActive(false);
         leftArrow.SetActive(true);   
