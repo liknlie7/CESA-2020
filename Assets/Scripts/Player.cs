@@ -18,8 +18,7 @@ public class Player : MonoBehaviour
 
     [SerializeField] private GameObject fxPrefab;
 
-    [SerializeField] private GameObject locusFxPrefab;
-    private GameObject locusFx;
+    [SerializeField] private ParticleSystem locusFx;
 
     // プレイヤーの位置を入れる
     Vector3 playerPos;
@@ -51,18 +50,15 @@ public class Player : MonoBehaviour
         //Rigidbodyを取得
         rb = GetComponent<Rigidbody>();
         //在より少し前の位置を保存
-        playerPos = transform.position;
+        var position = transform.position;
+        playerPos = position;
         // Animator取得
         _animator = transform.GetChild(0).GetComponent<Animator>();
 
         _agent = this.GetComponent<NavMeshAgent>();
-        _agent.SetDestination(this.transform.position);
+        _agent.SetDestination(position);
 
         _playerSE = this.GetComponent<PlayerSEController>();
-
-        locusFx = Instantiate(locusFxPrefab, this.transform);
-        Vector3 pos = this.transform.position;
-        locusFx.transform.position = new Vector3(pos.x, pos.y + 0.3f, pos.z);
     }
 
     void FixedUpdate()
@@ -97,7 +93,8 @@ public class Player : MonoBehaviour
                 //_playerSE.SwimSE.Stop();
                 _playerSE.SwimSE.SetBool("Enabled", false);
 
-                locusFx.GetComponent<ParticleSystem>().Stop();
+                locusFx.Stop();
+                //locusFx.GetComponent<ParticleSystem>().Stop(true, ParticleSystemStopBehavior.StopEmitting);
             }
             else
             {
@@ -108,7 +105,9 @@ public class Player : MonoBehaviour
                 //Swimming = true;
                 _playerSE.SwimSE.SetBool("Enabled", true);
 
-                locusFx.GetComponent<ParticleSystem>().Play();
+                if (!locusFx.isPlaying)
+                    locusFx.Play();
+                //locusFx.GetComponent<ParticleSystem>().Play(true);
             }
 
             if (Input.GetMouseButtonDown(0) && !EventSystem.current.IsPointerOverGameObject())
@@ -156,7 +155,8 @@ public class Player : MonoBehaviour
             Instantiate(fxPrefab, this.transform.position, Quaternion.identity);
 
             locusFx.transform.parent = new GameObject().transform;
-            locusFx.GetComponent<ParticleSystem>().Stop();
+            //locusFx.GetComponent<ParticleSystem>().Stop();
+            locusFx.Pause();
         }
     }
 
