@@ -6,14 +6,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+
 public class RippleManager : MonoBehaviour
 {
     // スクリプト内で使うエネミー情報
     public class EnemyInfo
     {
         public GameObject obj;
+
         // 作成時の時間
         public float activateTime;
+
         // 削除フラグ
         public bool delete;
     };
@@ -27,14 +30,16 @@ public class RippleManager : MonoBehaviour
 
     // 波紋当たり判定のオブジェクト群
     WaveBound[] waveBounds = new WaveBound[16];
+
     // 波紋の疑似当たり判定
-    [SerializeField]
-    GameObject rSphere = null;
+    [SerializeField] GameObject rSphere = null;
 
     // 衝突したエネミーのリスト
     List<EnemyInfo> colEnemyList = new List<EnemyInfo>();
+
     // 輪郭を付けている時間
     [SerializeField] float activeOutlineTime = 3.0f;
+
     // アウトラインが設定されたレイヤーの番号
     [SerializeField] int LayerNumber = 10;
 
@@ -89,14 +94,12 @@ public class RippleManager : MonoBehaviour
             .Where(e => Time.time - e.activateTime > activeOutlineTime)
             .Select(e =>
             {
-                e.obj.layer = 0;
-                foreach (Transform child in e.obj.transform)
+                foreach (var c in e.obj.GetComponentsInChildren<Renderer>())
                 {
-                    foreach (Transform c in child.transform)
-                    {
+                    if (c.gameObject.layer == 10)
                         c.gameObject.layer = 0;
-                    }
                 }
+
                 e.delete = true;
                 return e;
             })
@@ -105,6 +108,7 @@ public class RippleManager : MonoBehaviour
 
         //Debug.Log(colEnemyList.Count);
     }
+
     // アウトラインをつけるエネミーをリストに入れる処理
     public void AddEnemyList(GameObject go)
     {
@@ -112,15 +116,13 @@ public class RippleManager : MonoBehaviour
         if (!colEnemyList.Select(e => e.obj).Contains(go))
         {
             // 光らせて敵をリストに追加
-            EnemyInfo enemyInfo = new EnemyInfo { obj = go, activateTime = Time.time };
-            go.layer = 10;
-            foreach(Transform child in go.transform)
+            EnemyInfo enemyInfo = new EnemyInfo {obj = go, activateTime = Time.time};
+            foreach (var c in go.GetComponentsInChildren<Renderer>())
             {
-                foreach(Transform c in child.transform)
-                {
+                if (c.gameObject.layer == 0)
                     c.gameObject.layer = 10;
-                }
             }
+
             colEnemyList.Add(enemyInfo);
         }
     }

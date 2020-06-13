@@ -403,7 +403,7 @@ GameObject:
   - component: {fileID: 1263403571880587157}
   m_Layer: 0
   m_Name: TadpoleRoot
-  m_TagString: Model
+  m_TagString: Stage
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -491,7 +491,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _fxPrefab: {fileID: 4774868211262680012, guid: a9c7fc5667342e647bc960b57f21b7c3,
     type: 3}
-  _tadpoleSound: {fileID: 8300000, guid: aa305e3cc21b804488428f19901a4cd8, type: 3}
 --- !u!114 &5293428492384824535
 MonoBehaviour:
   m_ObjectHideFlags: 0

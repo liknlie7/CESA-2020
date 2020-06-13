@@ -15,6 +15,8 @@ public class EnemyRunawayState : EnemyState
     private const float TIMER_RATE = 4.0f; //　タイマーの倍率
     private Renderer _render;
 
+    public GameObject playerSonar;
+
     [SerializeField]
     private SonarPulse _sonar;
 
@@ -28,8 +30,7 @@ public class EnemyRunawayState : EnemyState
         _render = this.GetComponent<Renderer>();
 
         // 波紋を発生
-        GameObject player = GameObject.FindGameObjectWithTag("Player");
-        CameraManager.Get().sonarFx.Pulse(this.transform.position, _sonar, player);
+        CameraManager.Get().sonarFx.Pulse(this.transform.position, _sonar, playerSonar);
     }
 
     // ステートを実行
