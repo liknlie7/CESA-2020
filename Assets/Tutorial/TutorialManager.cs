@@ -8,15 +8,19 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using Object = System.Object;
 
 public class TutorialManager : MonoBehaviour
 {
+    private ThrowingScript throwingScript;
+
     // チュートリアル用UIのアニメーター
     Animator animator;
     // チュートリアルのタスクの定数
-    private enum TASK
+    private enum Mission
     {
         BASIC,  // 動く前に
+        MOVE,
         ENEMY,  // 敵について
         OTAMA,  // おたまじゃくしについて
         GOAL,   // ゴールについて
@@ -64,18 +68,21 @@ public class TutorialManager : MonoBehaviour
     private void Start()
     {
         // 文章読み込み(テスト)
-        texts[(int)TASK.BASIC] = "ポインタの位置に左クリックで移動\n右クリックで波紋を周りを確認できるぞ！";
-        texts[(int)TASK.ENEMY] = "敵に見つかってしまった！こうなると家に逃げるしかない！";
-        texts[(int)TASK.OTAMA] = "おや、迷子のおたまじゃくしだ！\n一緒に連れ帰ってあげよう";
-        texts[(int)TASK.GOAL] = "緑色のハスの葉の下に家があるぞ！\n敵に見つからないうちに帰ろう！";
-        texts[(int)TASK.CLEAR] = "ステージクリアだ！おめでとう！\n本編では本当の闇の中帰ることになるぞ！";
-        texts[(int)TASK.GAMEOVER] = "残念！食べられてしまった！\n夜は危険な生物も徘徊しているぞ！";
+        texts[(int)Mission.BASIC] = "右クリックで波紋をだして、\n周りを確認してみよう！";
+        texts[(int)Mission.MOVE] = "左クリックで移動\n今回は特別に周りを明るくしておいたぞ";
+        texts[(int)Mission.ENEMY] = "敵に見つかってしまった！こうなると家に逃げるしかない！";
+        texts[(int)Mission.OTAMA] = "おや、迷子のおたまじゃくしだ！\n一緒に連れ帰ってあげよう";
+        texts[(int)Mission.GOAL] = "緑色のハスの葉の下に家があるぞ！\n敵に見つからないうちに帰ろう！";
+        texts[(int)Mission.CLEAR] = "ステージクリアだ！おめでとう！\n次からは闇の中、うちに帰ってもらう";
+        texts[(int)Mission.GAMEOVER] = "残念！食べられてしまった！\n夜は危険な生物も徘徊しているぞ！";
+
+        throwingScript = FindObjectOfType<ThrowingScript>();
 
         // タスク関数の設定
-        task = new Action[(int)TASK.SUM] { AboutBasic, AboutEnemy, AboutOTAMA , AboutGoal,AboutCrear,AboutGameOver};
+        task = new Action[(int)Mission.SUM] { AboutBasic, AboutMove, AboutEnemy, AboutOTAMA , AboutGoal,AboutCrear,AboutGameOver};
         ChangeText();
         animator = GetComponent<Animator>();
-        currentTask = (int)TASK.BASIC;
+        currentTask = (int)Mission.BASIC;
 
         playerScript = player.GetComponent<Player>();
         initialP_pos = player.transform.position;
@@ -83,32 +90,63 @@ public class TutorialManager : MonoBehaviour
         gameOverScript = rippleDir.GetComponent<GameOverStaging>();
         enemyScript = enemy.GetComponent<EnemyController>();
     }
+
     // 更新
     private void Update()
     {
         task[currentTask]();
     }
 
+    IEnumerator BrightUp()
+    {
+        yield return new WaitForSeconds(2.0f);
+        var m = FixedManager.Get().intensityManager.intensityTo = .5f;
+    }
+
     private void AboutBasic()
     {
-        if(Vector3.Distance(initialP_pos,player.transform.position) > GOAL_DISTANCE)
+        if (throwingScript != null && throwingScript.thrownAchievement)
         {
             animator.SetTrigger(Hide);
-            currentTask = (int)TASK.GOAL;
+            currentTask = (int) Mission.MOVE;
+            StartCoroutine(BrightUp());
         }
+
+        if (Vector3.Distance(initialP_pos, player.transform.position) > GOAL_DISTANCE)
+        {
+            animator.SetTrigger(Hide);
+            currentTask = (int) Mission.GOAL;
+            StartCoroutine(BrightUp());
+        }
+
         ScoreCheck();
         GameOverCheck();
     }
+
+    private void AboutMove()
+    {
+        if (Vector3.Distance(initialP_pos, player.transform.position) > GOAL_DISTANCE)
+        {
+            animator.SetTrigger(Hide);
+            currentTask = (int) Mission.GOAL;
+        }
+
+        ScoreCheck();
+        GameOverCheck();
+    }
+
     private void AboutEnemy()
     {
         CrearCheck();
         GameOverCheck();
     }
+
     private void AboutOTAMA()
     {
         CrearCheck();
         GameOverCheck();
     }
+
     private void AboutGoal()
     {
         ScoreCheck();
@@ -116,32 +154,37 @@ public class TutorialManager : MonoBehaviour
         EnemyCheck();
         GameOverCheck();
     }
+
     private void AboutGameOver()
     {
 
     }
+
     private void AboutCrear()
     {
         
     }
+
     // スコアを取得したかどうか
     private void ScoreCheck()
     {
         if (scoreMana._score > 0)
         {
             animator.SetTrigger(Hide);
-            currentTask = (int)TASK.OTAMA;
+            currentTask = (int)Mission.OTAMA;
         }
     }
+
     // 敵に発見されたか
     private void EnemyCheck()
     {
         if(enemyScript.GetStateName() == "EnemyAlertState")
         {
             animator.SetTrigger(Hide);
-            currentTask = (int)TASK.ENEMY;
+            currentTask = (int)Mission.ENEMY;
         }
     }
+
     // クリアしたかどうか
     private void CrearCheck()
     {
@@ -150,18 +193,20 @@ public class TutorialManager : MonoBehaviour
             if (playerScript.GetGoalFlag())
             {
                 animator.SetTrigger(Hide);
-                currentTask = (int)TASK.CLEAR;
+                currentTask = (int)Mission.CLEAR;
             }
         }   
     }
+
     private void GameOverCheck()
     {
         if(gameOverScript._isGameOver)
         {
             animator.SetTrigger(Hide);
-            currentTask = (int)TASK.GAMEOVER;
+            currentTask = (int)Mission.GAMEOVER;
         }
     }
+
     public void ChangeText()
     {
         TMP.text = texts[currentTask];

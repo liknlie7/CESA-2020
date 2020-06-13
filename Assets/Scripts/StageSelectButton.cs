@@ -8,11 +8,12 @@ using UnityEngine.SceneManagement;
 public class StageSelectButton : MonoBehaviour
 {
     public int id;
-    private StageSelectManager manager;
+    public StageSelectManager manager;
 
     private void Start()
     {
-        manager = GetComponentInParent<StageSelectManager>();
+        if (manager == null)
+            manager = GetComponentInParent<StageSelectManager>();
     }
 
     public void OnSubmit()

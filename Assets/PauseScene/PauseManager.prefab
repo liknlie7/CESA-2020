@@ -50,6 +50,7 @@ MonoBehaviour:
   pauseObject: {fileID: 123322216991904891}
   pauseAnim: {fileID: 877732624060185534}
   pauseBlur: {fileID: 0}
+  showCursor: 0
   clickSound: {fileID: 3376387139036463197}
 --- !u!82 &3376387139036463197
 AudioSource:
@@ -64,7 +65,7 @@ AudioSource:
   m_audioClip: {fileID: 8300000, guid: 074af886d2ab32d4c94e9b6ab7a270f0, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
-  m_Pitch: 1
+  m_Pitch: 2.13
   Loop: 0
   Mute: 0
   Spatialize: 0
@@ -274,6 +275,16 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 7201265508535713655}
+    - target: {fileID: 2384007087553315996, guid: e851edc8f61ddbb41b28a7aace60f580,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 7201265508535713655}
+    - target: {fileID: 2384007087553315996, guid: e851edc8f61ddbb41b28a7aace60f580,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: PushRetryButton
+      objectReference: {fileID: 0}
     - target: {fileID: 5234142013567278038, guid: e851edc8f61ddbb41b28a7aace60f580,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -338,16 +349,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_textInfo.pageCount
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2384007087553315996, guid: e851edc8f61ddbb41b28a7aace60f580,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 7201265508535713655}
-    - target: {fileID: 2384007087553315996, guid: e851edc8f61ddbb41b28a7aace60f580,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: PushRetryButton
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e851edc8f61ddbb41b28a7aace60f580, type: 3}

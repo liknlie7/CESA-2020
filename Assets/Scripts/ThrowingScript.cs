@@ -10,6 +10,9 @@ using UnityEngine.AI;
 
 public class ThrowingScript : MonoBehaviour
 {
+    [HideInInspector]
+    public bool thrownAchievement;
+
     /// 射出するオブジェクト
     [SerializeField, Tooltip("射出するオブジェクトをここに割り当てる")]
     private GameObject ThrowingObject;
@@ -91,6 +94,8 @@ public class ThrowingScript : MonoBehaviour
     {
         if (ThrowingObject)
         {
+            thrownAchievement = true;
+
             // Ballオブジェクトの生成
             GameObject ball = Instantiate(ThrowingObject, ThrowingOffset.transform.position, Quaternion.identity);
 
