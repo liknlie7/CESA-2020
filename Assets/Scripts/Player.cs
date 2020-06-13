@@ -6,6 +6,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.EventSystems;
 
 public class Player : MonoBehaviour
 {
@@ -112,7 +113,7 @@ public class Player : MonoBehaviour
                 locusFx.GetComponent<ParticleSystem>().Play();
             }
             
-            if (Input.GetMouseButtonDown(0))
+            if (Input.GetMouseButtonDown(0) && !EventSystem.current.IsPointerOverGameObject())
             {
                 _agent.SetDestination(target);
                 _playerSE.audioSource.PlayOneShot(_playerSE.MovePointSE);

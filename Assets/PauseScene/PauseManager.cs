@@ -34,20 +34,20 @@ public class PauseManager : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.Escape))
         {
-            if (!pauseAnim.GetBool(Enabled))
-            {
-
-                Pause();
-                
-            }
-            else
-            {
-                Resume();
-            }
+            Toggle();
         }
     }
+
+    public void Toggle()
+    {
+        if (!pauseAnim.GetBool(Enabled))
+            Pause();
+        else
+            Resume();
+    }
+
     // ゲーム停止
-    void Pause()
+    public void Pause()
     {
         if (SceneManager.GetActiveScene().buildIndex < 2)
             return;
