@@ -14,6 +14,10 @@ public class Player : MonoBehaviour
     // 移動スピード
     [SerializeField]
     private float _moveForce = 3.0f;
+
+    [SerializeField]
+    private GameObject fxPrefab;
+
     // プレイヤーの位置を入れる
     Vector3 playerPos;
     // Animator
@@ -30,7 +34,15 @@ public class Player : MonoBehaviour
     //泳ぐときの音をながす
     bool swim = false;
     public bool Swimming { set { swim = value; } get { return swim; } }
-    
+
+    // 生きているか
+    private bool _isAlive = true;
+    private float _destroyScaleSpeed = 2.0f;
+    private float _destroyRotateSpeed = 200.0f;
+
+
+    private PlayerSEController _playerSE;
+
     void Start()
     {
         //Rigidbodyを取得
@@ -42,14 +54,17 @@ public class Player : MonoBehaviour
 
         _agent = this.GetComponent<NavMeshAgent>();
         _agent.SetDestination(this.transform.position);
+
+        _playerSE = this.GetComponent<PlayerSEController>();
     }
 
     void FixedUpdate()
     {
-        Move();
-
-        float speed = _agent.velocity.magnitude;
-        _animator.SetFloat("Speed", speed);
+        if (_isAlive)
+            Move();
+        // もししんでいるのならプレイヤーを消滅させる
+        else
+            PlayerDisappearance();
     }
 
     // プレイヤーの回転
@@ -60,8 +75,6 @@ public class Player : MonoBehaviour
         if (plane.Raycast(ray, out float enter))
         {
             var target = ray.GetPoint(enter);
-            _animator.SetBool("Swimming", true);
-            Swimming = true;
             
             if (_agent.remainingDistance <= 0.3f)
             {
@@ -73,10 +86,24 @@ public class Player : MonoBehaviour
                 transform.rotation = Quaternion.LookRotation(newDir);
                 _animator.SetBool("Swimming", false);
                 Swimming = false;
+                // 泳ぐSE停止
+                _playerSE.audioSource.Stop();
+            }
+            else
+            {
+                _animator.SetBool("Swimming", true);
+                // 泳ぐSE再生
+                if (!Swimming)
+                    _playerSE.audioSource.PlayOneShot(_playerSE.SwimSE);
+                Swimming = true;
+
             }
             
             if (Input.GetMouseButtonDown(0))
+            {
                 _agent.SetDestination(target);
+                _playerSE.audioSource.PlayOneShot(_playerSE.MovePointSE);
+            }
         }
 
     }
@@ -96,11 +123,12 @@ public class Player : MonoBehaviour
         {
             GameObject.Find("RippleDirector").GetComponent<GameOverStaging>().GameOver();
             this.transform.GetChild(0).GetComponent<Collider>().enabled = false;
-
-            this.enabled = false;
+            
+            _isAlive = false;
 
             // プレイヤーを停止
             this.GetComponent<NavMeshAgent>().speed = 0.0f;
+            Instantiate(fxPrefab, this.transform.position, Quaternion.identity);
         }
     }
 
@@ -108,6 +136,20 @@ public class Player : MonoBehaviour
     public bool GetGoalFlag()
     {
         return goalFlag;
+    }
+    
+    // プレイヤーを消滅させる
+    private void PlayerDisappearance()
+    {
+        Vector3 scale = this.transform.localScale;
+        float sub = _destroyScaleSpeed * Time.deltaTime;
+        if (scale.x - sub < 0)
+            Destroy(this.gameObject);
+        else
+        {
+            this.transform.localScale = new Vector3(scale.x - sub, scale.y - sub, scale.z - sub);
+            this.transform.Rotate(new Vector3(0.0f, Time.deltaTime * _destroyRotateSpeed, 0.0f));
+        }
     }
 }
 

@@ -212,6 +212,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _moveForce: 3
+  fxPrefab: {fileID: 4774868211262680012, guid: a9c7fc5667342e647bc960b57f21b7c3,
+    type: 3}
   _rotateSpeed: 3
 --- !u!195 &2129325699769315070
 NavMeshAgent:
@@ -277,6 +279,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SwimSE: {fileID: 8300000, guid: 7d226efe12c47fa49b62456c80e9f46e, type: 3}
   ShotSE: {fileID: 8300000, guid: f2c34daca757698429bfebeff99216a7, type: 3}
+  MovePointSE: {fileID: 8300000, guid: e624bac5c6ba13e46a6ee661af9a4647, type: 3}
   audioSource: {fileID: 756100641207236801}
   _player: {fileID: 4722379020967747163}
   se_interval: 2

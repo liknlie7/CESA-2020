@@ -6,9 +6,9 @@ public class PlayerSEController : MonoBehaviour
 {
 	public AudioClip SwimSE;//泳ぐときのSE
 	public AudioClip ShotSE;//波紋を打つ時のSE
+	public AudioClip MovePointSE;//移動先決定時のSE
 
-	[SerializeField]
-	AudioSource audioSource;//オーディオソースを持つはこ
+	public AudioSource audioSource;//オーディオソースを持つはこ
 
 	[SerializeField]
 	Player _player;
@@ -28,17 +28,20 @@ public class PlayerSEController : MonoBehaviour
 	// Update is called once per frame
 	void Update()
 	{
-		//指定のキーが押されたら音声ファイルの再生をする
-		if (_player.Swimming)
-		{
-			// TODO:: 要調整(一定間隔で音が鳴るように修正)
-			audioSource.PlayOneShot(SwimSE);
-			count = 0;
-		}
-		if (Input.GetMouseButtonDown(1))
-		{
-			audioSource.PlayOneShot(ShotSE);
-		}
+  //      //指定のキーが押されたら音声ファイルの再生をする
+  //      if (_player.Swimming)
+  //      {
+  //          // TODO:: 要調整(一定間隔で音が鳴るように修正)
+  //          if (!audioSource.isPlaying)
+  //              audioSource.PlayOneShot(SwimSE);
+  //          count = 0;
+  //      }
+  //      else
+  //          audioSource.Stop();
+		//if (Input.GetMouseButtonDown(1))
+		//{
+		//	audioSource.PlayOneShot(ShotSE);
+		//}
 	}
 
 }
