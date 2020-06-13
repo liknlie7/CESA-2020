@@ -30,8 +30,6 @@ public class EnemyStopState : EnemyState
     public override void EnterEvent()
     {
         _prop.Agent.SetDestination(_initPos);
-
-        Debug.Log("EnemyStopState : に移行");
     }
 
     public override void Execute()

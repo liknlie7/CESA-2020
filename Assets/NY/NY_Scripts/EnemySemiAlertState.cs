@@ -20,7 +20,6 @@ public class EnemySemiAlertState : EnemyState
     {
         // 波紋のコライダーが消えている
         _prop.Agent.SetDestination(_prop.TargetTrs.position);
-        Debug.Log("SemiAlertState : に移行");
 
         _attentionTime = _crawlAttentionTime;
     }

@@ -19,7 +19,6 @@ public class EnemyAlertState : EnemyState
     public override void EnterEvent()
     {
         _alertGauge = 0.0f;
-        Debug.Log("EnemyAlertState : に移行");
     }
 
 
