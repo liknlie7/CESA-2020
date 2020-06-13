@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: RunawayEnemyPulse
   m_EditorClassIdentifier: 
   range: 6
-  speed: 8
-  color: {r: 0.19921875, g: 0.99609375, b: 0.90625, a: 1}
+  speed: 4
+  color: {r: 1, g: 0.5893744, b: 0, a: 1}
