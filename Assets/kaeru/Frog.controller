@@ -15,7 +15,7 @@ AnimatorController:
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 0}
-  - m_Name: Swiming
+  - m_Name: Swimming
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
@@ -43,7 +43,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 2
-    m_ConditionEvent: Swiming
+    m_ConditionEvent: Swimming
     m_EventTreshold: 0.5
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1102000067242273706}
@@ -90,7 +90,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 1
-    m_ConditionEvent: Swiming
+    m_ConditionEvent: Swimming
     m_EventTreshold: 0.5
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1102948957974148468}
