@@ -60,5 +60,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _speed: 0.2
-  GameOverUi: {fileID: 5934886880122615190, guid: 70cfc5c1bd017e545b21389812ac0b41,
-    type: 3}
+  GameOverUi: {fileID: 0}
