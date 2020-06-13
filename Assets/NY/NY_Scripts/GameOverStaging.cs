@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class GameOverStaging : MonoBehaviour
 {
-    private bool _isGameOver = false; // ゲームオーバーになったか
+    // チュートリアルで読み取れるようにするため(2020/06/13 佐竹)
+    public bool _isGameOver = false; // ゲームオーバーになったか
 
     [SerializeField]
     private float _speed; // スローモーションの速度
