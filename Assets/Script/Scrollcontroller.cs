@@ -13,9 +13,12 @@ public class Scrollcontroller : MonoBehaviour
     [SerializeField]
     Animator pageAnimator;
 
+    [SerializeField]
+    StageSelectManager SSMana;
     //左
     public void LeftOnClick()
     {
+        SSMana.clickSound.Play();
         pageAnimator.SetInteger("Page", 0);
 
         rightArrow.SetActive(true);
@@ -24,6 +27,7 @@ public class Scrollcontroller : MonoBehaviour
     //右
     public void RightOnClick()
     {
+        SSMana.clickSound.Play();
         pageAnimator.SetInteger("Page", 1);
 
         rightArrow.SetActive(false);

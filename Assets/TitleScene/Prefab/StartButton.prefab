@@ -36,10 +36,10 @@ RectTransform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0}
-  m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: 87}
-  m_SizeDelta: {x: 666.4, y: 107.6}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: -125}
+  m_SizeDelta: {x: 666.4, y: 107.600006}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &9076785531510765571
 CanvasRenderer:
@@ -283,21 +283,6 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
-    - target: {fileID: 247186444079075080, guid: 5b11bafb128648047878b44693fc6a47,
-        type: 3}
-      propertyPath: m_Material
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 247186444079075080, guid: 5b11bafb128648047878b44693fc6a47,
-        type: 3}
-      propertyPath: m_sharedMaterial
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 247186444079075080, guid: 5b11bafb128648047878b44693fc6a47,
-        type: 3}
-      propertyPath: m_padding
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 5525683325234129332, guid: 5b11bafb128648047878b44693fc6a47,
         type: 3}
       propertyPath: m_margin.z
@@ -352,6 +337,27 @@ PrefabInstance:
         type: 3}
       propertyPath: m_fontSizeBase
       value: 72
+      objectReference: {fileID: 0}
+    - target: {fileID: 5525683325234129332, guid: 5b11bafb128648047878b44693fc6a47,
+        type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 21766456504872840, guid: 2aa27ffdbc7484f42bb8f4877f600ed8,
+        type: 2}
+    - target: {fileID: 247186444079075080, guid: 5b11bafb128648047878b44693fc6a47,
+        type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 247186444079075080, guid: 5b11bafb128648047878b44693fc6a47,
+        type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 247186444079075080, guid: 5b11bafb128648047878b44693fc6a47,
+        type: 3}
+      propertyPath: m_padding
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5b11bafb128648047878b44693fc6a47, type: 3}

@@ -11,13 +11,17 @@ public class StageSelectManager : MonoBehaviour
     public Animator fadeOut;
     public Animator blurFadeOut;
 
+    public AudioSource clickSound;
+
     public void OnBack()
     {
+        clickSound.Play();
         StartCoroutine(ExecuteAfterTime($"TitleScene", 3));
     }
 
     public void OnStageButtonClicked()
     {
+        clickSound.Play();
         StartCoroutine(ExecuteAfterTime($"Stage{activeId}", 3));
     }
 

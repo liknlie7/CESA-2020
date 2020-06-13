@@ -77,7 +77,7 @@ MonoBehaviour:
     Value: 32
   Plugins: []
   MasterBanks:
-  - E:\softdata\git\CESA-2021\\Master
+  - D:\seikuu2\User\Documents\UnityProject\CESA-2021\\Master
   Banks:
   - Master.strings
   BanksToLoad: []
