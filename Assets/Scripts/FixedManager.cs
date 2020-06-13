@@ -12,6 +12,8 @@ public class FixedManager : MonoBehaviour
     public ScoreManager scoreManager;
     public EnemyManager enemyManager;
 
+    public CameraIntensity intensityManager;
+
     private void Awake()
     {
         instance = this;

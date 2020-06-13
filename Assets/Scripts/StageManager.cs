@@ -28,6 +28,7 @@ public class StageManager : MonoBehaviour
             // メニューの表示
             menuObject.SetActive(true);
             FixedManager.Get().scoreManager.SaveScore();
+            FixedManager.Get().intensityManager.intensityTo = 1;
         }
     }
 
