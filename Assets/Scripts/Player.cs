@@ -20,6 +20,10 @@ public class Player : MonoBehaviour
 
     [SerializeField] private ParticleSystem locusFx;
 
+    // 親子関係にしたくないのでインスタンスします
+    [SerializeField] private GameObject _destinationPrefab;
+    private GameObject _destination = null;
+
     // プレイヤーの位置を入れる
     Vector3 playerPos;
 
@@ -61,6 +65,10 @@ public class Player : MonoBehaviour
         _agent.SetDestination(position);
 
         _playerSE = this.GetComponent<PlayerSEController>();
+
+        // 親子関係にしたくないのでインスタンスします
+        _destination = Instantiate(_destinationPrefab);
+        _destination.SetActive(false);
     }
 
     void Update()
@@ -76,6 +84,10 @@ public class Player : MonoBehaviour
             {
                 _agent.SetDestination(target);
                 _playerSE.audioSource.PlayOneShot(_playerSE.MovePointSE);
+
+                // 移動先を記すオブジェクトの位置を変更
+                _destination.transform.position = target;
+                _destination.SetActive(true);
             }
         }
     }
@@ -92,6 +104,10 @@ public class Player : MonoBehaviour
     // プレイヤーの回転
     void Move()
     {
+
+        // ほぼ停止していたら移動先印のオブジェクトを非表示にする
+
+        // 停止処理
         if (_agent.remainingDistance <= 0.5f)
         {
             Vector3 targetDir = target - transform.position;
@@ -100,6 +116,11 @@ public class Player : MonoBehaviour
             float speed = _rotateSpeed * Time.deltaTime;
             Vector3 newDir = Vector3.RotateTowards(transform.forward, targetDir, speed, 0.0F);
             transform.rotation = Quaternion.LookRotation(newDir);
+
+
+            if(_animator.GetBool("Swimming"))
+                _destination.SetActive(false);
+
             _animator.SetBool("Swimming", false);
             //Swimming = false;
             // 泳ぐSE停止
@@ -108,6 +129,7 @@ public class Player : MonoBehaviour
 
             locusFx.Stop();
         }
+        // 泳いでいる処理
         else
         {
             _animator.SetBool("Swimming", true);
@@ -118,7 +140,11 @@ public class Player : MonoBehaviour
             _playerSE.SwimSE.SetBool("Enabled", true);
 
             if (!locusFx.isPlaying)
+            {
                 locusFx.Play();
+                // 移動先印オブジェクトを表示させる
+                _destination.SetActive(true);
+            }
         }
     }
 
@@ -127,7 +153,6 @@ public class Player : MonoBehaviour
     {
         if (other.CompareTag("Goal"))
         {
-            Debug.Log("a");
             goalFlag = true;
 
             // 敵を全て停止させる
