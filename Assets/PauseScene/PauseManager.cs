@@ -25,6 +25,7 @@ public class PauseManager : MonoBehaviour
     public Animator pauseBlur;
     private static readonly int Enabled = Animator.StringToHash("Enabled");
 
+    public AudioSource clickSound;
     void Start()
     {
     }
@@ -38,6 +39,7 @@ public class PauseManager : MonoBehaviour
 
     public void Toggle()
     {
+        clickSound.Play();
         if (!pauseAnim.GetBool(Enabled))
             Pause();
         else
@@ -76,23 +78,27 @@ public class PauseManager : MonoBehaviour
     // ゲームにもどるボタンを押された時
     public void PushBacktoGameButton()
     {
+        clickSound.Play();
         Resume();
     }
 
     public void PushRetryButton()
     {
+        clickSound.Play();
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     // ステージセレクトボタンを押された時
     public void PushStageSelectButton()
     {
+        clickSound.Play();
         SceneManager.LoadScene(stageSelectSceneName);
     }
 
     // タイトルへ戻るを押された時
     public void PushBacktoTitle()
     {
+        clickSound.Play();
         SceneManager.LoadScene(titleSceneName);
     }
 }
