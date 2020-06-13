@@ -41,6 +41,8 @@ public class ThrowingScript : MonoBehaviour
     enum TargetMaterialID
     { possible = 0, inpossible }
 
+    private PlayerSEController _playerSE;
+
     enum State
     {
         ThrowingPossible = 0,
@@ -62,6 +64,8 @@ public class ThrowingScript : MonoBehaviour
         targetFX = Instantiate(targetFXPrefab);
 
         _agent = this.GetComponent<NavMeshAgent>();
+
+        _playerSE = this.GetComponent<PlayerSEController>();
     }
 
     // Update is called once per frame
@@ -165,6 +169,9 @@ public class ThrowingScript : MonoBehaviour
                 // インターバルをリセットする
                 _isThrowing = false;
                 _throwingInterval = 0.0f;
+
+                // 音を鳴らす()
+                _playerSE.audioSource.PlayOneShot(_playerSE.ShotSE);
             }
             targetFX.transform.position = target;
             Vector3 particlePos = target;
