@@ -28,9 +28,8 @@ public class EnemyRunawayState : EnemyState
         _render = this.GetComponent<Renderer>();
 
         // 波紋を発生
-        this.tag = "PlayerSonar";
-        CameraManager.Get().sonarFx.Pulse(this.transform.position, _sonar, this.gameObject);
-
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        CameraManager.Get().sonarFx.Pulse(this.transform.position, _sonar, player);
     }
 
     // ステートを実行
