@@ -131,7 +131,13 @@ public class Player : MonoBehaviour
             Debug.Log("a");
             goalFlag = true;
 
+            // 敵を全て停止させる
+            FixedManager.Get().enemyManager.StopAllEnemy();
+
+            // プレイヤー関連を全て停止
             this.transform.GetChild(0).GetComponent<Collider>().enabled = false;
+            this.GetComponent<NavMeshAgent>().speed = 0.0f;
+            this.GetComponent<ThrowingScript>().enabled = false;
         }
         if(other.tag == "Enemy")
         {
@@ -161,7 +167,7 @@ public class Player : MonoBehaviour
         Vector3 scale = this.transform.localScale;
         //float sub = _destroyScaleSpeed * Time.deltaTime;
         //if (scale.x - sub < 0)
-            Destroy(this.gameObject);
+        Destroy(this.gameObject);
         //else
         {
         //    this.transform.localScale = new Vector3(scale.x - sub, scale.y - sub, scale.z - sub);

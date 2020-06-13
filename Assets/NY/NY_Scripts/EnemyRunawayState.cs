@@ -21,7 +21,6 @@ public class EnemyRunawayState : EnemyState
     // ステートが遷移してきたとき
     public override void EnterEvent()
     {
-        Debug.Log("RunawayState : に移行");
         this.GetComponent<NavMeshAgent>().enabled = false;
         _render = this.GetComponent<Renderer>();
         // TODO:: ここで波紋を出す
