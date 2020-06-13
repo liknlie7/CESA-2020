@@ -25,6 +25,8 @@ public class StageManager : MonoBehaviour
         //ゴールしたなら
         if (player.GetGoalFlag())
         {
+            // カーソルの表示
+            Cursor.visible = true;
             // メニューの表示
             menuObject.SetActive(true);
             FixedManager.Get().scoreManager.SaveScore();

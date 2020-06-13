@@ -28,6 +28,8 @@ public class PauseManager : MonoBehaviour
     public AudioSource clickSound;
     void Start()
     {
+        // マウスカーソルを非表示にする
+        Cursor.visible = false;
     }
 
     // Update is called once per frame
@@ -49,6 +51,8 @@ public class PauseManager : MonoBehaviour
     // ゲーム停止
     public void Pause()
     {
+        // カーソルを表示する
+        Cursor.visible = true;
         if (SceneManager.GetActiveScene().buildIndex < 2)
             return;
 
@@ -65,6 +69,8 @@ public class PauseManager : MonoBehaviour
     // 再開
     void Resume()
     {
+        // カーソルを非表示にする
+        Cursor.visible = false;
         //Debug.Log("りじゅむ");
         // オブジェクトにアタッチされているレンダラー以外を再開させる
         FixedManager.Get().enemyManager.Resume();
