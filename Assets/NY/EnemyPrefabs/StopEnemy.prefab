@@ -91,68 +91,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!1 &5242779173423040195
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 6553964691790357920}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 6553964691790233344}
-  m_Layer: 0
-  m_Name: Missing Prefab (Dummy)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &6553964691790233344
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 400032, guid: 36c61648b5d8f43489838c0c751c81b7,
-    type: 3}
-  m_PrefabInstance: {fileID: 6553964691790357920}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5242779173423040195}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1504534417697036764}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &6271295974407013297
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 6553964691790357920}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1504534417697036764}
-  m_Layer: 0
-  m_Name: Smallmouth Bass (Missing Prefab)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1504534417697036764
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 6553964691790357920}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6271295974407013297}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 6553964691790233344}
-  m_Father: {fileID: 7166597350134512055}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7166597350134512035
 GameObject:
   m_ObjectHideFlags: 0
@@ -175,7 +113,7 @@ GameObject:
   - component: {fileID: 8294723973805992224}
   - component: {fileID: 8109197345569072542}
   - component: {fileID: 7487668232170547264}
-  - component: {fileID: 8197912051772643621}
+  - component: {fileID: 2811302362520068413}
   m_Layer: 0
   m_Name: StopEnemy
   m_TagString: Enemy
@@ -405,6 +343,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76695142b01e71e42bf5f5e5504397d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2811302362520068413
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7166597350134512035}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75b7b7d936b7eab4ba27a6071f0bff01, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  range: 30
 --- !u!1001 &6774543699903172967
 PrefabInstance:
   m_ObjectHideFlags: 0
