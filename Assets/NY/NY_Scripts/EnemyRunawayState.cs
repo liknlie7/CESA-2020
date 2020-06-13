@@ -15,6 +15,9 @@ public class EnemyRunawayState : EnemyState
     private const float TIMER_RATE = 4.0f; //　タイマーの倍率
     private Renderer _render;
 
+    [SerializeField]
+    private SonarPulse _sonar;
+
     // ステートの名前を取得
     public override string GetStateName() { return "EnemyRunawayState"; }
 
@@ -23,7 +26,11 @@ public class EnemyRunawayState : EnemyState
     {
         this.GetComponent<NavMeshAgent>().enabled = false;
         _render = this.GetComponent<Renderer>();
-        // TODO:: ここで波紋を出す
+
+        // 波紋を発生
+        this.tag = "PlayerSonar";
+        CameraManager.Get().sonarFx.Pulse(this.transform.position, _sonar, this.gameObject);
+
     }
 
     // ステートを実行
@@ -34,13 +41,17 @@ public class EnemyRunawayState : EnemyState
         this.transform.Translate(pos);
 
         // カメラが外に沈むと消える
-        // if (_render.isVisible == false)
-        //   Destroy(this.gameObject);
-        // カメラが外に沈むと消える
         if (_timer * TIMER_RATE > 3.14 * 1.5f)
-            Destroy(this.gameObject);
+            this.gameObject.SetActive(false);
     }
 
     // ステートから出ていくとき
     public override void ExitEvent() { }
+
+    void OnTriggerEnter(Collider other)
+    {
+        // プレイヤーのソナーかプレイヤーに衝突したらEnemyRunawayStateに移行
+        if (StateController.GetStateName() != "EnemyRunawayState" && (other.tag == "Player" || other.tag == "PlayerSonar"))
+            StateController.SetState("EnemyRunawayState");
+    }
 }

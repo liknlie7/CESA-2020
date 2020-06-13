@@ -23,7 +23,7 @@ public class rippleSphere : MonoBehaviour
     {
         this.tag = sonarbound.source.tag;
 
-        if (other.gameObject.CompareTag("Enemy") || other.gameObject.CompareTag("Stage"))
+        if (other.gameObject.CompareTag("Enemy") || other.gameObject.CompareTag("Stage") || other.gameObject.CompareTag("RunawayEnemy"))
         {
             if (sonarbound.source?.CompareTag("PlayerSonar") ?? false)
             {
