@@ -10,6 +10,9 @@ public class ScoreManager : MonoBehaviour
     private string KEY_NUM = "_tadpoleNum";
     private string KEY_CLEARED = "_cleared";
 
+    public AudioSource scoreSound;
+    public AudioSource goalSound;
+
     void Start()
     {
         _score = 0;
@@ -30,9 +33,16 @@ public class ScoreManager : MonoBehaviour
             PlayerPrefs.SetInt(keyNum, _score);
     }
 
+    public void Goal()
+    {
+        goalSound.Play();
+        SaveScore();
+    }
+
     // スコアを追加
     public void AddScore()
     {
         _score++;
+        scoreSound.Play();
     }
 }

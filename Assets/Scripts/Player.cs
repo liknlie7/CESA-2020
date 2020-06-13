@@ -12,26 +12,24 @@ public class Player : MonoBehaviour
 {
     // Rigidbodyを変数に入れる
     Rigidbody rb;
+
     // 移動スピード
-    [SerializeField]
-    private float _moveForce = 3.0f;
+    [SerializeField] private float _moveForce = 3.0f;
 
-    [SerializeField]
-    private GameObject fxPrefab;
+    [SerializeField] private GameObject fxPrefab;
 
-    [SerializeField]
-    private GameObject locusFxPrefab;
+    [SerializeField] private GameObject locusFxPrefab;
     private GameObject locusFx;
 
     // プレイヤーの位置を入れる
     Vector3 playerPos;
+
     // Animator
     Animator _animator;
 
     // 回転速度
-    [SerializeField,Range(0.0f,10.0f)]
-    private float _rotateSpeed; 
-   
+    [SerializeField, Range(0.0f, 10.0f)] private float _rotateSpeed;
+
     private NavMeshAgent _agent;
 
     // ゴールとの接触
@@ -84,12 +82,12 @@ public class Player : MonoBehaviour
         if (plane.Raycast(ray, out float enter))
         {
             var target = ray.GetPoint(enter);
-            
+
             if (_agent.remainingDistance <= 0.3f)
             {
                 Vector3 targetDir = target - transform.position;
                 targetDir.y = transform.position.y;
-                
+
                 float speed = _rotateSpeed * Time.deltaTime;
                 Vector3 newDir = Vector3.RotateTowards(transform.forward, targetDir, speed, 0.0F);
                 transform.rotation = Quaternion.LookRotation(newDir);
@@ -112,21 +110,19 @@ public class Player : MonoBehaviour
 
                 locusFx.GetComponent<ParticleSystem>().Play();
             }
-            
+
             if (Input.GetMouseButtonDown(0) && !EventSystem.current.IsPointerOverGameObject())
             {
                 _agent.SetDestination(target);
                 _playerSE.audioSource.PlayOneShot(_playerSE.MovePointSE);
             }
         }
-
     }
 
     // ゴールとの当たり判定
     public void OnTriggerEnter(Collider other)
     {
-
-        if (other.tag == "Goal")
+        if (other.CompareTag("Goal"))
         {
             Debug.Log("a");
             goalFlag = true;
@@ -138,14 +134,21 @@ public class Player : MonoBehaviour
             this.transform.GetChild(0).GetComponent<Collider>().enabled = false;
             this.GetComponent<NavMeshAgent>().speed = 0.0f;
             this.GetComponent<ThrowingScript>().enabled = false;
+
+            // カーソルの表示
+            Cursor.visible = true;
+            // メニューの表示
+            FixedManager.Get().menuCanvas.SetActive(true);
+            FixedManager.Get().scoreManager.Goal();
+            FixedManager.Get().intensityManager.intensityTo = 1;
         }
 
         // TODO:: 長い　できればrippleSphereを編集して"RunawayEnemy"のタグも光らせるようにしたい
-        if (other.tag == "Enemy")
+        if (other.CompareTag("Enemy"))
         {
-            GameObject.Find("RippleDirector").GetComponent<GameOverStaging>().GameOver();
+            FixedManager.Get().gameOverStaging.GameOver();
             this.transform.GetChild(0).GetComponent<Collider>().enabled = false;
-            
+
             _isAlive = false;
 
             // プレイヤーを停止
@@ -162,7 +165,7 @@ public class Player : MonoBehaviour
     {
         return goalFlag;
     }
-    
+
     // プレイヤーを消滅させる
     private void PlayerDisappearance()
     {
@@ -172,9 +175,8 @@ public class Player : MonoBehaviour
         Destroy(this.gameObject);
         //else
         {
-        //    this.transform.localScale = new Vector3(scale.x - sub, scale.y - sub, scale.z - sub);
-        //    this.transform.Rotate(new Vector3(0.0f, Time.deltaTime * _destroyRotateSpeed, 0.0f));
+            //    this.transform.localScale = new Vector3(scale.x - sub, scale.y - sub, scale.z - sub);
+            //    this.transform.Rotate(new Vector3(0.0f, Time.deltaTime * _destroyRotateSpeed, 0.0f));
         }
     }
 }
-

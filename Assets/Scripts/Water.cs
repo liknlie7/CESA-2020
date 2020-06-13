@@ -8,6 +8,8 @@ public class Water : MonoBehaviour
     [SerializeField]
     private GameObject _collider;
 
+    public AudioSource sonarSound;
+
     void OnCollisionEnter(Collision other)
     {
         // ソナーを発信
@@ -15,6 +17,8 @@ public class Water : MonoBehaviour
 
         this.GetComponent<Collider>().enabled = false;
         this.GetComponent<Renderer>().enabled = false;
+
+        sonarSound.Play();
 
         StartCoroutine("DestroyObject");
     }

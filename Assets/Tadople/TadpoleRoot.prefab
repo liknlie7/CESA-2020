@@ -491,6 +491,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _fxPrefab: {fileID: 4774868211262680012, guid: a9c7fc5667342e647bc960b57f21b7c3,
     type: 3}
+  _tadpoleSound: {fileID: 8300000, guid: aa305e3cc21b804488428f19901a4cd8, type: 3}
 --- !u!114 &5293428492384824535
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -529,6 +530,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75b7b7d936b7eab4ba27a6071f0bff01, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  range: 360
 --- !u!1001 &5306147454198388496
 PrefabInstance:
   m_ObjectHideFlags: 0

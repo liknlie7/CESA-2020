@@ -25,11 +25,13 @@ public class PauseManager : MonoBehaviour
     public Animator pauseBlur;
     private static readonly int Enabled = Animator.StringToHash("Enabled");
 
+    public bool showCursor;
+
     public AudioSource clickSound;
     void Start()
     {
         // マウスカーソルを非表示にする
-        Cursor.visible = false;
+        Cursor.visible = showCursor;
     }
 
     // Update is called once per frame
@@ -51,10 +53,14 @@ public class PauseManager : MonoBehaviour
     // ゲーム停止
     public void Pause()
     {
-        // カーソルを表示する
-        Cursor.visible = true;
         if (SceneManager.GetActiveScene().buildIndex < 2)
             return;
+
+        if (FixedManager.Get().enemyManager.isPaused)
+            return;
+
+        // カーソルを表示する
+        Cursor.visible = true;
 
         // オブジェクトにアタッチされているレンダラー以外を停止させる
         FixedManager.Get().enemyManager.StopAllEnemy();
@@ -70,7 +76,7 @@ public class PauseManager : MonoBehaviour
     void Resume()
     {
         // カーソルを非表示にする
-        Cursor.visible = false;
+        Cursor.visible = showCursor;
         //Debug.Log("りじゅむ");
         // オブジェクトにアタッチされているレンダラー以外を再開させる
         FixedManager.Get().enemyManager.Resume();

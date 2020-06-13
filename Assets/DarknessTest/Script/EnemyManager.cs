@@ -9,6 +9,8 @@ public class EnemyManager : MonoBehaviour
     // 敵の優先度管理
     //private int _priorityCount = 0;
 
+    [HideInInspector] public bool isPaused;
+
     // オブジェクト(エネミーの登録)
     public void RegisterEnemy(GameObject obj)
     {
@@ -20,6 +22,8 @@ public class EnemyManager : MonoBehaviour
     // 敵を全て停止させる
     public void StopAllEnemy()
     {
+        isPaused = true;
+
         // 敵を全て停止
         // オブジェクトにアタッチされているレンダラー以外を停止させる
         foreach (GameObject obj in _enemyList)
@@ -38,6 +42,8 @@ public class EnemyManager : MonoBehaviour
     // 敵を全て再開させる
     public void Resume()
     {
+        isPaused = false;
+
         // 敵を全て再開
         // オブジェクトにアタッチされているレンダラー以外を再開させる
         foreach (GameObject obj in _enemyList)

@@ -283,6 +283,7 @@ MonoBehaviour:
   SwimSE: {fileID: 7106465124502395601}
   ShotSE: {fileID: 8300000, guid: f2c34daca757698429bfebeff99216a7, type: 3}
   MovePointSE: {fileID: 8300000, guid: e624bac5c6ba13e46a6ee661af9a4647, type: 3}
+  GoalSE: {fileID: 8300000, guid: cf1c622b9ba290d4d90f9b34e3e0ed30, type: 3}
   audioSource: {fileID: 756100641207236801}
   _player: {fileID: 4722379020967747163}
   se_interval: 2

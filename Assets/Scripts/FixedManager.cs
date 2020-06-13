@@ -8,6 +8,7 @@ public class FixedManager : MonoBehaviour
 
     public GameObject menuCanvas;
     public RippleManager rippleManager;
+    public GameOverStaging gameOverStaging;
 
     public ScoreManager scoreManager;
     public EnemyManager enemyManager;
