@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: FMODStudioSettings
   m_EditorClassIdentifier: 
   SwitchSettingsMigration: 1
-  HasSourceProject: 1
-  HasPlatforms: 1
+  HasSourceProject: 0
+  HasPlatforms: 0
   sourceProjectPath: Resources\FMOD\Audio\Audio.fspro
   SourceProjectPathUnformatted: Resources\FMOD\Audio\Audio.fspro
-  SourceBankPathUnformatted: Resources\FMOD\Audio\Build
+  SourceBankPathUnformatted: Resources\FMOD\Audio\Build\Desktop
   AutomaticEventLoading: 1
   BankLoadType: 0
   AutomaticSampleLoading: 0
@@ -77,8 +77,7 @@ MonoBehaviour:
     Value: 32
   Plugins: []
   MasterBanks:
-  - D:\seikuu2\User\Documents\UnityProject\CESA-2021\\Master
-  Banks:
-  - Master.strings
+  - Master
+  Banks: []
   BanksToLoad: []
   LiveUpdatePort: 9264

@@ -18,6 +18,8 @@ public class SceneSoundSwitcher : MonoBehaviour
             anim.SetInteger(Scene, 0);
         else if (sceneName == "StageSelectScene")
             anim.SetInteger(Scene, 1);
+        else if (FixedManager.Get().scoreManager.goaled)
+            anim.SetInteger(Scene, 3);
         else
             anim.SetInteger(Scene, 2);
     }

@@ -7,7 +7,7 @@ public class SoundManager : SingletonMonoBehaviour<SoundManager>
 {
     private FMOD.Studio.EventInstance instance;
 
-    [SerializeField] [Range(0f, 2f)] private float scene;
+    [SerializeField] [Range(0f, 3f)] private float scene;
 
     void Start()
     {

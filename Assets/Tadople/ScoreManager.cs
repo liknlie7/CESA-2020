@@ -7,6 +7,10 @@ public class ScoreManager : MonoBehaviour
 {
     // 現在のスコア
     public int _score;
+    // ゴールしたか
+    [HideInInspector]
+    public bool goaled;
+
     private string KEY_NUM = "_tadpoleNum";
     private string KEY_CLEARED = "_cleared";
 
@@ -36,6 +40,7 @@ public class ScoreManager : MonoBehaviour
     public void Goal()
     {
         goalSound.Play();
+        goaled = true;
         SaveScore();
     }
 
