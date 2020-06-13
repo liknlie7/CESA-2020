@@ -5051,6 +5051,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: StartButton
       objectReference: {fileID: 0}
+    - target: {fileID: 9076785531510765572, guid: bd72e79b8fcf0f24c923e8085100557a,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 9076785531510765570, guid: bd72e79b8fcf0f24c923e8085100557a,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5200,6 +5205,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_textInfo.pageCount
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9122347376735772404, guid: bd72e79b8fcf0f24c923e8085100557a,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bd72e79b8fcf0f24c923e8085100557a, type: 3}
