@@ -205,6 +205,8 @@ MonoBehaviour:
   fxPrefab: {fileID: 4774868211262680012, guid: a9c7fc5667342e647bc960b57f21b7c3,
     type: 3}
   locusFx: {fileID: 2847980712199229207}
+  _destinationPrefab: {fileID: 2951883969222313205, guid: 77aa3def2e5df4642bc63048d8e08cdb,
+    type: 3}
   _rotateSpeed: 3
 --- !u!195 &2129325699769315070
 NavMeshAgent:
