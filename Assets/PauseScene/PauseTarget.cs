@@ -11,6 +11,6 @@ public class PauseTarget : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        GameObject.Find("PauseManager").GetComponent<PauseManager>().AddPauseTarget(this.gameObject);
+        FixedManager.Get().enemyManager.RegisterEnemy(gameObject);
     }
 }

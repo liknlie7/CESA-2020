@@ -111,6 +111,7 @@ GameObject:
   - component: {fileID: 8828731612720361767}
   - component: {fileID: 8828731612720361766}
   - component: {fileID: 5388212518329642186}
+  - component: {fileID: 4231819274543569534}
   m_Layer: 2
   m_Name: CrawlEnemy
   m_TagString: Enemy
@@ -316,6 +317,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pulse: {fileID: 11400000, guid: 49908ac2ed078ff4ca80a920266b61e4, type: 2}
   sonar_Inteval: 2
+--- !u!114 &4231819274543569534
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8828731612720361765}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76695142b01e71e42bf5f5e5504397d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &977354845104879214
 PrefabInstance:
   m_ObjectHideFlags: 0

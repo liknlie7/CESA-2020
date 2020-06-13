@@ -19,8 +19,6 @@ public class EnemyController : MonoBehaviour
         SetState(_startStateName);
         foreach (EnemyState state in _stateList)
             state.StateController = this;
-
-        FixedManager.Get().enemyManager.RegisterEnemy(this.gameObject);
     }
 
     // Update is called once per frame
