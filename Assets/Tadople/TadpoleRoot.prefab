@@ -400,6 +400,7 @@ GameObject:
   - component: {fileID: 5306147455889583688}
   - component: {fileID: 5293428492384824535}
   - component: {fileID: 2125359177479183221}
+  - component: {fileID: 1263403571880587157}
   m_Layer: 0
   m_Name: TadpoleRoot
   m_TagString: Model
@@ -514,6 +515,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 76695142b01e71e42bf5f5e5504397d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1263403571880587157
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5306147455889583692}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75b7b7d936b7eab4ba27a6071f0bff01, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &5306147454198388496
