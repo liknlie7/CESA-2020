@@ -55,8 +55,18 @@ public class TitleController : MonoBehaviour
     public void PushStartButton()
     {
         clickSound.Play();
-        // プレイシーンに遷移
-        SceneManager.LoadScene(playSceneName);
+        if (PlayerPrefs.GetInt("beginner") != 1)
+        {
+            PlayerPrefs.SetInt("beginner", 1);
+
+            // プレイシーンに遷移
+            SceneManager.LoadScene("Stage0");
+        }
+        else
+        {
+            // プレイシーンに遷移
+            SceneManager.LoadScene(playSceneName);
+        }
     }
 
     // ゲーム終了ボタンが押された時
