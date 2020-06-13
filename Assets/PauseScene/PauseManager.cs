@@ -28,6 +28,7 @@ public class PauseManager : MonoBehaviour
     public bool showCursor;
 
     public AudioSource clickSound;
+
     void Start()
     {
         // マウスカーソルを非表示にする
@@ -43,21 +44,31 @@ public class PauseManager : MonoBehaviour
 
     public void Toggle()
     {
-        clickSound.Play();
+        bool b;
         if (!pauseAnim.GetBool(Enabled))
-            Pause();
+            b = Pause();
         else
-            Resume();
+            b = Resume();
+        if (b)
+            clickSound.Play();
     }
 
     // ゲーム停止
-    public void Pause()
+    public bool Pause()
     {
         if (SceneManager.GetActiveScene().buildIndex < 2)
-            return;
+        {
+            if (SceneManager.GetActiveScene().buildIndex == 1)
+            {
+                SceneManager.LoadScene(0);
+                return true;
+            }
+
+            return false;
+        }
 
         if (FixedManager.Get().enemyManager.isPaused)
-            return;
+            return false;
 
         // カーソルを表示する
         Cursor.visible = true;
@@ -70,10 +81,12 @@ public class PauseManager : MonoBehaviour
         pauseObject.SetActive(true);
         pauseAnim.SetBool(Enabled, true);
         pauseBlur.SetBool(Enabled, true);
+
+        return true;
     }
 
     // 再開
-    void Resume()
+    public bool Resume()
     {
         // カーソルを非表示にする
         Cursor.visible = showCursor;
@@ -85,6 +98,8 @@ public class PauseManager : MonoBehaviour
         //pauseObject.SetActive(false);
         pauseAnim.SetBool(Enabled, false);
         pauseBlur.SetBool(Enabled, false);
+
+        return true;
     }
 
     // ゲームにもどるボタンを押された時

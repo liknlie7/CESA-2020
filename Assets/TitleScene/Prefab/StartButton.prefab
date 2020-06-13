@@ -283,6 +283,21 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 247186444079075080, guid: 5b11bafb128648047878b44693fc6a47,
+        type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 247186444079075080, guid: 5b11bafb128648047878b44693fc6a47,
+        type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 247186444079075080, guid: 5b11bafb128648047878b44693fc6a47,
+        type: 3}
+      propertyPath: m_padding
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5525683325234129332, guid: 5b11bafb128648047878b44693fc6a47,
         type: 3}
       propertyPath: m_margin.z
@@ -316,7 +331,7 @@ PrefabInstance:
     - target: {fileID: 5525683325234129332, guid: 5b11bafb128648047878b44693fc6a47,
         type: 3}
       propertyPath: m_textInfo.characterCount
-      value: 7
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5525683325234129332, guid: 5b11bafb128648047878b44693fc6a47,
         type: 3}
@@ -331,12 +346,12 @@ PrefabInstance:
     - target: {fileID: 5525683325234129332, guid: 5b11bafb128648047878b44693fc6a47,
         type: 3}
       propertyPath: m_fontSize
-      value: 72
+      value: 36
       objectReference: {fileID: 0}
     - target: {fileID: 5525683325234129332, guid: 5b11bafb128648047878b44693fc6a47,
         type: 3}
       propertyPath: m_fontSizeBase
-      value: 72
+      value: 36
       objectReference: {fileID: 0}
     - target: {fileID: 5525683325234129332, guid: 5b11bafb128648047878b44693fc6a47,
         type: 3}
@@ -344,20 +359,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21766456504872840, guid: 2aa27ffdbc7484f42bb8f4877f600ed8,
         type: 2}
-    - target: {fileID: 247186444079075080, guid: 5b11bafb128648047878b44693fc6a47,
+    - target: {fileID: 5525683325234129332, guid: 5b11bafb128648047878b44693fc6a47,
         type: 3}
-      propertyPath: m_Material
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 247186444079075080, guid: 5b11bafb128648047878b44693fc6a47,
-        type: 3}
-      propertyPath: m_sharedMaterial
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 247186444079075080, guid: 5b11bafb128648047878b44693fc6a47,
-        type: 3}
-      propertyPath: m_padding
-      value: 0
+      propertyPath: m_text
+      value: "\u904A\u3073\u65B9"
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5b11bafb128648047878b44693fc6a47, type: 3}
