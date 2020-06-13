@@ -57,6 +57,9 @@ public class TutorialManager : MonoBehaviour
     private GameObject enemy;
     // 敵のスクリプト
     private EnemyController enemyScript;
+
+    private static readonly int Hide = Animator.StringToHash("Hide");
+
     // 初期化
     private void Start()
     {
@@ -90,7 +93,7 @@ public class TutorialManager : MonoBehaviour
     {
         if(Vector3.Distance(initialP_pos,player.transform.position) > GOAL_DISTANCE)
         {
-            animator.Play("Hide");
+            animator.SetTrigger(Hide);
             currentTask = (int)TASK.GOAL;
         }
         ScoreCheck();
@@ -126,7 +129,7 @@ public class TutorialManager : MonoBehaviour
     {
         if (scoreMana._score > 0)
         {
-            animator.Play("Hide");
+            animator.SetTrigger(Hide);
             currentTask = (int)TASK.OTAMA;
         }
     }
@@ -135,7 +138,7 @@ public class TutorialManager : MonoBehaviour
     {
         if(enemyScript.GetStateName() == "EnemyAlertState")
         {
-            animator.Play("Hide");
+            animator.SetTrigger(Hide);
             currentTask = (int)TASK.ENEMY;
         }
     }
@@ -146,7 +149,7 @@ public class TutorialManager : MonoBehaviour
         {
             if (playerScript.GetGoalFlag())
             {
-                animator.Play("Hide");
+                animator.SetTrigger(Hide);
                 currentTask = (int)TASK.CLEAR;
             }
         }   
@@ -155,7 +158,7 @@ public class TutorialManager : MonoBehaviour
     {
         if(gameOverScript._isGameOver)
         {
-            animator.Play("Hide");
+            animator.SetTrigger(Hide);
             currentTask = (int)TASK.GAMEOVER;
         }
     }
