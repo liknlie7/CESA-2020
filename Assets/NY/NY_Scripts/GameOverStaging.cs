@@ -44,7 +44,8 @@ public class GameOverStaging : MonoBehaviour
 
         // 敵を全て停止させる
         FixedManager.Get().enemyManager.StopAllEnemy();
-
+        // マウスカーソルを表示する
+        Cursor.visible = true;
         GameOverProduction();
     }
 
