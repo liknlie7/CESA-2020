@@ -7,7 +7,8 @@ public class ScoreManager : MonoBehaviour
 {
     // 現在のスコア
     public int _score;
-    private string KEY = "_tadpoleNum";
+    private string KEY_NUM = "_tadpoleNum";
+    private string KEY_CLEARED = "_cleared";
 
     void Start()
     {
@@ -17,11 +18,16 @@ public class ScoreManager : MonoBehaviour
     // スコアを保存(最高スコアが更新されたら上書きする)
     public void SaveScore()
     {
-        string key = SceneManager.GetActiveScene().name + KEY;
-        int highScore = PlayerPrefs.GetInt(key);
+        string sname = SceneManager.GetActiveScene().name;
+        string keyNum = sname + KEY_NUM;
+        string keyCleared = sname + KEY_CLEARED;
+
+        // クリア判定
+        PlayerPrefs.SetInt(keyCleared, 1);
         // スコアを更新
-        if(highScore<_score)
-            PlayerPrefs.SetInt(key ,_score);
+        int highScore = PlayerPrefs.GetInt(keyNum);
+        if (highScore < _score)
+            PlayerPrefs.SetInt(keyNum, _score);
     }
 
     // スコアを追加
