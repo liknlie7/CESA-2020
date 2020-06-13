@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerSEController : MonoBehaviour
 {
-	public AudioClip SwimSE;//泳ぐときのSE
+	public Animator SwimSE;//泳ぐときのSE
 	public AudioClip ShotSE;//波紋を打つ時のSE
 	public AudioClip MovePointSE;//移動先決定時のSE
 

@@ -36,8 +36,8 @@ public class Player : MonoBehaviour
     // ゴールとの接触
     bool goalFlag = false;
     //泳ぐときの音をながす
-    bool swim = false;
-    public bool Swimming { set { swim = value; } get { return swim; } }
+    //bool swim = false;
+    //public bool Swimming { set { swim = value; } get { return swim; } }
 
     // 生きているか
     private bool _isAlive = true;
@@ -93,9 +93,10 @@ public class Player : MonoBehaviour
                 Vector3 newDir = Vector3.RotateTowards(transform.forward, targetDir, speed, 0.0F);
                 transform.rotation = Quaternion.LookRotation(newDir);
                 _animator.SetBool("Swimming", false);
-                Swimming = false;
+                //Swimming = false;
                 // 泳ぐSE停止
-                _playerSE.audioSource.Stop();
+                //_playerSE.SwimSE.Stop();
+                _playerSE.SwimSE.SetBool("Enabled", false);
 
                 locusFx.GetComponent<ParticleSystem>().Stop();
             }
@@ -103,9 +104,10 @@ public class Player : MonoBehaviour
             {
                 _animator.SetBool("Swimming", true);
                 // 泳ぐSE再生
-                if (!Swimming)
-                    _playerSE.audioSource.PlayOneShot(_playerSE.SwimSE);
-                Swimming = true;
+                //if (!Swimming)
+                //    _playerSE.SwimSE.Play();
+                //Swimming = true;
+                _playerSE.SwimSE.SetBool("Enabled", true);
 
                 locusFx.GetComponent<ParticleSystem>().Play();
             }
