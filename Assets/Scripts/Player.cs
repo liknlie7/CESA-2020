@@ -46,6 +46,8 @@ public class Player : MonoBehaviour
 
     private PlayerSEController _playerSE;
 
+    private Vector3 target;
+
     void Start()
     {
         //Rigidbodyを取得
@@ -65,6 +67,23 @@ public class Player : MonoBehaviour
         locusFx.transform.position = new Vector3(pos.x, pos.y + 0.3f, pos.z);
     }
 
+    void Update()
+    {
+        var plane = new Plane(Vector3.up, Vector3.zero);
+        var ray = CameraManager.Get().sonarCamera.ScreenPointToRay(Input.mousePosition);
+        if (plane.Raycast(ray, out float enter))
+        {
+            target = ray.GetPoint(enter);
+
+
+            if (Input.GetMouseButtonDown(0) && !EventSystem.current.IsPointerOverGameObject())
+            {
+                _agent.SetDestination(target);
+                _playerSE.audioSource.PlayOneShot(_playerSE.MovePointSE);
+            }
+        }
+    }
+
     void FixedUpdate()
     {
         if (_isAlive)
@@ -77,46 +96,34 @@ public class Player : MonoBehaviour
     // プレイヤーの回転
     void Move()
     {
-        var plane = new Plane(Vector3.up, Vector3.zero);
-        var ray = CameraManager.Get().sonarCamera.ScreenPointToRay(Input.mousePosition);
-        if (plane.Raycast(ray, out float enter))
+        if (_agent.remainingDistance <= 0.5f)
         {
-            var target = ray.GetPoint(enter);
+            Vector3 targetDir = target - transform.position;
+            targetDir.y = transform.position.y;
 
-            if (_agent.remainingDistance <= 0.3f)
-            {
-                Vector3 targetDir = target - transform.position;
-                targetDir.y = transform.position.y;
+            float speed = _rotateSpeed * Time.deltaTime;
+            Vector3 newDir = Vector3.RotateTowards(transform.forward, targetDir, speed, 0.0F);
+            transform.rotation = Quaternion.LookRotation(newDir);
+            _animator.SetBool("Swimming", false);
+            //Swimming = false;
+            // 泳ぐSE停止
+            //_playerSE.SwimSE.Stop();
+            _playerSE.SwimSE.SetBool("Enabled", false);
 
-                float speed = _rotateSpeed * Time.deltaTime;
-                Vector3 newDir = Vector3.RotateTowards(transform.forward, targetDir, speed, 0.0F);
-                transform.rotation = Quaternion.LookRotation(newDir);
-                _animator.SetBool("Swimming", false);
-                //Swimming = false;
-                // 泳ぐSE停止
-                //_playerSE.SwimSE.Stop();
-                _playerSE.SwimSE.SetBool("Enabled", false);
-
-                locusFx.GetComponent<ParticleSystem>().Stop();
-            }
-            else
-            {
-                _animator.SetBool("Swimming", true);
-                // 泳ぐSE再生
-                //if (!Swimming)
-                //    _playerSE.SwimSE.Play();
-                //Swimming = true;
-                _playerSE.SwimSE.SetBool("Enabled", true);
-
-                locusFx.GetComponent<ParticleSystem>().Play();
-            }
-
-            if (Input.GetMouseButtonDown(0) && !EventSystem.current.IsPointerOverGameObject())
-            {
-                _agent.SetDestination(target);
-                _playerSE.audioSource.PlayOneShot(_playerSE.MovePointSE);
-            }
+            locusFx.GetComponent<ParticleSystem>().Stop();
         }
+        else
+        {
+            _animator.SetBool("Swimming", true);
+            // 泳ぐSE再生
+            //if (!Swimming)
+            //    _playerSE.SwimSE.Play();
+            //Swimming = true;
+            _playerSE.SwimSE.SetBool("Enabled", true);
+
+            locusFx.GetComponent<ParticleSystem>().Play();
+        }
+
     }
 
     // ゴールとの当たり判定
