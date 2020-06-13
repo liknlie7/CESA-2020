@@ -12,6 +12,7 @@ TagManager:
   - Tadpole
   - Model
   - Stage
+  - RunawayEnemy
   layers:
   - Default
   - TransparentFX

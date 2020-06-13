@@ -139,7 +139,9 @@ public class Player : MonoBehaviour
             this.GetComponent<NavMeshAgent>().speed = 0.0f;
             this.GetComponent<ThrowingScript>().enabled = false;
         }
-        if(other.tag == "Enemy")
+
+        // TODO:: 長い　できればrippleSphereを編集して"RunawayEnemy"のタグも光らせるようにしたい
+        if (other.tag == "Enemy")
         {
             GameObject.Find("RippleDirector").GetComponent<GameOverStaging>().GameOver();
             this.transform.GetChild(0).GetComponent<Collider>().enabled = false;
