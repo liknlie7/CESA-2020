@@ -78,6 +78,7 @@ public class RippleManager : MonoBehaviour
                 }
                 else
                 {
+                    waveBound.obj.tag = "Enemy";
                     waveBound.obj.SetActive(false);
                 }
             }
