@@ -161,7 +161,7 @@ public class ThrowingScript : MonoBehaviour
                 _currentState = State.ThrowingInpossible;
             }
             // 右クリックで水を吐き出す
-            if (Input.GetMouseButtonDown(1) && _isThrowing && _agent.remainingDistance <= 0.1f)
+            if (Input.GetMouseButtonDown(1) && _isThrowing/* && _agent.remainingDistance <= 0.1f*/)
             {
                 // Fireボタンでボールを射出する
                 ThrowingBall(target);

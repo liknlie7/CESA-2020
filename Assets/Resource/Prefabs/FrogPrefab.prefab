@@ -226,7 +226,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 4837367464624185512}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 0.2
+  m_Radius: 0.15
   m_Speed: 1.7
   m_Acceleration: 8
   avoidancePriority: 50
@@ -305,7 +305,7 @@ AudioSource:
   SpatializePostEffects: 0
   Priority: 128
   DopplerLevel: 1
-  MinDistance: 1
+  MinDistance: 0.5417652
   MaxDistance: 500
   Pan2D: 0
   rolloffMode: 0
@@ -1110,10 +1110,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.44
-  m_Height: 1.89
+  m_Radius: 0.43999997
+  m_Height: 1.6150212
   m_Direction: 2
-  m_Center: {x: 0, y: 0.42, z: 0.56}
+  m_Center: {x: 0, y: 0.42000005, z: 0.42251068}
 --- !u!95 &6267308564599572086
 Animator:
   serializedVersion: 3

@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 029c1d25c6a546841ab2837e367f2e2b, type: 3}
   m_Name: WaterPulse
   m_EditorClassIdentifier: 
-  range: 5
+  range: 3
+  speed: 5
   color: {r: 0.19921875, g: 0.99609375, b: 0.90625, a: 1}

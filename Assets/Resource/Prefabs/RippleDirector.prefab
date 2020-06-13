@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rSphere: {fileID: 1893386144936946336, guid: 85ab52b4dfb4aa040911d19c8fe51610, type: 3}
-  activeOutlineTime: 1
+  activeOutlineTime: 3
   LayerNumber: 10
 --- !u!114 &2266067520511119783
 MonoBehaviour:
@@ -61,3 +61,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _speed: 0.2
   GameOverUi: {fileID: 0}
+  Blur: {fileID: 0}

@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 029c1d25c6a546841ab2837e367f2e2b, type: 3}
   m_Name: DefaultPulse
   m_EditorClassIdentifier: 
-  range: 5
-  speed: 10
+  range: 4
+  speed: 8
   color: {r: 0.2, g: 1, b: 0.9098039, a: 1}
