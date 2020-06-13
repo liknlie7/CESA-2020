@@ -79,6 +79,11 @@ public class PauseManager : MonoBehaviour
         Resume();
     }
 
+    public void PushRetryButton()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
     // ステージセレクトボタンを押された時
     public void PushStageSelectButton()
     {

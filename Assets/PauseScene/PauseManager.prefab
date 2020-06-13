@@ -241,6 +241,16 @@ PrefabInstance:
       propertyPath: m_textInfo.pageCount
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2384007087553315996, guid: e851edc8f61ddbb41b28a7aace60f580,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 7201265508535713655}
+    - target: {fileID: 2384007087553315996, guid: e851edc8f61ddbb41b28a7aace60f580,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: PushRetryButton
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e851edc8f61ddbb41b28a7aace60f580, type: 3}
 --- !u!1 &123322216991904891 stripped
