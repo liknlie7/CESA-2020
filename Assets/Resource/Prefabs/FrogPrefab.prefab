@@ -214,6 +214,8 @@ MonoBehaviour:
   _moveForce: 3
   fxPrefab: {fileID: 4774868211262680012, guid: a9c7fc5667342e647bc960b57f21b7c3,
     type: 3}
+  locusFxPrefab: {fileID: 3179440160949887166, guid: a98465dcc64637241ab8dd796d79eef8,
+    type: 3}
   _rotateSpeed: 3
 --- !u!195 &2129325699769315070
 NavMeshAgent:

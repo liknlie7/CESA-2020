@@ -12,7 +12,7 @@ public class EnemySemiAlertState : EnemyState
     private string _backStateName = "EnemyCrawlState";
 
     private float _attentionTime = 0.0f;
-    private float _crawlAttentionTime = 8.0f;
+    private float _crawlAttentionTime = 5.0f;
     private const string SONAR_TAG_NAME = "PlayerSonar";
 
     // ステートが遷移してきたとき
@@ -33,7 +33,7 @@ public class EnemySemiAlertState : EnemyState
             StateController.SetState(_nextStateName);
 
         // 目的地付近に着いたら、周りを見渡す
-        if (_prop.Agent.remainingDistance <= 0.1f)
+        if (_prop.Agent.remainingDistance <= 0.3f)
         {
             Vector3 rotate = new Vector3(0.0f, Mathf.Cos(Time.time) * 0.5f, 0.0f);
             this.transform.Rotate(rotate);

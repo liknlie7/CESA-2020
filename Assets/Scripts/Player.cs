@@ -18,6 +18,10 @@ public class Player : MonoBehaviour
     [SerializeField]
     private GameObject fxPrefab;
 
+    [SerializeField]
+    private GameObject locusFxPrefab;
+    private GameObject locusFx;
+
     // プレイヤーの位置を入れる
     Vector3 playerPos;
     // Animator
@@ -37,8 +41,8 @@ public class Player : MonoBehaviour
 
     // 生きているか
     private bool _isAlive = true;
-    private float _destroyScaleSpeed = 2.0f;
-    private float _destroyRotateSpeed = 200.0f;
+    //private float _destroyScaleSpeed = 5.0f;
+    //private float _destroyRotateSpeed = 200.0f;
 
 
     private PlayerSEController _playerSE;
@@ -56,6 +60,10 @@ public class Player : MonoBehaviour
         _agent.SetDestination(this.transform.position);
 
         _playerSE = this.GetComponent<PlayerSEController>();
+
+        locusFx = Instantiate(locusFxPrefab, this.transform);
+        Vector3 pos = this.transform.position;
+        locusFx.transform.position = new Vector3(pos.x, pos.y + 0.3f, pos.z);
     }
 
     void FixedUpdate()
@@ -88,6 +96,8 @@ public class Player : MonoBehaviour
                 Swimming = false;
                 // 泳ぐSE停止
                 _playerSE.audioSource.Stop();
+
+                locusFx.GetComponent<ParticleSystem>().Stop();
             }
             else
             {
@@ -97,6 +107,7 @@ public class Player : MonoBehaviour
                     _playerSE.audioSource.PlayOneShot(_playerSE.SwimSE);
                 Swimming = true;
 
+                locusFx.GetComponent<ParticleSystem>().Play();
             }
             
             if (Input.GetMouseButtonDown(0))
@@ -129,6 +140,9 @@ public class Player : MonoBehaviour
             // プレイヤーを停止
             this.GetComponent<NavMeshAgent>().speed = 0.0f;
             Instantiate(fxPrefab, this.transform.position, Quaternion.identity);
+
+            locusFx.transform.parent = new GameObject().transform;
+            locusFx.GetComponent<ParticleSystem>().Stop();
         }
     }
 
@@ -142,13 +156,13 @@ public class Player : MonoBehaviour
     private void PlayerDisappearance()
     {
         Vector3 scale = this.transform.localScale;
-        float sub = _destroyScaleSpeed * Time.deltaTime;
-        if (scale.x - sub < 0)
+        //float sub = _destroyScaleSpeed * Time.deltaTime;
+        //if (scale.x - sub < 0)
             Destroy(this.gameObject);
-        else
+        //else
         {
-            this.transform.localScale = new Vector3(scale.x - sub, scale.y - sub, scale.z - sub);
-            this.transform.Rotate(new Vector3(0.0f, Time.deltaTime * _destroyRotateSpeed, 0.0f));
+        //    this.transform.localScale = new Vector3(scale.x - sub, scale.y - sub, scale.z - sub);
+        //    this.transform.Rotate(new Vector3(0.0f, Time.deltaTime * _destroyRotateSpeed, 0.0f));
         }
     }
 }
