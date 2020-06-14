@@ -23,7 +23,6 @@ public class EnemyTrackingState : EnemyState
 
         if (!IsPlayerSee())
             StateController.SetState(_nextStateName);
-
     }
 
     // ステートから出ていくとき

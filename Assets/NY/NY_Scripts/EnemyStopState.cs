@@ -21,10 +21,16 @@ public class EnemyStopState : EnemyState
     [SerializeField]
     private float _killLengrh; // 確殺距離の半径
 
+
+    private float _interval = 0.0f;
+    private float _intervalMax = 3.0f;
+
+
     void Start()
     {
         // 初期位置を設定
         _initPos = this.transform.position;
+        _prop.Agent.SetDestination(_initPos);
     }
     // ステートが遷移してきたとき
     public override void EnterEvent()
@@ -41,11 +47,14 @@ public class EnemyStopState : EnemyState
             _isPlayerDiscovery = true;
         else
             _isPlayerDiscovery = false;
-        
 
+        _interval += Time.deltaTime;
         // プレイヤーを見つけたら警戒ステートに変更
-        if (_isPlayerDiscovery)
+        if (_isPlayerDiscovery && _interval >= _intervalMax)
+        {
             StateController.SetState(_nextStateName);
+            _interval = 0.0f;
+        }
     }
 
     // ステートから出ていくとき
