@@ -12,6 +12,7 @@ public class EnemyPropaty : MonoBehaviour
     private Transform _playerTrs; // プレイヤーのトランスフォーム
     public ParticleSystem detectParticle;
     public AudioSource detectSound;
+    private float lastDetect;
 
     // 各プロパティ
     public float     FovAngle  { set { _fovAngle = value;}  get { return _fovAngle;  } }
@@ -23,5 +24,15 @@ public class EnemyPropaty : MonoBehaviour
     void Start()
     {
         _playerTrs = GameObject.FindGameObjectWithTag("Player").transform;
+    }
+
+    public void Alert()
+    {
+        if (Time.time - lastDetect > 5)
+        {
+            detectParticle.Play();
+            detectSound.Play();
+            lastDetect = Time.time;
+        }
     }
 }

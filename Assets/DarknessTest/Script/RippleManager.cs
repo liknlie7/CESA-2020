@@ -94,10 +94,13 @@ public class RippleManager : MonoBehaviour
             .Where(e => Time.time - e.activateTime > activeOutlineTime)
             .Select(e =>
             {
-                foreach (var c in e.obj.GetComponentsInChildren<Renderer>())
+                if (e.obj != null)
                 {
-                    if (c.gameObject.layer == 10)
-                        c.gameObject.layer = 0;
+                    foreach (var c in e.obj.GetComponentsInChildren<Renderer>())
+                    {
+                        if (c.gameObject.layer == 10)
+                            c.gameObject.layer = 0;
+                    }
                 }
 
                 e.delete = true;

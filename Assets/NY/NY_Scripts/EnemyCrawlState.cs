@@ -54,8 +54,7 @@ public class EnemyCrawlState : EnemyState
             _interval = 0.0f;
 
             Debug.Log("Crawl 2 Alert");
-            _prop.detectParticle.Play();
-            _prop.detectSound.Play();
+            _prop.Alert();
         }
     }
 

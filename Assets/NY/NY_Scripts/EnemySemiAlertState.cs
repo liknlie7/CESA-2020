@@ -33,8 +33,7 @@ public class EnemySemiAlertState : EnemyState
             Debug.Log("Crawl 2 Alert");
             StateController.SetState(_nextStateName);
 
-            _prop.detectParticle.Play();
-            _prop.detectSound.Play();
+            _prop.Alert();
         }
 
         // 目的地付近に着いたら、周りを見渡す

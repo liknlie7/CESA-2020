@@ -62,8 +62,7 @@ public class EnemyStopState : EnemyState
 
             Debug.Log("Stop 2 Alert");
 
-            _prop.detectParticle.Play();
-            _prop.detectSound.Play();
+            _prop.Alert();
         }
 
     }
