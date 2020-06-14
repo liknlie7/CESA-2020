@@ -12,7 +12,7 @@ PlayerSettings:
   targetDevice: 2
   useOnDemandResources: 0
   accelerometerFrequency: 60
-  companyName: TeamFrog
+  companyName: PenguinTeam
   productName: FROGOHOME
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 224, y: 224}
@@ -40,7 +40,7 @@ PlayerSettings:
     width: 1
     height: 1
   m_SplashScreenLogos:
-  - logo: {fileID: 21300000, guid: 0c0c3814254fe4048b7c0190425dc31c, type: 3}
+  - logo: {fileID: 21300000, guid: d3d1b21b01eb46049bce9b70b105abe7, type: 3}
     duration: 2
   m_VirtualRealitySplashScreen: {fileID: 2800000, guid: 0c0c3814254fe4048b7c0190425dc31c,
     type: 3}
@@ -156,7 +156,7 @@ PlayerSettings:
   androidSupportedAspectRatio: 1
   androidMaxAspectRatio: 2.1
   applicationIdentifier:
-    Standalone: TeamFrog
+    Standalone: PenguinTeam
   buildNumber: {}
   AndroidBundleVersionCode: 1
   AndroidMinSdkVersion: 16
