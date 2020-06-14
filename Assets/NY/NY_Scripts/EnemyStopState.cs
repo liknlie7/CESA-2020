@@ -28,6 +28,7 @@ public class EnemyStopState : EnemyState
 
     void Start()
     {
+        _interval = _intervalMax;
         // 初期位置を設定
         _initPos = this.transform.position;
         _prop.Agent.SetDestination(_initPos);

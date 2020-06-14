@@ -25,6 +25,7 @@ public class EnemyCrawlState : EnemyState
     // ステートが遷移してきたとき
     public override void EnterEvent()
     {
+        _interval = _intervalMax;
         _prop.Agent.SetDestination(_searchRoutes[_routeNum].position);
     }
 
