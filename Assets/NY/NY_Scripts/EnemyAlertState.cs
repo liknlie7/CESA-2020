@@ -19,9 +19,7 @@ public class EnemyAlertState : EnemyState
     public override void EnterEvent()
     {
         _alertGauge = 0.0f;
-
-        _prop.detectParticle.Play();
-        _prop.detectSound.Play();
+        
     }
 
 

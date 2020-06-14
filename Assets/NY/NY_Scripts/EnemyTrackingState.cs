@@ -13,8 +13,6 @@ public class EnemyTrackingState : EnemyState
         if (_prop.Agent == null)
             _prop.Agent = StateController.GetComponent<NavMeshAgent>();
         _prop.Agent.SetDestination(_prop.PlayerTrs.position);
-
-        Debug.Log("EnemyTrackingState : に移行");
     }
 
     public override void Execute()
@@ -23,7 +21,6 @@ public class EnemyTrackingState : EnemyState
 
         if (!IsPlayerSee())
             StateController.SetState(_nextStateName);
-
     }
 
     // ステートから出ていくとき

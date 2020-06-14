@@ -231,7 +231,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _fovAngle: 110
-  _fovLength: 10
+  _fovLength: 6
   _agent: {fileID: 8828731612720361772}
   detectParticle: {fileID: 2964701602848621703}
   detectSound: {fileID: 4444166083657981661}

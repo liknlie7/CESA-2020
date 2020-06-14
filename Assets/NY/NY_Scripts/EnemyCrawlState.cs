@@ -19,6 +19,8 @@ public class EnemyCrawlState : EnemyState
 
     private const string SONAR_TAG_NAME = "PlayerSonar";
 
+    private float _interval = 3.0f;
+    private float _intervalMax = 3.0f;
 
     // ステートが遷移してきたとき
     public override void EnterEvent()
@@ -39,9 +41,22 @@ public class EnemyCrawlState : EnemyState
         // 巡回移動
         Move();
 
+        // プレイヤーを見つけていたら警戒状態に移行
+        if (_interval <= _intervalMax)
+        {
+            _interval += Time.deltaTime * 0.5f;
+            Debug.Log(_interval);
+        }
         // プレイヤーを見つけたら警戒ステートに変更
-        if (_isPlayerDiscovery)
+        if (IsSearch() && _interval >= _intervalMax)
+        {
             StateController.SetState(_nextStateName);
+            _interval = 0.0f;
+
+            Debug.Log("Crawl 2 Alert");
+            _prop.detectParticle.Play();
+            _prop.detectSound.Play();
+        }
     }
 
     // ステートから出ていくとき
