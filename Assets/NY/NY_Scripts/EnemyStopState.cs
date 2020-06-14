@@ -22,13 +22,12 @@ public class EnemyStopState : EnemyState
     private float _killLengrh; // 確殺距離の半径
 
 
-    private float _interval = 0.0f;
+    private float _interval = 3.0f;
     private float _intervalMax = 3.0f;
 
 
     void Start()
     {
-        _interval = _intervalMax;
         // 初期位置を設定
         _initPos = this.transform.position;
         _prop.Agent.SetDestination(_initPos);
@@ -49,13 +48,24 @@ public class EnemyStopState : EnemyState
         else
             _isPlayerDiscovery = false;
 
-        _interval += Time.deltaTime;
+        // プレイヤーを見つけていたら警戒状態に移行
+        if (_interval <= _intervalMax)
+        {
+            _interval += Time.deltaTime * 0.5f;
+            Debug.Log(_interval);
+        }
         // プレイヤーを見つけたら警戒ステートに変更
         if (_isPlayerDiscovery && _interval >= _intervalMax)
         {
             StateController.SetState(_nextStateName);
             _interval = 0.0f;
+
+            Debug.Log("Stop 2 Alert");
+
+            _prop.detectParticle.Play();
+            _prop.detectSound.Play();
         }
+
     }
 
     // ステートから出ていくとき

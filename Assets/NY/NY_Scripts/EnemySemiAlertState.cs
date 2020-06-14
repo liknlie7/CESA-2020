@@ -29,7 +29,13 @@ public class EnemySemiAlertState : EnemyState
     {  
         // プレイヤーを見つけていたら警戒状態に移行
         if (IsSearch())
+        {
+            Debug.Log("Crawl 2 Alert");
             StateController.SetState(_nextStateName);
+
+            _prop.detectParticle.Play();
+            _prop.detectSound.Play();
+        }
 
         // 目的地付近に着いたら、周りを見渡す
         if (_prop.Agent.remainingDistance <= 0.1f)

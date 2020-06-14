@@ -20,8 +20,6 @@ public class EnemyAlertState : EnemyState
     {
         _alertGauge = 0.0f;
         
-        _prop.detectParticle.Play();
-        _prop.detectSound.Play();
     }
 
 
