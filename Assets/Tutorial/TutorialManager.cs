@@ -69,12 +69,12 @@ public class TutorialManager : MonoBehaviour
     {
         // 文章読み込み(テスト)
         texts[(int)Mission.BASIC] = "右クリックで波紋をだして、\n周りを確認してみよう！";
-        texts[(int)Mission.MOVE] = "左クリックで移動\n今回は特別に周りを明るくしておいたぞ";
-        texts[(int)Mission.ENEMY] = "敵に見つかってしまった！こうなると家に逃げるしかない！";
-        texts[(int)Mission.OTAMA] = "おや、迷子のおたまじゃくしだ！\n一緒に連れ帰ってあげよう";
-        texts[(int)Mission.GOAL] = "緑色のハスの葉の下に家があるぞ！\n敵に見つからないうちに帰ろう！";
-        texts[(int)Mission.CLEAR] = "ステージクリアだ！おめでとう！\n次からは闇の中、うちに帰ってもらう";
-        texts[(int)Mission.GAMEOVER] = "残念！食べられてしまった！\n夜は危険な生物も徘徊しているぞ！";
+        texts[(int)Mission.MOVE] = "左クリックで移動\n今回は特別に周りを明るくしておいたよ";
+        texts[(int)Mission.ENEMY] = "敵に見つかってしまった！こうなるとお家に逃げるしかない！";
+        texts[(int)Mission.OTAMA] = "あ！迷子のおたまじゃくしだ！\n一緒に連れ帰ってあげよう";
+        texts[(int)Mission.GOAL] = "緑色のハスの葉の下に家があるよ！\n敵に見つからないお家に帰ろう！";
+        texts[(int)Mission.CLEAR] = "ステージクリア！おめでとう！\n次からは闇の中、気を付けて！";
+        texts[(int)Mission.GAMEOVER] = "残念！食べられてしまった！\n夜は危険な生物も徘徊しているよ！";
 
         throwingScript = FindObjectOfType<ThrowingScript>();
 
