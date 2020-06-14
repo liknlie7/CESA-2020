@@ -8,6 +8,7 @@ public class DeleteAllButton : MonoBehaviour
     public void OnClick()
     {
         PlayerPrefs.DeleteAll();
-        this.transform.parent.parent.GetComponent<Animator>().SetTrigger("Refresh");
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        //this.transform.parent.parent.GetComponent<Animator>().SetTrigger("Refresh");
     }
 }
