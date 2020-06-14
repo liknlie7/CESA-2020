@@ -3161,7 +3161,7 @@ PrefabInstance:
     - target: {fileID: 9076785531510765572, guid: bd72e79b8fcf0f24c923e8085100557a,
         type: 3}
       propertyPath: m_Name
-      value: StartButton (1)
+      value: TutorialButton
       objectReference: {fileID: 0}
     - target: {fileID: 9076785531510765570, guid: bd72e79b8fcf0f24c923e8085100557a,
         type: 3}
@@ -4054,6 +4054,25 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 1000642810}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1946694070 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9076785531510765572, guid: bd72e79b8fcf0f24c923e8085100557a,
+    type: 3}
+  m_PrefabInstance: {fileID: 1259209238}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1946694071
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1946694070}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3c3d3e119b2d1141addaf3161a47473, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 0
 --- !u!1001 &2002502949
 PrefabInstance:
   m_ObjectHideFlags: 0
