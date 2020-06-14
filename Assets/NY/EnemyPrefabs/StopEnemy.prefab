@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5725603863296987057}
   - component: {fileID: 9136952396531581354}
   - component: {fileID: 6920125223476749518}
-  m_Layer: 11
+  m_Layer: 2
   m_Name: AreaRenderer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -567,10 +567,6 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0.25
       objectReference: {fileID: 0}
-    - target: {fileID: 9500000, guid: 045fea5fdb7f91d4985813aaaaa20ad8, type: 3}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 9100000, guid: 335e6811bd658f74c99f8e33552a0d94, type: 2}
     - target: {fileID: 400032, guid: 045fea5fdb7f91d4985813aaaaa20ad8, type: 3}
       propertyPath: m_LocalRotation.x
       value: -0
@@ -623,6 +619,10 @@ PrefabInstance:
       propertyPath: m_LocalScale.x
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 9500000, guid: 045fea5fdb7f91d4985813aaaaa20ad8, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 335e6811bd658f74c99f8e33552a0d94, type: 2}
     - target: {fileID: 13700000, guid: 045fea5fdb7f91d4985813aaaaa20ad8, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 

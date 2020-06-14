@@ -472,36 +472,11 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3429491895562863630, guid: c5a7419369c1c234db246bc844bbbe85,
-        type: 3}
-      propertyPath: m_Layer
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3429491895562863630, guid: c5a7419369c1c234db246bc844bbbe85,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 9186316231736461873, guid: c5a7419369c1c234db246bc844bbbe85,
         type: 3}
       propertyPath: m_Mesh
       value: 
-      objectReference: {fileID: 1005868970}
-    - target: {fileID: 1430716072161023936, guid: c5a7419369c1c234db246bc844bbbe85,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8828731612720361769, guid: c5a7419369c1c234db246bc844bbbe85,
-        type: 3}
-      propertyPath: _nextStateName
-      value: SemiAlertState
-      objectReference: {fileID: 0}
-    - target: {fileID: 8828731612720361768, guid: c5a7419369c1c234db246bc844bbbe85,
-        type: 3}
-      propertyPath: _nextStateName
-      value: EnemyTrackingState
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 974915938}
     - target: {fileID: 3930875965150279356, guid: c5a7419369c1c234db246bc844bbbe85,
         type: 3}
       propertyPath: m_LocalScale.x
@@ -526,6 +501,26 @@ PrefabInstance:
         type: 3}
       propertyPath: _fovLength
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3429491895562863630, guid: c5a7419369c1c234db246bc844bbbe85,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3429491895562863630, guid: c5a7419369c1c234db246bc844bbbe85,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8828731612720361769, guid: c5a7419369c1c234db246bc844bbbe85,
+        type: 3}
+      propertyPath: _nextStateName
+      value: SemiAlertState
+      objectReference: {fileID: 0}
+    - target: {fileID: 8828731612720361768, guid: c5a7419369c1c234db246bc844bbbe85,
+        type: 3}
+      propertyPath: _nextStateName
+      value: EnemyTrackingState
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c5a7419369c1c234db246bc844bbbe85, type: 3}
@@ -1239,7 +1234,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dc3745f982686ba4fb3ff9fb431c8446, type: 3}
---- !u!43 &1005868970
+--- !u!43 &974915938
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

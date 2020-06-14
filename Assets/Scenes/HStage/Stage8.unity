@@ -472,36 +472,11 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3429491895562863630, guid: c5a7419369c1c234db246bc844bbbe85,
-        type: 3}
-      propertyPath: m_Layer
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3429491895562863630, guid: c5a7419369c1c234db246bc844bbbe85,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 9186316231736461873, guid: c5a7419369c1c234db246bc844bbbe85,
         type: 3}
       propertyPath: m_Mesh
       value: 
-      objectReference: {fileID: 1099694627}
-    - target: {fileID: 1430716072161023936, guid: c5a7419369c1c234db246bc844bbbe85,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8828731612720361769, guid: c5a7419369c1c234db246bc844bbbe85,
-        type: 3}
-      propertyPath: _nextStateName
-      value: SemiAlertState
-      objectReference: {fileID: 0}
-    - target: {fileID: 8828731612720361768, guid: c5a7419369c1c234db246bc844bbbe85,
-        type: 3}
-      propertyPath: _nextStateName
-      value: EnemyTrackingState
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1055924891}
     - target: {fileID: 3930875965150279356, guid: c5a7419369c1c234db246bc844bbbe85,
         type: 3}
       propertyPath: m_LocalScale.x
@@ -526,6 +501,16 @@ PrefabInstance:
         type: 3}
       propertyPath: _fovLength
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8828731612720361769, guid: c5a7419369c1c234db246bc844bbbe85,
+        type: 3}
+      propertyPath: _nextStateName
+      value: SemiAlertState
+      objectReference: {fileID: 0}
+    - target: {fileID: 8828731612720361768, guid: c5a7419369c1c234db246bc844bbbe85,
+        type: 3}
+      propertyPath: _nextStateName
+      value: EnemyTrackingState
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c5a7419369c1c234db246bc844bbbe85, type: 3}
@@ -919,7 +904,7 @@ AudioSource:
     type: 3}
   m_PrefabInstance: {fileID: 2002784456}
   m_PrefabAsset: {fileID: 0}
---- !u!43 &1099694627
+--- !u!43 &1055924891
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1321,11 +1306,6 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5763542734936788769, guid: 816c25dee1a69c3489a818a4786565b2,
-        type: 3}
-      propertyPath: clickSound
-      value: 
-      objectReference: {fileID: 997374841}
     - target: {fileID: 5624958952946316161, guid: 816c25dee1a69c3489a818a4786565b2,
         type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -1336,5 +1316,10 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5763542734936788769, guid: 816c25dee1a69c3489a818a4786565b2,
+        type: 3}
+      propertyPath: clickSound
+      value: 
+      objectReference: {fileID: 997374841}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 816c25dee1a69c3489a818a4786565b2, type: 3}
