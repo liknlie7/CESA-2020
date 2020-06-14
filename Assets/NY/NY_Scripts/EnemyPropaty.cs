@@ -11,6 +11,7 @@ public class EnemyPropaty : MonoBehaviour
     private Transform _targetTrs; // 移動先のトランスフォーム
     private Transform _playerTrs; // プレイヤーのトランスフォーム
     public ParticleSystem detectParticle;
+    public AudioSource detectSound;
 
     // 各プロパティ
     public float     FovAngle  { set { _fovAngle = value;}  get { return _fovAngle;  } }
