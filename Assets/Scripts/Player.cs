@@ -14,7 +14,7 @@ public class Player : MonoBehaviour
     Rigidbody rb;
 
     // 移動スピード
-    [SerializeField] private float _moveForce = 3.0f;
+    //[SerializeField] private float _moveForce = 3.0f;
 
     [SerializeField] private GameObject fxPrefab;
 
