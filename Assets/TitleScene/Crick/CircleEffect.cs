@@ -8,14 +8,9 @@ public class CircleEffect : MonoBehaviour
     private float alphaValue = 1f;
     //　パーティクルシステム
     private ParticleSystem ps;
-    //　Scaleを大きくする間隔時間
-    [SerializeField]
-    private float scaleUpTime = 0.03f;
     //　ScaleUpする割合
     [SerializeField]
     private float scaleUpParam = 0.1f;
-    //　パーティクル削除用の経過時間
-    private float elapsedDeleteTime = 0f;
     //　パーティクルを削除するまでの時間
     [SerializeField]
     private float deleteTime = 5f;
