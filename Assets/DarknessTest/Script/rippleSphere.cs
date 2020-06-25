@@ -21,7 +21,7 @@ public class rippleSphere : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        this.tag = sonarbound.source.tag;
+        //this.tag = sonarbound.source.tag;
 
         if (other.gameObject.CompareTag("Enemy") || other.gameObject.CompareTag("Stage") || other.gameObject.CompareTag("RunawayEnemy"))
         {
@@ -30,5 +30,10 @@ public class rippleSphere : MonoBehaviour
                 manager.AddEnemyList(other.gameObject);
             }
         }
+    }
+
+    public void InitializeTag()
+    {
+        this.tag = sonarbound.source.tag;
     }
 }

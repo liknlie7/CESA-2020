@@ -40,6 +40,10 @@ public class RippleManager : MonoBehaviour
     // 輪郭を付けている時間
     [SerializeField] float activeOutlineTime = 3.0f;
 
+    // アウトラインが設定されたレイヤーの番号 
+    [SerializeField]
+    int layerNumber = 10;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -76,7 +80,13 @@ public class RippleManager : MonoBehaviour
                 {
                     waveBound.obj.transform.position = waveBound.bound.center;
                     waveBound.collider.radius = waveBound.bound.Radius;
-                    waveBound.obj.SetActive(true);
+
+                    if (waveBound.obj.active  == false)
+                    {
+                        waveBound.obj.SetActive(true);
+                        waveBound.obj.GetComponent<rippleSphere>().InitializeTag();
+                    }
+
                 }
                 else
                 {
@@ -95,7 +105,7 @@ public class RippleManager : MonoBehaviour
                 {
                     foreach (var c in e.obj.GetComponentsInChildren<Renderer>())
                     {
-                        if (c.gameObject.layer == 10)
+                        if (c.gameObject.layer == layerNumber)
                             c.gameObject.layer = 0;
                     }
                 }
@@ -118,7 +128,7 @@ public class RippleManager : MonoBehaviour
             foreach (var c in go.GetComponentsInChildren<Renderer>())
             {
                 if (c.gameObject.layer == 0)
-                    c.gameObject.layer = 10;
+                    c.gameObject.layer = layerNumber;
             }
 
             colEnemyList.Add(enemyInfo);
