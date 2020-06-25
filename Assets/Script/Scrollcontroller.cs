@@ -11,10 +11,10 @@ public class Scrollcontroller : MonoBehaviour
     GameObject leftArrow = null;
 
     [SerializeField]
-    Animator pageAnimator;
+    Animator pageAnimator = null;
 
     [SerializeField]
-    StageSelectManager SSMana;
+    StageSelectManager SSMana = null;
     //左
     public void LeftOnClick()
     {

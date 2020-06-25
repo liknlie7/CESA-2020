@@ -5,9 +5,9 @@ public class CrickEffect : MonoBehaviour
 {
   
     [SerializeField]
-    ParticleSystem tapEffect;              // タップエフェクト
+    ParticleSystem tapEffect = null;              // タップエフェクト
     [SerializeField]
-    Camera _camera;                        // カメラの座標
+    Camera _camera = null;                        // カメラの座標
 
     void Update()
     {

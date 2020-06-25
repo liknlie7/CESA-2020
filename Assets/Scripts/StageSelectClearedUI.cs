@@ -10,7 +10,7 @@ public class StageSelectClearedUI : MonoBehaviour
     private const string RADPOLE_KEYWORD = "_cleared";
 
     [SerializeField]
-    private GameObject _hiddenMap;
+    private GameObject _hiddenMap = null;
 
 
     // Start is called before the first frame update

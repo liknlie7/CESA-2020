@@ -6,13 +6,13 @@ using UnityEngine.Rendering;
 public class GaussianBlur : MonoBehaviour
 {
     [SerializeField]
-    private Shader _shader;
+    private Shader _shader = null;
 
-    [SerializeField, Range(1f, 10f)]
-    private float _offset = 1f;
+    [SerializeField, Range(1.0f, 10.0f)]
+    private float _offset = 1.0f;
 
-    [SerializeField, Range(1f, 1000f)]
-    private float _blur = 100f;
+    [SerializeField, Range(1.0f, 1000.0f)]
+    private float _blur = 100.0f;
 
     private Material _material;
 

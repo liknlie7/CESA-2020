@@ -16,12 +16,12 @@ public class Player : MonoBehaviour
     // 移動スピード
     //[SerializeField] private float _moveForce = 3.0f;
 
-    [SerializeField] private GameObject fxPrefab;
+    [SerializeField] private GameObject fxPrefab = null;
 
-    [SerializeField] private ParticleSystem locusFx;
+    [SerializeField] private ParticleSystem locusFx = null;
 
     // 親子関係にしたくないのでインスタンスします
-    [SerializeField] private GameObject _destinationPrefab;
+    [SerializeField] private GameObject _destinationPrefab = null;
     private GameObject _destination = null;
 
     // プレイヤーの位置を入れる
@@ -31,7 +31,7 @@ public class Player : MonoBehaviour
     Animator _animator;
 
     // 回転速度
-    [SerializeField, Range(0.0f, 10.0f)] private float _rotateSpeed;
+    [SerializeField, Range(0.0f, 10.0f)] private float _rotateSpeed = 0.0f;
 
     private NavMeshAgent _agent;
 

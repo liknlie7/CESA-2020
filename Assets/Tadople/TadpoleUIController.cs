@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class TadpoleUIController : MonoBehaviour
 {
     [SerializeField]
-    private Image _higlight;
+    private Image _higlight = null;
     
     private const float WIDTH = 0.3335f;
     private const float ADD_SPEED = 0.8f;

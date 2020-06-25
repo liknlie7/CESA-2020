@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 029c1d25c6a546841ab2837e367f2e2b, type: 3}
   m_Name: TadpolePulse
   m_EditorClassIdentifier: 
-  range: 0.2
-  speed: 1
+  range: 0.4
+  speed: 0.5
   color: {r: 0.94000006, g: 1, b: 0, a: 1}

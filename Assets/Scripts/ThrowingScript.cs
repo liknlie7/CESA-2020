@@ -15,32 +15,33 @@ public class ThrowingScript : MonoBehaviour
 
     /// 射出するオブジェクト
     [SerializeField, Tooltip("射出するオブジェクトをここに割り当てる")]
-    private GameObject ThrowingObject;
+    private GameObject ThrowingObject = null;
 
     [SerializeField, Range(0F, 60F), Tooltip("次に水を吐くためのインターバル")]
-    private float _throwingIntervalMax;
+    private float _throwingIntervalMax = 0.0f;
     private float _throwingInterval = 0.0f;
     private bool _isThrowing = true;
 
     //// 標的のオブジェクト
     [SerializeField, Tooltip("標的のオブジェクトをここに割り当てる")]
-    private GameObject targetFXPrefab;
+    private GameObject targetFXPrefab = null;
     private GameObject targetFX;
 
     // 射出角度
     [SerializeField, Range(0F, 90F), Tooltip("射出する角度")]
-    private float ThrowingAngle;
+    private float ThrowingAngle = 0.0f;
 
     // 射出位置オフセット
     [SerializeField, Tooltip("射出位置")]
-    private GameObject ThrowingOffset;
+    private GameObject ThrowingOffset = null;
 
     // 投げる位置の最大値
     [SerializeField]
-    private float _throwLengthMax;
+    private float _throwLengthMax = 0.0f;
 
     [SerializeField]
-    private Material[] _targetMaterials;
+    private Material[] _targetMaterials = null;
+
     enum TargetMaterialID
     { possible = 0, inpossible }
 

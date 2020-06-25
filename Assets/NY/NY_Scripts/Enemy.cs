@@ -22,9 +22,9 @@ public class Enemy : MonoBehaviour
     [SerializeField]
     private float      _fovLength = 20.0f;                         // 視野の長さ
     [SerializeField]
-    private GameObject _discovery;                                 // 発見時のびっくりアイコン
+    private GameObject _discovery = null;                                 // 発見時のびっくりアイコン
     [SerializeField]
-    private GameObject _question;                                  // 警戒時のクエスチョンアイコン
+    private GameObject _question = null;                                  // 警戒時のクエスチョンアイコン
     [SerializeField]
     private List<Transform> _searchRoutes = new List<Transform>(); // 巡回ルート
     

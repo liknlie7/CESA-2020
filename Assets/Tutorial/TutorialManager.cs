@@ -36,29 +36,29 @@ public class TutorialManager : MonoBehaviour
 
     // チュートリアルのテキスト
     [SerializeField]
-    TextMeshProUGUI TMP;
+    TextMeshProUGUI TMP = default;
     // チュートリアルの文章リスト
     private string[] texts = new string[10];
     // ゴールへの説明が出る距離
     const float GOAL_DISTANCE = 5.0f;
     // プレイヤーオブジェクト
     [SerializeField]
-    private GameObject player;
+    private GameObject player = null;
     // プレイヤースクリプト
     private Player playerScript;
     // プレイヤーの初期位置
     private Vector3 initialP_pos;
     // スコアマネージャー
     [SerializeField]
-    private ScoreManager scoreMana;
+    private ScoreManager scoreMana = null;
     // リップルマネージャー
     [SerializeField]
-    private GameObject rippleDir;
+    private GameObject rippleDir = null;
     // ゲームオーバースクリプト
     private GameOverStaging gameOverScript;
     // 敵
     [SerializeField]
-    private GameObject enemy;
+    private GameObject enemy = null;
     // 敵のスクリプト
     private EnemyController enemyScript;
 

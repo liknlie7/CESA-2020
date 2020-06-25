@@ -6,12 +6,12 @@ using UnityEngine.UI;
 public class TimerController : MonoBehaviour
 {
 
-    public float totalTime;
-    int seconds;
+    public float totalTime = 0.0f;
+    int seconds = 0;
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -20,8 +20,8 @@ public class TimerController : MonoBehaviour
         totalTime -= Time.deltaTime;
         seconds = (int)totalTime;
 
-        if (seconds < 0)
-            ; //UnityEditor.EditorApplication.isPlaying = false;
+        //if (seconds < 0)
+        //    ; //UnityEditor.EditorApplication.isPlaying = false;
 
     }
 }

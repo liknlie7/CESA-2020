@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class DeadMenu : MonoBehaviour
 {
-    [SerializeField] private string stageSelectSceneName;
+    [SerializeField] private string stageSelectSceneName = null;
 
     public AudioSource clickSound;
     // ステージセレクトボタンを押された時

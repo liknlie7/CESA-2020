@@ -5,9 +5,9 @@ using UnityEngine;
 public class HitEnemy : MonoBehaviour
 {
     [SerializeField]
-    string EnemyTag;
+    string EnemyTag = null;
     [SerializeField]
-    GameObject GameOverObject;
+    GameObject GameOverObject = null;
 
     // Start is called before the first frame update
     void Start()

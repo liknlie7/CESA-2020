@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class TadpoleController : MonoBehaviour
 {
-    [SerializeField] private GameObject _fxPrefab;
+    [SerializeField] private GameObject _fxPrefab = null;
 
     // Start is called before the first frame update
     void Start()

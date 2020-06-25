@@ -18,7 +18,7 @@ public class EnemyRunawayState : EnemyState
     public GameObject playerSonar;
 
     [SerializeField]
-    private SonarPulse _sonar;
+    private SonarPulse _sonar = null;
 
     // ステートの名前を取得
     public override string GetStateName() { return "EnemyRunawayState"; }

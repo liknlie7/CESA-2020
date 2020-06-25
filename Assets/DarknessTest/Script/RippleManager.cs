@@ -40,9 +40,6 @@ public class RippleManager : MonoBehaviour
     // 輪郭を付けている時間
     [SerializeField] float activeOutlineTime = 3.0f;
 
-    // アウトラインが設定されたレイヤーの番号
-    [SerializeField] int LayerNumber = 10;
-
     // Start is called before the first frame update
     void Start()
     {
@@ -108,8 +105,6 @@ public class RippleManager : MonoBehaviour
             })
             .ToList();
         colEnemyList.RemoveAll(e => e.delete);
-
-        //Debug.Log(colEnemyList.Count);
     }
 
     // アウトラインをつけるエネミーをリストに入れる処理

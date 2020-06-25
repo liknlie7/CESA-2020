@@ -14,7 +14,7 @@ public class StageSelectTadopleUI : MonoBehaviour
     private const float OFFSET = 0.05f;
 
     [SerializeField]
-    private Image _higlight;
+    private Image _higlight = null;
 
 
     // Start is called before the first frame update

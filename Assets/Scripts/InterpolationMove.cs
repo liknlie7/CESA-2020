@@ -15,7 +15,7 @@ public class InterpolationMove : MonoBehaviour
 
     //　キャラクターを動かすモード
     [SerializeField]
-    private Mode mode;
+    private Mode mode = Mode.Normal;
     //キャラクターコントローラー
     private CharacterController cCon;
     //　キャラクターの速度

@@ -6,14 +6,14 @@ using UnityEngine.Rendering;
 public class DimEffect : MonoBehaviour
 {
     [SerializeField]
-    private bool state;
+    private bool state = false;
     [SerializeField]
-    private Shader dimEffectShader;
+    private Shader dimEffectShader = null;
     [SerializeField]
-    private Color fogColor;
+    private Color fogColor = new Vector4(0, 0, 0, 0);
     [Range(0f, 1f)]
     [SerializeField]
-    private float duration;
+    private float duration = 0.0f;
 
     private Material _material;
     private static readonly int _FogColor = Shader.PropertyToID("_FogColor");

@@ -12,14 +12,13 @@ public class EnemyStopState : EnemyState
 
     private Vector3 _initPos;
 
-    private int _routeNum = 0;                 // 現在巡回している番号
     [SerializeField]
     private bool _isSemiAlertState = true;
 
     private const string SONAR_TAG_NAME = "PlayerSonar";
 
     [SerializeField]
-    private float _killLengrh; // 確殺距離の半径
+    private float _killLengrh = 0; // 確殺距離の半径
 
 
     private float _interval = 3.0f;

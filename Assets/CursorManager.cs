@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CursorManager : MonoBehaviour
 {
-    [SerializeField] GameObject DRAG_PARTICLE;  // PS_DragStarを割り当てること
+    [SerializeField] GameObject DRAG_PARTICLE = null;  // PS_DragStarを割り当てること
 
     private GameObject m_DragParticle;
     private ParticleSystem m_DragParticleSystem;

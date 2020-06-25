@@ -4,16 +4,9 @@ using UnityEngine;
 
 public class CircleEffect : MonoBehaviour
 {
-    //　元のパーティクルの透明度
-    private float alphaValue = 1f;
     //　パーティクルシステム
     private ParticleSystem ps;
-    //　ScaleUpする割合
-    [SerializeField]
-    private float scaleUpParam = 0.1f;
-    //　パーティクルを削除するまでの時間
-    [SerializeField]
-    private float deleteTime = 5f;
+
     // Start is called before the first frame update
     void Start()
     {
